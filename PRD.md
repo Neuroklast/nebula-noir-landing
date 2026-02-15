@@ -1,14 +1,14 @@
 # Planning Guide
 
-A striking Art Déco landing page for Nebula Noir, a handmade alternative jewelry brand, blending 1920s-30s geometric elegance with modern dark aesthetics to showcase luxury craftsmanship and prepare for future e-commerce integration.
+An atmospheric Art Deco landing page for Nebula Noir, inspired by BioShock's underwater Rapture aesthetic—where 1920s-30s elegance meets dystopian grandeur. Dark, cinematic, and haunting, with glowing golden accents that evoke the beauty found in decay and shadow.
 
 **Experience Qualities**:
-1. **Opulent** - Luxurious geometric patterns, metallic accents, and sophisticated animations evoke the glamour of the Art Déco era
-2. **Mysterious** - Dark, moody color palette with dramatic lighting effects creates an enigmatic atmosphere befitting alternative jewelry
-3. **Refined** - Clean lines, symmetrical layouts, and precise typography communicate exceptional craftsmanship and attention to detail
+1. **Atmospheric** - BioShock's underwater city ambiance with glowing art deco elements, subtle light rays, and cinematic depth creates an immersive environment
+2. **Elegant Decay** - Golden-hued accents against deep darkness evoke Rapture's faded luxury—sophisticated yet haunting, beautiful yet mysterious
+3. **Cinematic** - Slow, deliberate animations with dramatic reveals, film grain effects, and pulsing glows create a movie-like experience
 
 **Complexity Level**: Content Showcase (information-focused)
-This is a brand presentation landing page designed to establish visual identity and showcase the jewelry brand's aesthetic before shop functionality is added.
+This is an immersive brand presentation landing page designed to establish a unique visual identity inspired by BioShock's art direction, showcasing the jewelry brand's aesthetic before shop functionality is added.
 
 ## Essential Features
 
@@ -57,92 +57,96 @@ This is a brand presentation landing page designed to establish visual identity 
 
 ## Design Direction
 
-The design should evoke the glamorous sophistication of 1920s-30s Art Déco - think Great Gatsby elegance meets modern alternative fashion. Geometric symmetry, metallic accents, dramatic contrasts, and luxurious details communicate that this is not mass-produced jewelry but carefully crafted art pieces. The dark palette creates mystery and exclusivity, while clean lines and precise typography ensure professionalism suitable for future e-commerce.
+The design evokes BioShock's underwater city of Rapture—Art Deco architecture bathed in eerie golden light, viewed through deep ocean darkness. Imagine geometric patterns glowing like bioluminescence, elegant typography with a faded grandeur, and animations that feel like slow underwater movements. The aesthetic merges 1920s sophistication with dystopian atmosphere: glowing accents pierce through darkness, film grain adds texture, and subtle pulsing lights create the feeling of being in a submerged palace. This isn't bright luxury—it's beauty found in shadows, elegance in darkness, perfect for alternative jewelry that celebrates the unconventional.
 
 ## Color Selection
 
-A monochromatic palette with metallic accents creates dramatic elegance and timeless sophistication.
+A dramatic palette inspired by Rapture's underwater ambiance—deep ocean darkness with warm golden accents that glow like Art Deco neon signs in the depths.
 
-- **Primary Color**: Deep Black `oklch(0.15 0 0)` - Represents mystery, luxury, and the alternative aesthetic; used for backgrounds and creating depth
+- **Primary Color**: Deep Ocean Blue-Black `oklch(0.12 0.01 240)` - The crushing darkness of the ocean depths; represents mystery and the alternative aesthetic; used for backgrounds
 - **Secondary Colors**: 
-  - Soft Gray `oklch(0.55 0 0)` - Mid-tone for secondary text and subtle UI elements
-  - Charcoal `oklch(0.25 0 0)` - Dark gray for cards and layered elements
-  - Silver `oklch(0.85 0 0)` - Light gray for geometric patterns and dividers
-- **Accent Color**: Pure White `oklch(0.98 0 0)` - Crisp white for primary text, borders, and geometric highlights to create sharp Art Déco contrast
+  - Charcoal Blue `oklch(0.22 0.015 240)` - Slightly lighter darkness for cards and layered elements, maintaining underwater atmosphere
+  - Twilight Gray `oklch(0.28 0.02 240)` - Mid-tone with subtle blue tint for muted elements
+  - Warm Ivory `oklch(0.92 0.02 60)` - Aged white with warmth for primary text, like old paper in lamplight
+- **Accent Color**: Golden Glow `oklch(0.75 0.04 65)` - Warm golden amber that evokes Art Deco lighting, neon signs, and the precious metal of jewelry; creates atmospheric glow effects
 - **Foreground/Background Pairings**:
-  - Background Black (0.15): White text (0.98) - Ratio 12.5:1 ✓
-  - Charcoal Cards (0.25): White text (0.98) - Ratio 10.8:1 ✓
-  - Silver Accents (0.85): Deep Black text (0.15) - Ratio 12.5:1 ✓
-  - Soft Gray (0.55): White text (0.98) - Ratio 4.9:1 ✓
+  - Deep Ocean (0.12): Warm Ivory (0.92) - Ratio 13.2:1 ✓
+  - Charcoal Blue (0.22): Warm Ivory (0.92) - Ratio 9.8:1 ✓
+  - Golden Glow (0.75): Deep Ocean (0.12) - Ratio 8.5:1 ✓
+  - Twilight Gray (0.28): Warm Ivory (0.92) - Ratio 7.1:1 ✓
 
 ## Font Selection
 
-Typography should channel Art Déco's geometric precision and sophisticated elegance while maintaining modern readability.
+Typography should channel BioShock's blend of classical elegance and haunting grandeur—fonts that feel like they belong in a 1920s underwater palace.
 
-- **Primary Font**: Playfair Display - Elegant serif with Art Déco sensibility for headings and brand name
-- **Secondary Font**: Space Grotesk - Geometric sans-serif for body text and UI elements, echoes Art Déco's love of geometry
+- **Primary Font**: Cinzel - A classical Roman-inspired serif with Art Deco elegance, perfect for headings that demand gravitas and timeless beauty
+- **Secondary Font**: Cormorant Garamond - An elegant Garamond revival with old-world sophistication for body text, evoking vintage documents and literary refinement
 
 - **Typographic Hierarchy**:
-  - Brand Name: Playfair Display Bold / 72px / Wide letter spacing (0.1em) / Uppercase
-  - H1 (Section Headers): Playfair Display Bold / 48px / Medium letter spacing (0.05em)
-  - H2 (Subsections): Space Grotesk Bold / 32px / Tight letter spacing
-  - H3 (Card Titles): Space Grotesk Medium / 24px / Normal spacing
-  - Body Text: Space Grotesk Regular / 16px / Line height 1.6 / Relaxed spacing
-  - Small/Caption: Space Grotesk Light / 14px / Line height 1.5
+  - Brand Name: Cinzel Bold / 72-96px / Wide letter spacing (0.15em) / Uppercase / Text glow effect
+  - H1 (Section Headers): Cinzel Bold / 56px / Medium letter spacing (0.05em) / Uppercase / Subtle glow
+  - H2 (Subsections): Cinzel SemiBold / 36px / Light letter spacing / Title case
+  - H3 (Card Titles): Cinzel Medium / 28px / Normal spacing
+  - Body Text: Cormorant Garamond Regular / 18-20px / Line height 1.7 / Light weight for elegance
+  - Small/Caption: Cormorant Garamond Light / 16px / Line height 1.6 / Wide letter spacing (0.3em) for labels
 
 ## Animations
 
-Animations should evoke Art Déco's geometric precision and the glamorous reveals of the era's cinema, with modern smoothness for a premium feel.
+Animations evoke BioShock's cinematic underwater atmosphere—slow, deliberate movements like objects floating in water, with dramatic lighting reveals and vintage film aesthetics.
 
 Key animation moments:
-- Hero geometric patterns fade in with staggered delays (200-400ms intervals)
-- Brand name letter-by-letter reveal with slight scale effect
-- Section content slides up with fade on scroll intersection
-- Hover states use subtle scale (1.02-1.05) with elegant easing
-- Geometric frames draw in using clip-path or border animations
-- Parallax scrolling on background patterns at 0.3-0.5 speed
-- Smooth page transitions using ease-in-out curves mimicking vintage cinematography
+- Hero entrance: Slow fade-in with blur effect (2-3 seconds), mimicking emergence from darkness
+- Geometric patterns: Draw in like illuminated circuitry, staggered delays (300-500ms)
+- Brand name: Letter-by-letter reveal with glow intensification and slight vertical drift
+- Section reveals: Slow upward float (50px) with fade, triggered on scroll intersection
+- Hover states: Gentle scale (1.02-1.03) with glow intensification, smooth ease-out timing
+- Light effects: Pulsing glows on accent elements (4-6 second cycles) like distant underwater lights
+- Film grain: Static overlay with subtle opacity variation for vintage cinematography feel
+- Scroll indicators: Gentle bobbing animation with opacity fade (breathing effect)
+- Background elements: Very slow rotation on geometric shapes (60+ seconds per rotation)
+- Transition curves: Custom easing mimicking underwater resistance [0.22, 1, 0.36, 1]
 
 ## Component Selection
 
 - **Components**:
-  - Card: For product showcase items with custom Art Déco geometric overlays
-  - Button: Primary CTAs with custom styling for sharp geometric edges
-  - Input: Email capture field with clean lines and subtle focus states
-  - Separator: Geometric dividers between sections using custom SVG patterns
-  - Scroll Area: Smooth scrolling for long content sections
+  - Card: For product showcase with Art Deco borders, underwater glow effects, and geometric overlays
+  - Button: CTAs with sharp edges, glowing borders on hover, and film-era elegance
+  - Input: Email capture with clean lines, golden focus glow, and atmospheric backdrop blur
+  - Custom SVG Graphics: Geometric Art Deco patterns that pulse and glow like bioluminescent elements
   
 - **Customizations**:
-  - Custom geometric SVG patterns for backgrounds (chevrons, zigzags, sunburst rays)
-  - Art Déco frame components using CSS borders and pseudo-elements
-  - Custom animated lines/dividers using gradient borders
-  - Parallax scroll containers for depth
-  - Custom hover overlays with geometric masks
+  - Custom "underwater glow" effect using radial gradients with pulsing animation
+  - Film grain overlay using SVG noise filter for vintage aesthetic
+  - Art Deco border components with corner accents and glowing highlights
+  - Geometric grid background patterns (Rapture-style) with subtle visibility
+  - Custom flickering text effect for golden accents mimicking old neon
+  - Backdrop blur effects on cards for depth and atmosphere
+  - Custom SVG geometric animations (diamonds, lines, circles) that draw in slowly
 
 - **States**:
-  - Buttons: Rest (white border/text), Hover (filled white with black text + scale 1.03), Active (scale 0.98)
-  - Cards: Rest (subtle border), Hover (elevated shadow + geometric frame appears + scale 1.02)
-  - Inputs: Rest (gray border), Focus (white border + subtle glow), Filled (white text)
-  - Links: Rest (white + underline), Hover (gray + thicker underline slide animation)
+  - Buttons: Rest (golden border + glow), Hover (intensified glow + subtle scale 1.05), Active (reduced glow)
+  - Cards: Rest (subtle border), Hover (glowing Art Deco frame appears + underwater glow intensifies + scale 1.02)
+  - Inputs: Rest (muted border), Focus (golden glow border + backdrop blur), Filled (warm ivory text)
+  - Links: Rest (golden with subtle glow), Hover (brighter glow + slight scale)
 
 - **Icon Selection**:
-  - Instagram: From Phosphor Icons, regular weight
-  - Arrow/Chevron: For scroll indicators and navigation
-  - Geometric shapes: Diamond, Triangle for decorative elements
-  - Menu/Close: For potential mobile navigation
+  - Instagram: Phosphor Icons, filled weight with golden glow
+  - Envelope: For newsletter signup, filled weight
+  - Caret Down: For scroll indicator with gentle animation
+  - Geometric shapes: Diamond, Circle, Square for Art Deco decorative elements
 
 - **Spacing**:
-  - Section padding: py-24 (desktop), py-16 (mobile)
-  - Container max-width: 7xl (1280px)
-  - Grid gaps: gap-8 (product grid), gap-6 (card internal)
-  - Component spacing: space-y-12 (sections), space-y-6 (content blocks)
-  - Micro spacing: p-6 (cards), px-8 py-3 (buttons)
+  - Section padding: py-32 md:py-40 (more breathing room for cinematic feel)
+  - Container max-width: 6xl-7xl (1280px)
+  - Grid gaps: gap-10 (product grid with more space)
+  - Component spacing: space-y-16 (sections), space-y-8 (content blocks)
+  - Generous padding: p-8 (cards), px-10 py-5 (buttons) for luxury feel
 
 - **Mobile**:
-  - Hero: Reduced text size (brand name 48px → 36px), simplified geometric patterns
-  - Product Grid: 1 column on mobile, 2 columns on tablet (md), 3 columns desktop (lg)
-  - Navigation: Sticky top bar on mobile with hamburger if needed
-  - Spacing: Reduced section padding (py-24 → py-12), smaller gaps
-  - Typography: Scale down hierarchy (H1 48px → 32px, body 16px → 15px)
-  - Touch targets: Minimum 44px for all interactive elements
-  - Geometric patterns: Simplified or removed on smallest screens for clarity
+  - Hero: Scaled text (96px → 48px), simplified geometric patterns, maintained glow effects
+  - Product Grid: 1 column mobile, 2 columns tablet (md:), 3 columns desktop (lg:)
+  - Reduced but maintained atmospheric effects on mobile for performance
+  - Spacing: py-32 → py-24 on mobile, smaller gaps
+  - Typography: Scaled hierarchy maintaining proportions
+  - Touch targets: 44px minimum, larger interactive areas
+  - Simplified animations on mobile (reduced blur, simpler glows) for performance

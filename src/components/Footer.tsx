@@ -34,64 +34,107 @@ export function Footer() {
   }
 
   return (
-    <footer ref={ref} className="relative py-24 px-6 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <footer ref={ref} className="relative py-32 px-6 overflow-hidden film-grain">
+      <div className="absolute top-0 left-0 w-full h-px" style={{ 
+        background: 'linear-gradient(90deg, transparent, oklch(0.75 0.04 65), transparent)',
+        boxShadow: '0 0 10px oklch(0.75 0.08 70 / 0.3)'
+      }} />
       
-      <div className="absolute inset-0 overflow-hidden opacity-20">
-        <svg viewBox="0 0 1000 400" className="w-full h-full">
+      <div className="absolute inset-0 overflow-hidden opacity-15">
+        <svg viewBox="0 0 1200 500" className="w-full h-full">
+          <defs>
+            <linearGradient id="footerGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="oklch(0.75 0.04 65)" stopOpacity="0" />
+              <stop offset="50%" stopColor="oklch(0.75 0.04 65)" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="oklch(0.75 0.04 65)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          
           <motion.path
-            d="M0,200 L250,50 L500,200 L750,50 L1000,200"
+            d="M0,250 L300,100 L600,250 L900,100 L1200,250"
             fill="none"
-            stroke="oklch(0.98 0 0)"
-            strokeWidth="1"
+            stroke="url(#footerGrad1)"
+            strokeWidth="1.5"
             initial={{ pathLength: 0 }}
             animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
             transition={{ duration: 3, delay: 0.5 }}
           />
+          
           <motion.path
-            d="M0,250 L250,100 L500,250 L750,100 L1000,250"
+            d="M0,300 L300,150 L600,300 L900,150 L1200,300"
             fill="none"
-            stroke="oklch(0.65 0 0)"
+            stroke="oklch(0.75 0.04 65)"
             strokeWidth="1"
+            opacity="0.3"
             initial={{ pathLength: 0 }}
             animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
             transition={{ duration: 3, delay: 0.8 }}
+          />
+          
+          <motion.circle
+            cx="300"
+            cy="250"
+            r="3"
+            fill="oklch(0.88 0.03 70)"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
+            style={{ filter: 'drop-shadow(0 0 6px oklch(0.88 0.03 70))' }}
+          />
+          
+          <motion.circle
+            cx="900"
+            cy="250"
+            r="3"
+            fill="oklch(0.88 0.03 70)"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 2 }}
+            style={{ filter: 'drop-shadow(0 0 6px oklch(0.88 0.03 70))' }}
           />
         </svg>
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center space-y-16"
         >
-          <div className="space-y-6">
+          <div className="space-y-8">
             <motion.div
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-accent to-transparent"
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="h-0.5 w-32 mx-auto"
+              style={{ 
+                background: 'linear-gradient(90deg, transparent, oklch(0.75 0.04 65), transparent)',
+                boxShadow: '0 0 8px oklch(0.75 0.08 70 / 0.4)'
+              }}
             />
             
-            <h2 className="text-4xl md:text-5xl font-bold tracking-wide uppercase">
-              Stay Connected
+            <h2 className="text-5xl md:text-6xl font-bold tracking-wide uppercase glow-text">
+              Join Our Circle
             </h2>
             
             <motion.div
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-accent to-transparent"
+              transition={{ duration: 1.2, delay: 0.5 }}
+              className="h-0.5 w-32 mx-auto"
+              style={{ 
+                background: 'linear-gradient(90deg, transparent, oklch(0.75 0.04 65), transparent)',
+                boxShadow: '0 0 8px oklch(0.75 0.08 70 / 0.4)'
+              }}
             />
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-10"
           >
             <div className="flex justify-center">
               <a
@@ -101,38 +144,39 @@ export function Footer() {
                 className="group"
               >
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-3 px-8 py-4 border border-border/50 transition-all duration-300 hover:border-accent/50"
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center gap-4 px-10 py-5 border border-border/60 art-deco-border transition-all duration-500 hover:border-accent/70 underwater-glow backdrop-blur-sm"
                 >
-                  <InstagramLogo className="w-6 h-6" weight="fill" />
-                  <span className="tracking-widest uppercase text-sm">
-                    Follow Us
+                  <InstagramLogo className="w-7 h-7 text-accent" weight="fill" style={{ filter: 'drop-shadow(0 0 8px oklch(0.75 0.08 70 / 0.5))' }} />
+                  <span className="tracking-[0.3em] uppercase text-base font-light">
+                    Follow Our Journey
                   </span>
                 </motion.div>
               </a>
             </div>
 
-            <div className="max-w-md mx-auto space-y-4">
-              <p className="text-muted-foreground">
-                Be the first to know when our shop launches
+            <div className="max-w-lg mx-auto space-y-6">
+              <p className="text-foreground/70 text-lg font-light">
+                Be among the first to discover our collection
               </p>
               
-              <form onSubmit={handleSubscribe} className="flex gap-3">
+              <form onSubmit={handleSubscribe} className="flex gap-4">
                 <Input
                   id="newsletter-email"
                   type="email"
                   placeholder="Your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-secondary border-border/50 focus:border-accent/50 transition-colors"
+                  className="flex-1 bg-secondary/60 border-border/60 focus:border-accent/60 transition-all duration-500 backdrop-blur-sm text-base h-12"
                 />
                 <Button
                   type="submit"
                   variant="outline"
-                  className="px-6 border-border/50 hover:border-accent/50 hover:bg-accent/10 transition-all"
+                  className="px-8 h-12 border-border/60 hover:border-accent/70 hover:bg-accent/10 transition-all duration-500 art-deco-border backdrop-blur-sm"
                 >
-                  <EnvelopeSimple className="w-5 h-5" />
+                  <EnvelopeSimple className="w-6 h-6" weight="fill" />
                 </Button>
               </form>
             </div>
@@ -141,14 +185,16 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="pt-12 space-y-4"
+            transition={{ duration: 1, delay: 1 }}
+            className="pt-16 space-y-6"
           >
-            <div className="h-px w-full bg-gradient-to-r from-transparent via-border/30 to-transparent" />
+            <div className="h-px w-full" style={{ 
+              background: 'linear-gradient(90deg, transparent, oklch(0.75 0.04 65 / 0.3), transparent)'
+            }} />
             
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-              <p>© 2024 Nebula Noir. All rights reserved.</p>
-              <p className="uppercase tracking-widest">Handcrafted with passion</p>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
+              <p className="font-light">© 2024 Nebula Noir. All rights reserved.</p>
+              <p className="uppercase tracking-[0.3em] font-light">Handcrafted with Devotion</p>
             </div>
           </motion.div>
         </motion.div>
