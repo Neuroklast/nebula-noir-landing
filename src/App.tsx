@@ -9,6 +9,7 @@ import { CatalogSection } from '@/components/CatalogSection'
 import { ContactSection } from '@/components/ContactSection'
 import { FooterSection } from '@/components/FooterSection'
 import { CheckoutDialog } from '@/components/CheckoutDialog'
+import { ArtDecoFrameAnimation } from '@/components/ArtDecoFrameAnimation'
 import { Product, CartItem } from '@/lib/types'
 import { toast } from 'sonner'
 
@@ -71,6 +72,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="crt-scanline" />
+      <ArtDecoFrameAnimation />
       
       <Navigation 
         cart={cart || []}
