@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Gear, Lightning } from '@phosphor-icons/react'
 
 export function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="relative py-32 md:py-40 px-6 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px" style={{ 
-        background: 'linear-gradient(90deg, transparent, oklch(0.75 0.04 65), transparent)',
-        boxShadow: '0 0 10px oklch(0.75 0.08 70 / 0.3)'
+    <section ref={ref} className="relative py-32 md:py-40 px-6 overflow-hidden bg-card/40">
+      <div className="absolute top-0 left-0 w-full h-1 brass-trim" style={{ 
+        boxShadow: '0 0 15px oklch(0.70 0.15 180 / 0.4)'
       }} />
       
       <div className="absolute inset-0 overflow-hidden opacity-20">
