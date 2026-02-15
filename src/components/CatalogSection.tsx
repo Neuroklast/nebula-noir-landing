@@ -16,28 +16,41 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
     : PRODUCTS.filter(p => p.category === selectedCategory)
 
   return (
-    <section id="catalog" className="py-24 md:py-32 bg-background relative">
-      <div className="container max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl mb-6">
+    <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden">
+      <div className="absolute inset-0 opacity-3">
+        <svg className="w-full h-full">
+          <defs>
+            <pattern id="catalog-pattern" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+              <circle cx="75" cy="75" r="40" stroke="white" strokeWidth="0.5" fill="none" />
+              <circle cx="75" cy="75" r="20" stroke="white" strokeWidth="0.5" fill="none" />
+              <path d="M 75 0 L 75 150 M 0 75 L 150 75" stroke="white" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#catalog-pattern)" />
+        </svg>
+      </div>
+      
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 bioshock-glow uppercase tracking-[0.25em]">
             Artifact Collection
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
-          <p className="text-lg text-muted-foreground mt-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-foreground/70 mt-10 max-w-2xl mx-auto font-light leading-relaxed">
             Each piece is handcrafted with mystical intention. Browse our collection of cosmic accessories.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {CATEGORIES.map(category => (
             <Button
               key={category.value}
               onClick={() => setSelectedCategory(category.value)}
               variant={selectedCategory === category.value ? 'default' : 'outline'}
-              className={`uppercase tracking-wider transition-all ${
+              className={`uppercase tracking-[0.2em] transition-all duration-500 px-8 py-3 text-sm font-semibold ${
                 selectedCategory === category.value 
-                  ? 'bg-primary text-primary-foreground shadow-[0_0_20px_rgba(102,51,153,0.3)]' 
-                  : 'border-border hover:border-primary/50'
+                  ? 'bg-foreground text-background border-2 border-foreground bioshock-glow' 
+                  : 'border-2 border-foreground/50 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/10'
               }`}
             >
               {category.label}
@@ -54,8 +67,8 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         </div>
 
         {filteredProducts.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-xl text-muted-foreground">No artifacts found in this category.</p>
+          <div className="text-center py-20">
+            <p className="text-xl text-foreground/60 uppercase tracking-wider">No artifacts found in this category.</p>
           </div>
         )}
       </div>

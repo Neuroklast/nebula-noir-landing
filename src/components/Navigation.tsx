@@ -3,7 +3,8 @@ import { CartItem } from '@/lib/types'
 import { CartDrawer } from './CartDrawer'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { List, MoonStars } from '@phosphor-icons/react'
+import { List } from '@phosphor-icons/react'
+import logoImage from '@/assets/images/IMG_0085_(1).svg'
 
 interface NavigationProps {
   cart: CartItem[]
@@ -30,26 +31,35 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
   ]
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-background/95 backdrop-blur-sm border-b border-primary/30 shadow-lg' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled ? 'bg-background/98 backdrop-blur-md border-b-2 border-foreground/20 shadow-[0_0_30px_rgba(0,0,0,0.8)]' : 'bg-transparent'
     }`}>
-      <div className="container max-w-7xl mx-auto px-6 py-4">
+      <div className="container max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
-            <MoonStars size={32} weight="thin" className="text-primary group-hover:rotate-12 transition-transform" />
-            <span className="text-xl md:text-2xl font-bold uppercase tracking-[0.15em] hidden sm:inline">
+          <a href="#" className="flex items-center gap-4 group relative">
+            <div className="relative">
+              <img 
+                src={logoImage} 
+                alt="Nebula Noir" 
+                className="h-14 w-14 md:h-16 md:w-16 transition-all duration-300 group-hover:scale-110"
+                style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))' }}
+              />
+              <div className="absolute inset-0 bg-gradient-radial from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+            </div>
+            <span className="text-xl md:text-2xl font-bold uppercase tracking-[0.25em] hidden sm:inline bioshock-glow">
               Nebula Noir
             </span>
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm uppercase tracking-wider text-foreground/80 hover:text-primary transition-colors"
+                className="text-sm uppercase tracking-[0.2em] text-foreground/90 hover:text-foreground transition-all duration-300 relative group/link"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-transparent group-hover/link:w-full transition-all duration-300 shadow-[0_0_8px_rgba(102,51,153,0.6)]" />
               </a>
             ))}
           </div>
@@ -64,17 +74,25 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
 
             <Sheet>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="outline" size="icon" className="border-2 border-foreground">
+                <Button variant="outline" size="icon" className="metallic-border">
                   <List size={24} weight="bold" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-card border-l-2 border-primary/30">
-                <nav className="flex flex-col gap-6 mt-8">
+              <SheetContent className="bg-card border-l-2 border-foreground/30">
+                <div className="flex justify-center mb-8 mt-4">
+                  <img 
+                    src={logoImage} 
+                    alt="Nebula Noir" 
+                    className="h-20 w-20"
+                    style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.4))' }}
+                  />
+                </div>
+                <nav className="flex flex-col gap-6">
                   {navLinks.map(link => (
                     <a
                       key={link.href}
                       href={link.href}
-                      className="text-2xl uppercase tracking-wider hover:text-primary transition-colors"
+                      className="text-2xl uppercase tracking-[0.25em] hover:text-foreground transition-all duration-300 text-foreground/90 bioshock-glow"
                     >
                       {link.label}
                     </a>
