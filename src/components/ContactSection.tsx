@@ -4,6 +4,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
+import { useScrollTrigger } from '@/hooks/use-parallax'
+import { motion } from 'framer-motion'
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,7 @@ export function ContactSection() {
     email: '',
     message: ''
   })
+  const { ref, isVisible } = useScrollTrigger(0.1)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,22 +33,33 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-background relative">
+    <section id="contact" className="py-24 md:py-32 bg-background relative overflow-hidden" ref={ref}>
       <div className="container max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
           <div className="flex justify-center mb-8">
-            <div className="text-7xl bioshock-glow">✉</div>
+            <div className="text-7xl bioshock-glow-animated">✉</div>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-[0.25em] bioshock-glow">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-[0.25em] bioshock-glow-animated">
             Custom Orders & Inquiries
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
           <p className="text-base md:text-lg text-foreground/70 mt-8 font-light">
             Seeking a bespoke piece or have questions about our artifacts? Reach out through the ether.
           </p>
-        </div>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="relative p-10 md:p-14 space-y-8 metallic-border">
+        <motion.form 
+          onSubmit={handleSubmit} 
+          className="relative p-10 md:p-14 space-y-8 metallic-border"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <div className="art-deco-corner top-left"></div>
           <div className="art-deco-corner top-right"></div>
           <div className="art-deco-corner bottom-left"></div>
@@ -97,7 +111,7 @@ export function ContactSection() {
           >
             Send Message
           </Button>
-        </form>
+        </motion.form>
 
         <div className="mt-12 text-center space-y-3">
           <p className="text-foreground/60 text-sm uppercase tracking-wider">

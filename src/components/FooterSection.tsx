@@ -15,7 +15,7 @@ export function FooterSection() {
                 className="h-12 w-12"
                 style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))' }}
               />
-              <h3 className="text-2xl uppercase tracking-[0.2em] bioshock-glow">Nebula Noir</h3>
+              <h3 className="text-2xl uppercase tracking-[0.2em] bioshock-glow-animated">Nebula Noir</h3>
             </div>
             <p className="text-foreground/70 leading-relaxed font-light">
               Handcrafted occult and alternative accessories. Cosmic Art Deco Goth for nonconformist souls.
@@ -23,7 +23,7 @@ export function FooterSection() {
           </div>
 
           <div>
-            <h4 className="text-base uppercase tracking-[0.25em] mb-6 bioshock-glow">Navigation</h4>
+            <h4 className="text-base uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Navigation</h4>
             <ul className="space-y-3">
               <li>
                 <a href="#catalog" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
@@ -44,7 +44,7 @@ export function FooterSection() {
           </div>
 
           <div>
-            <h4 className="text-base uppercase tracking-[0.25em] mb-6 bioshock-glow">Community</h4>
+            <h4 className="text-base uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Community</h4>
             <ul className="space-y-3">
               <li>
                 <a href="#" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">

@@ -3,6 +3,7 @@ import { useKV } from '@github/spark/hooks'
 import { Toaster } from '@/components/ui/sonner'
 import { Navigation } from '@/components/Navigation'
 import { HeroSection } from '@/components/HeroSection'
+import { SectionTransition } from '@/components/SectionTransition'
 import { AboutSection } from '@/components/AboutSection'
 import { CatalogSection } from '@/components/CatalogSection'
 import { ContactSection } from '@/components/ContactSection'
@@ -69,6 +70,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <div className="crt-scanline" />
+      
       <Navigation 
         cart={cart || []}
         onUpdateQuantity={handleUpdateQuantity}
@@ -77,8 +80,11 @@ function App() {
       />
       
       <HeroSection />
+      <SectionTransition />
       <AboutSection />
+      <SectionTransition />
       <CatalogSection onAddToCart={handleAddToCart} />
+      <SectionTransition />
       <ContactSection />
       <FooterSection />
 

@@ -41,12 +41,11 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
               <img 
                 src={logoImage} 
                 alt="Nebula Noir" 
-                className="h-14 w-14 md:h-16 md:w-16 transition-all duration-300 group-hover:scale-110"
-                style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))' }}
+                className="h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 transition-all duration-500 group-hover:scale-105"
+                style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 25px rgba(102, 51, 153, 0.3))' }}
               />
-              <div className="absolute inset-0 bg-gradient-radial from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
             </div>
-            <span className="text-xl md:text-2xl font-bold uppercase tracking-[0.25em] hidden sm:inline bioshock-glow">
+            <span className="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-[0.25em] hidden sm:inline bioshock-glow-animated">
               Nebula Noir
             </span>
           </a>
@@ -83,8 +82,8 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
                   <img 
                     src={logoImage} 
                     alt="Nebula Noir" 
-                    className="h-20 w-20"
-                    style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.4))' }}
+                    className="h-28 w-28"
+                    style={{ filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 30px rgba(102, 51, 153, 0.4))' }}
                   />
                 </div>
                 <nav className="flex flex-col gap-6">
@@ -92,7 +91,7 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
                     <a
                       key={link.href}
                       href={link.href}
-                      className="text-2xl uppercase tracking-[0.25em] hover:text-foreground transition-all duration-300 text-foreground/90 bioshock-glow"
+                      className="text-2xl uppercase tracking-[0.25em] hover:text-foreground transition-all duration-300 text-foreground/90 bioshock-glow-animated"
                     >
                       {link.label}
                     </a>

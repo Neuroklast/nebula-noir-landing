@@ -27,27 +27,27 @@ export function HeroSection() {
           
           <div className="text-center space-y-12 fade-in-up">
             <div className="flex justify-center mb-12">
-              <div className="relative">
+              <div className="relative parallax-float">
                 <img 
                   src={logoImage} 
                   alt="Nebula Noir" 
-                  className="h-32 w-32 md:h-40 md:w-40 animate-pulse"
+                  className="h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80"
                   style={{ 
-                    filter: 'drop-shadow(0 0 30px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 60px rgba(102, 51, 153, 0.4))'
+                    filter: 'drop-shadow(0 0 40px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 80px rgba(102, 51, 153, 0.5))'
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-radial from-primary/30 via-primary/10 to-transparent blur-3xl" />
+                <div className="absolute inset-0 bg-gradient-radial from-primary/20 via-primary/10 to-transparent blur-3xl" />
               </div>
             </div>
             
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-[0.25em] leading-tight">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-[0.25em] leading-tight bioshock-glow-animated">
                 NEBULA NOIR
               </h1>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-foreground to-foreground bioshock-glow" />
+                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-foreground to-foreground bioshock-glow-animated" />
                 <span className="text-lg md:text-xl uppercase tracking-[0.3em] text-foreground/80">◆</span>
-                <div className="w-24 h-0.5 bg-gradient-to-l from-transparent via-foreground to-foreground bioshock-glow" />
+                <div className="w-24 h-0.5 bg-gradient-to-l from-transparent via-foreground to-foreground bioshock-glow-animated" />
               </div>
             </div>
 

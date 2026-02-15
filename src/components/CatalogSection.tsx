@@ -3,6 +3,8 @@ import { Product } from '@/lib/types'
 import { PRODUCTS, CATEGORIES } from '@/lib/products'
 import { ProductCard } from './ProductCard'
 import { Button } from '@/components/ui/button'
+import { useScrollTrigger } from '@/hooks/use-parallax'
+import { motion } from 'framer-motion'
 
 interface CatalogSectionProps {
   onAddToCart: (product: Product) => void
@@ -10,13 +12,14 @@ interface CatalogSectionProps {
 
 export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
+  const { ref, isVisible } = useScrollTrigger(0.1)
 
   const filteredProducts = selectedCategory === 'all' 
     ? PRODUCTS 
     : PRODUCTS.filter(p => p.category === selectedCategory)
 
   return (
-    <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden">
+    <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>
@@ -31,17 +34,27 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
       </div>
       
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 bioshock-glow uppercase tracking-[0.25em]">
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 bioshock-glow-animated uppercase tracking-[0.25em]">
             Artifact Collection
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
           <p className="text-base md:text-lg text-foreground/70 mt-10 max-w-2xl mx-auto font-light leading-relaxed">
             Each piece is handcrafted with mystical intention. Browse our collection of cosmic accessories.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <motion.div 
+          className="flex flex-wrap justify-center gap-4 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           {CATEGORIES.map(category => (
             <Button
               key={category.value}
@@ -49,20 +62,25 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
               variant={selectedCategory === category.value ? 'default' : 'outline'}
               className={`uppercase tracking-[0.2em] transition-all duration-500 px-8 py-3 text-sm font-semibold ${
                 selectedCategory === category.value 
-                  ? 'bg-foreground text-background border-2 border-foreground bioshock-glow' 
+                  ? 'bg-foreground text-background border-2 border-foreground bioshock-glow-animated' 
                   : 'border-2 border-foreground/50 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/10'
               }`}
             >
               {category.label}
             </Button>
           ))}
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {filteredProducts.map((product, index) => (
-            <div key={product.id} className={`fade-in-up stagger-${Math.min(index % 6 + 1, 6)}`}>
+            <motion.div 
+              key={product.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 + (index * 0.1) }}
+            >
               <ProductCard product={product} onAddToCart={onAddToCart} />
-            </div>
+            </motion.div>
           ))}
         </div>
 
