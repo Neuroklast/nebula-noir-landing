@@ -16,7 +16,7 @@ export function LegalPage({ section, open, onOpenChange }: LegalPageProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[95vw] w-[95vw] max-h-[90vh] p-0 bg-background border-2 border-foreground/30 flex flex-col overflow-hidden">
+      <DialogContent className="w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] md:w-[calc(100vw-4rem)] md:max-w-[calc(100vw-4rem)] lg:w-[calc(100vw-6rem)] lg:max-w-[calc(100vw-6rem)] max-h-[90vh] p-0 bg-background border-2 border-foreground/30 flex flex-col overflow-hidden">
         <DialogHeader className="p-8 pb-4 border-b border-foreground/20 flex-shrink-0">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-3xl md:text-4xl uppercase tracking-[0.2em] bioshock-glow-animated">
