@@ -22,14 +22,14 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[95vw] w-[95vw] max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden flex flex-col">
+      <DialogContent className="max-w-[1400px] w-[96vw] max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden flex flex-col">
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, clipPath: 'inset(0 50% 0 50%)' }}
+              animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0%)' }}
+              exit={{ opacity: 0, clipPath: 'inset(0 50% 0 50%)' }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="relative flex flex-col h-full"
             >
               <button
@@ -42,9 +42,9 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
               <div className="grid md:grid-cols-2 gap-0 overflow-y-auto flex-1">
                 <motion.div 
                   className="relative aspect-square md:aspect-auto bg-muted overflow-hidden md:min-h-[400px]"
-                  initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' }}
-                  animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
-                  transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)' }}
+                  animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <img 
                     src={product.image} 
@@ -63,8 +63,8 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
                 <motion.div 
                   className="p-8 md:p-12 flex flex-col justify-between overflow-y-auto"
                   initial={{ opacity: 0, clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
-                  animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div>
                     <DialogTitle className="sr-only">{product.name}</DialogTitle>
