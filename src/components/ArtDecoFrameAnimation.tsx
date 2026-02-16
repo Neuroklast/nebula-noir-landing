@@ -37,9 +37,6 @@ export function ArtDecoFrameAnimation() {
             <line x1="16" y1="16" x2="16" y2="80" className="frame-line vertical-line-3" />
             <line x1="16" y1="16" x2="80" y2="16" className="frame-line horizontal-line-3" />
             
-            <line x1="24" y1="24" x2="24" y2="60" className="frame-line vertical-line-4" />
-            <line x1="24" y1="24" x2="60" y2="24" className="frame-line horizontal-line-4" />
-            
             <circle cx="0" cy="0" r="3" className="frame-dot dot-1" />
             <circle cx="40" cy="0" r="2" className="frame-dot dot-2" />
             <circle cx="80" cy="0" r="2" className="frame-dot dot-3" />
@@ -56,9 +53,6 @@ export function ArtDecoFrameAnimation() {
             
             <line x1="calc(100% - 16px)" y1="16" x2="calc(100% - 16px)" y2="80" className="frame-line vertical-line-3" />
             <line x1="calc(100% - 16px)" y1="16" x2="calc(100% - 80px)" y2="16" className="frame-line horizontal-line-3" />
-            
-            <line x1="calc(100% - 24px)" y1="24" x2="calc(100% - 24px)" y2="60" className="frame-line vertical-line-4" />
-            <line x1="calc(100% - 24px)" y1="24" x2="calc(100% - 60px)" y2="24" className="frame-line horizontal-line-4" />
             
             <circle cx="100%" cy="0" r="3" className="frame-dot dot-1" />
             <circle cx="calc(100% - 40px)" cy="0" r="2" className="frame-dot dot-2" />
@@ -77,9 +71,6 @@ export function ArtDecoFrameAnimation() {
             <line x1="16" y1="calc(100% - 16px)" x2="16" y2="calc(100% - 80px)" className="frame-line vertical-line-3" />
             <line x1="16" y1="calc(100% - 16px)" x2="80" y2="calc(100% - 16px)" className="frame-line horizontal-line-3" />
             
-            <line x1="24" y1="calc(100% - 24px)" x2="24" y2="calc(100% - 60px)" className="frame-line vertical-line-4" />
-            <line x1="24" y1="calc(100% - 24px)" x2="60" y2="calc(100% - 24px)" className="frame-line horizontal-line-4" />
-            
             <circle cx="0" cy="100%" r="3" className="frame-dot dot-1" />
             <circle cx="40" cy="100%" r="2" className="frame-dot dot-2" />
             <circle cx="80" cy="100%" r="2" className="frame-dot dot-3" />
@@ -96,9 +87,6 @@ export function ArtDecoFrameAnimation() {
             
             <line x1="calc(100% - 16px)" y1="calc(100% - 16px)" x2="calc(100% - 16px)" y2="calc(100% - 80px)" className="frame-line vertical-line-3" />
             <line x1="calc(100% - 16px)" y1="calc(100% - 16px)" x2="calc(100% - 80px)" y2="calc(100% - 16px)" className="frame-line horizontal-line-3" />
-            
-            <line x1="calc(100% - 24px)" y1="calc(100% - 24px)" x2="calc(100% - 24px)" y2="calc(100% - 60px)" className="frame-line vertical-line-4" />
-            <line x1="calc(100% - 24px)" y1="calc(100% - 24px)" x2="calc(100% - 60px)" y2="calc(100% - 24px)" className="frame-line horizontal-line-4" />
             
             <circle cx="100%" cy="100%" r="3" className="frame-dot dot-1" />
             <circle cx="calc(100% - 40px)" cy="100%" r="2" className="frame-dot dot-2" />

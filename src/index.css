@@ -234,7 +234,7 @@
 }
 
 .art-deco-divider::before {
-  content: '◆';
+  content: '☽';
   position: absolute;
   left: 50%;
   top: 50%;
@@ -246,7 +246,6 @@
   text-shadow: 
     0 0 20px rgba(255, 255, 255, 0.9),
     0 0 40px rgba(255, 255, 255, 0.5);
-  animation: bioshock-pulse 25s ease-in-out infinite;
 }
 
 .bioshock-glow {
@@ -415,7 +414,7 @@
 }
 
 .section-transition::after {
-  content: '◆';
+  content: '☽';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -425,7 +424,6 @@
   text-shadow: 
     0 0 20px rgba(255, 255, 255, 0.8),
     0 0 40px rgba(255, 255, 255, 0.4);
-  animation: bioshock-pulse 20s ease-in-out infinite;
 }
 
 .deco-line {
@@ -536,211 +534,179 @@
 }
 
 .top-left-corner .vertical-line-1 {
-  animation: drawVertical 1.2s ease-out 0.2s forwards;
+  animation: drawVertical 0.5s ease-out 0s forwards;
 }
 
 .top-left-corner .horizontal-line-1 {
-  animation: drawHorizontal 1.2s ease-out 1.4s forwards;
+  animation: drawHorizontal 0.5s ease-out 0.5s forwards;
 }
 
 .top-left-corner .vertical-line-2 {
-  animation: drawVertical 1s ease-out 2.6s forwards;
+  animation: drawVertical 0.4s ease-out 1s forwards;
 }
 
 .top-left-corner .horizontal-line-2 {
-  animation: drawHorizontal 1s ease-out 3.6s forwards;
+  animation: drawHorizontal 0.4s ease-out 1.4s forwards;
 }
 
 .top-left-corner .vertical-line-3 {
-  animation: drawVertical 0.8s ease-out 4.6s forwards;
+  animation: drawVertical 0.3s ease-out 1.8s forwards;
 }
 
 .top-left-corner .horizontal-line-3 {
-  animation: drawHorizontal 0.8s ease-out 5.4s forwards;
-}
-
-.top-left-corner .vertical-line-4 {
-  animation: drawVertical 0.6s ease-out 6.2s forwards;
-}
-
-.top-left-corner .horizontal-line-4 {
-  animation: drawHorizontal 0.6s ease-out 6.8s forwards;
+  animation: drawHorizontal 0.3s ease-out 2.1s forwards;
 }
 
 .top-right-corner .vertical-line-1 {
-  animation: drawVertical 1.2s ease-out 7.4s forwards;
+  animation: drawVertical 0.5s ease-out 0s forwards;
 }
 
 .top-right-corner .horizontal-line-1 {
-  animation: drawHorizontalReverse 1.2s ease-out 8.6s forwards;
+  animation: drawHorizontalReverse 0.5s ease-out 0.5s forwards;
 }
 
 .top-right-corner .vertical-line-2 {
-  animation: drawVertical 1s ease-out 9.8s forwards;
+  animation: drawVertical 0.4s ease-out 1s forwards;
 }
 
 .top-right-corner .horizontal-line-2 {
-  animation: drawHorizontalReverse 1s ease-out 10.8s forwards;
+  animation: drawHorizontalReverse 0.4s ease-out 1.4s forwards;
 }
 
 .top-right-corner .vertical-line-3 {
-  animation: drawVertical 0.8s ease-out 11.8s forwards;
+  animation: drawVertical 0.3s ease-out 1.8s forwards;
 }
 
 .top-right-corner .horizontal-line-3 {
-  animation: drawHorizontalReverse 0.8s ease-out 12.6s forwards;
-}
-
-.top-right-corner .vertical-line-4 {
-  animation: drawVertical 0.6s ease-out 13.4s forwards;
-}
-
-.top-right-corner .horizontal-line-4 {
-  animation: drawHorizontalReverse 0.6s ease-out 14s forwards;
+  animation: drawHorizontalReverse 0.3s ease-out 2.1s forwards;
 }
 
 .bottom-right-corner .vertical-line-1 {
-  animation: drawVerticalReverse 1.2s ease-out 14.6s forwards;
+  animation: drawVerticalReverse 0.5s ease-out 0s forwards;
 }
 
 .bottom-right-corner .horizontal-line-1 {
-  animation: drawHorizontalReverse 1.2s ease-out 15.8s forwards;
+  animation: drawHorizontalReverse 0.5s ease-out 0.5s forwards;
 }
 
 .bottom-right-corner .vertical-line-2 {
-  animation: drawVerticalReverse 1s ease-out 17s forwards;
+  animation: drawVerticalReverse 0.4s ease-out 1s forwards;
 }
 
 .bottom-right-corner .horizontal-line-2 {
-  animation: drawHorizontalReverse 1s ease-out 18s forwards;
+  animation: drawHorizontalReverse 0.4s ease-out 1.4s forwards;
 }
 
 .bottom-right-corner .vertical-line-3 {
-  animation: drawVerticalReverse 0.8s ease-out 19s forwards;
+  animation: drawVerticalReverse 0.3s ease-out 1.8s forwards;
 }
 
 .bottom-right-corner .horizontal-line-3 {
-  animation: drawHorizontalReverse 0.8s ease-out 19.8s forwards;
-}
-
-.bottom-right-corner .vertical-line-4 {
-  animation: drawVerticalReverse 0.6s ease-out 20.6s forwards;
-}
-
-.bottom-right-corner .horizontal-line-4 {
-  animation: drawHorizontalReverse 0.6s ease-out 21.2s forwards;
+  animation: drawHorizontalReverse 0.3s ease-out 2.1s forwards;
 }
 
 .bottom-left-corner .vertical-line-1 {
-  animation: drawVerticalReverse 1.2s ease-out 21.8s forwards;
+  animation: drawVerticalReverse 0.5s ease-out 0s forwards;
 }
 
 .bottom-left-corner .horizontal-line-1 {
-  animation: drawHorizontal 1.2s ease-out 23s forwards;
+  animation: drawHorizontal 0.5s ease-out 0.5s forwards;
 }
 
 .bottom-left-corner .vertical-line-2 {
-  animation: drawVerticalReverse 1s ease-out 24.2s forwards;
+  animation: drawVerticalReverse 0.4s ease-out 1s forwards;
 }
 
 .bottom-left-corner .horizontal-line-2 {
-  animation: drawHorizontal 1s ease-out 25.2s forwards;
+  animation: drawHorizontal 0.4s ease-out 1.4s forwards;
 }
 
 .bottom-left-corner .vertical-line-3 {
-  animation: drawVerticalReverse 0.8s ease-out 26.2s forwards;
+  animation: drawVerticalReverse 0.3s ease-out 1.8s forwards;
 }
 
 .bottom-left-corner .horizontal-line-3 {
-  animation: drawHorizontal 0.8s ease-out 27s forwards;
-}
-
-.bottom-left-corner .vertical-line-4 {
-  animation: drawVerticalReverse 0.6s ease-out 27.8s forwards;
-}
-
-.bottom-left-corner .horizontal-line-4 {
-  animation: drawHorizontal 0.6s ease-out 28.4s forwards;
+  animation: drawHorizontal 0.3s ease-out 2.1s forwards;
 }
 
 .top-left-corner .dot-1 {
-  animation: fadeDot 0.3s ease-out 0.2s forwards;
+  animation: fadeDot 0.2s ease-out 0s forwards;
 }
 
 .top-left-corner .dot-2 {
-  animation: fadeDot 0.3s ease-out 1.8s forwards;
+  animation: fadeDot 0.2s ease-out 0.7s forwards;
 }
 
 .top-left-corner .dot-3 {
-  animation: fadeDot 0.3s ease-out 2s forwards;
+  animation: fadeDot 0.2s ease-out 0.8s forwards;
 }
 
 .top-left-corner .dot-4 {
-  animation: fadeDot 0.3s ease-out 3s forwards;
+  animation: fadeDot 0.2s ease-out 1.2s forwards;
 }
 
 .top-left-corner .dot-5 {
-  animation: fadeDot 0.3s ease-out 3.2s forwards;
+  animation: fadeDot 0.2s ease-out 1.3s forwards;
 }
 
 .top-right-corner .dot-1 {
-  animation: fadeDot 0.3s ease-out 7.4s forwards;
+  animation: fadeDot 0.2s ease-out 0s forwards;
 }
 
 .top-right-corner .dot-2 {
-  animation: fadeDot 0.3s ease-out 9.2s forwards;
+  animation: fadeDot 0.2s ease-out 0.7s forwards;
 }
 
 .top-right-corner .dot-3 {
-  animation: fadeDot 0.3s ease-out 9.4s forwards;
+  animation: fadeDot 0.2s ease-out 0.8s forwards;
 }
 
 .top-right-corner .dot-4 {
-  animation: fadeDot 0.3s ease-out 10.2s forwards;
+  animation: fadeDot 0.2s ease-out 1.2s forwards;
 }
 
 .top-right-corner .dot-5 {
-  animation: fadeDot 0.3s ease-out 10.4s forwards;
+  animation: fadeDot 0.2s ease-out 1.3s forwards;
 }
 
 .bottom-right-corner .dot-1 {
-  animation: fadeDot 0.3s ease-out 14.6s forwards;
+  animation: fadeDot 0.2s ease-out 0s forwards;
 }
 
 .bottom-right-corner .dot-2 {
-  animation: fadeDot 0.3s ease-out 16.4s forwards;
+  animation: fadeDot 0.2s ease-out 0.7s forwards;
 }
 
 .bottom-right-corner .dot-3 {
-  animation: fadeDot 0.3s ease-out 16.6s forwards;
+  animation: fadeDot 0.2s ease-out 0.8s forwards;
 }
 
 .bottom-right-corner .dot-4 {
-  animation: fadeDot 0.3s ease-out 17.4s forwards;
+  animation: fadeDot 0.2s ease-out 1.2s forwards;
 }
 
 .bottom-right-corner .dot-5 {
-  animation: fadeDot 0.3s ease-out 17.6s forwards;
+  animation: fadeDot 0.2s ease-out 1.3s forwards;
 }
 
 .bottom-left-corner .dot-1 {
-  animation: fadeDot 0.3s ease-out 21.8s forwards;
+  animation: fadeDot 0.2s ease-out 0s forwards;
 }
 
 .bottom-left-corner .dot-2 {
-  animation: fadeDot 0.3s ease-out 23.6s forwards;
+  animation: fadeDot 0.2s ease-out 0.7s forwards;
 }
 
 .bottom-left-corner .dot-3 {
-  animation: fadeDot 0.3s ease-out 23.8s forwards;
+  animation: fadeDot 0.2s ease-out 0.8s forwards;
 }
 
 .bottom-left-corner .dot-4 {
-  animation: fadeDot 0.3s ease-out 24.6s forwards;
+  animation: fadeDot 0.2s ease-out 1.2s forwards;
 }
 
 .bottom-left-corner .dot-5 {
-  animation: fadeDot 0.3s ease-out 24.8s forwards;
+  animation: fadeDot 0.2s ease-out 1.3s forwards;
 }
 
 @keyframes drawVertical {
