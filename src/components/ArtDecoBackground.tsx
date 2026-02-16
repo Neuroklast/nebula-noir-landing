@@ -9,10 +9,10 @@ export function ArtDecoBackground() {
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       <div 
         ref={ref1}
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.12]"
         style={{ 
           transform: `translateY(${offset1 * 0.5}px)`,
-          filter: 'blur(1.5px)'
+          filter: 'blur(2.5px)'
         }}
       >
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -33,10 +33,10 @@ export function ArtDecoBackground() {
 
       <div 
         ref={ref2}
-        className="absolute inset-0 opacity-[0.08]"
+        className="absolute inset-0 opacity-[0.15]"
         style={{ 
           transform: `translateY(${offset2 * 0.3}px)`,
-          filter: 'blur(2px)'
+          filter: 'blur(3px)'
         }}
       >
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -57,10 +57,10 @@ export function ArtDecoBackground() {
 
       <div 
         ref={ref3}
-        className="absolute inset-0 opacity-[0.05]"
+        className="absolute inset-0 opacity-[0.10]"
         style={{ 
           transform: `translateY(${offset3 * 0.2}px)`,
-          filter: 'blur(3px)'
+          filter: 'blur(4px)'
         }}
       >
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
