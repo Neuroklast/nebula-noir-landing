@@ -80,50 +80,52 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden max-w-full">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden max-w-full relative">
       <div className="crt-scanline" />
       <ArtDecoBackground />
       <ArtDecoFrameAnimation />
       
-      <Navigation 
-        cart={cart || []}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-        onCheckout={handleCheckout}
-      />
-      
-      <HeroSection />
-      <SectionTransition />
-      <AboutSection />
-      <SectionTransition />
-      <CatalogSection onAddToCart={handleAddToCart} />
-      <SectionTransition />
-      <ContactSection />
-      <FooterSection onLegalPageOpen={handleLegalPageOpen} />
+      <div className="relative z-10">
+        <Navigation 
+          cart={cart || []}
+          onUpdateQuantity={handleUpdateQuantity}
+          onRemoveItem={handleRemoveItem}
+          onCheckout={handleCheckout}
+        />
+        
+        <HeroSection />
+        <SectionTransition />
+        <AboutSection />
+        <SectionTransition />
+        <CatalogSection onAddToCart={handleAddToCart} />
+        <SectionTransition />
+        <ContactSection />
+        <FooterSection onLegalPageOpen={handleLegalPageOpen} />
 
-      <CheckoutDialog 
-        open={checkoutOpen}
-        onOpenChange={setCheckoutOpen}
-        cart={cart || []}
-        onCheckoutComplete={handleCheckoutComplete}
-      />
+        <CheckoutDialog 
+          open={checkoutOpen}
+          onOpenChange={setCheckoutOpen}
+          cart={cart || []}
+          onCheckoutComplete={handleCheckoutComplete}
+        />
 
-      <LegalPage 
-        section={legalSection}
-        open={legalOpen}
-        onOpenChange={setLegalOpen}
-      />
+        <LegalPage 
+          section={legalSection}
+          open={legalOpen}
+          onOpenChange={setLegalOpen}
+        />
 
-      <Toaster 
-        position="top-center"
-        toastOptions={{
-          style: {
-            background: 'oklch(0.08 0 0)',
-            color: 'oklch(0.99 0 0)',
-            border: '1px solid oklch(0.45 0.15 300)',
-          },
-        }}
-      />
+        <Toaster 
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: 'oklch(0.08 0 0)',
+              color: 'oklch(0.99 0 0)',
+              border: '1px solid oklch(0.45 0.15 300)',
+            },
+          }}
+        />
+      </div>
     </div>
   )
 }
