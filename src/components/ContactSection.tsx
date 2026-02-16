@@ -33,7 +33,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden max-w-full" ref={ref}>
+    <section id="contact" className="py-16 md:py-24 lg:py-32 relative overflow-hidden max-w-full" ref={ref}>
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <motion.div 
           className="text-center mb-12 md:mb-16"

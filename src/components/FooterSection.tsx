@@ -9,7 +9,7 @@ export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-background border-t-2 border-foreground/20 py-12 md:py-16 overflow-hidden max-w-full">
+    <footer className="border-t-2 border-foreground/20 py-12 md:py-16 overflow-hidden max-w-full">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           <div className="space-y-4 md:space-y-6">

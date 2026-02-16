@@ -5,7 +5,7 @@ export function AboutSection() {
   const { ref, isVisible } = useScrollTrigger(0.1)
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden max-w-full" ref={ref}>
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden max-w-full" ref={ref}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>

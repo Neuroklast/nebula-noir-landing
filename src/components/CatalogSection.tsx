@@ -27,7 +27,7 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   }
 
   return (
-    <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden max-w-full" ref={ref}>
+    <section id="catalog" className="py-24 md:py-32 relative overflow-hidden max-w-full" ref={ref}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>

@@ -2,7 +2,7 @@ import logoImage from '@/assets/images/IMG_0085_(1).svg'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center cosmic-bg overflow-hidden max-w-full">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden max-w-full">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

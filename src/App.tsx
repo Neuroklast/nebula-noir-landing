@@ -80,12 +80,12 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden max-w-full relative">
+    <div className="min-h-screen text-foreground overflow-x-hidden max-w-full relative">
       <div className="crt-scanline" />
       <ArtDecoBackground />
       <ArtDecoFrameAnimation />
       
-      <div className="relative z-10">
+      <div className="relative z-[20]">
         <Navigation 
           cart={cart || []}
           onUpdateQuantity={handleUpdateQuantity}
