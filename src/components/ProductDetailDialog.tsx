@@ -22,7 +22,7 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden flex flex-col">
+      <DialogContent className="max-w-[95vw] w-[95vw] max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden flex flex-col">
         <AnimatePresence>
           {open && (
             <motion.div

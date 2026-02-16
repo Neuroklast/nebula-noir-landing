@@ -32,7 +32,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-full sm:max-w-lg bg-card border-l-2 border-foreground/30 flex flex-col overflow-hidden">
+      <SheetContent className="w-full sm:max-w-xl md:max-w-2xl bg-card border-l-2 border-foreground/30 flex flex-col overflow-hidden">
         <SheetHeader className="flex-shrink-0">
           <SheetTitle className="text-3xl uppercase tracking-[0.25em] bioshock-glow">Your Cart</SheetTitle>
         </SheetHeader>

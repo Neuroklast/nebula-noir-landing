@@ -56,7 +56,7 @@ export function CheckoutDialog({ open, onOpenChange, cart, onCheckoutComplete }:
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl w-[95vw] bg-card border-2 border-foreground/30 max-h-[90vh] overflow-y-auto flex flex-col">
+      <DialogContent className="max-w-[90vw] w-[90vw] bg-card border-2 border-foreground/30 max-h-[90vh] overflow-y-auto flex flex-col">
         <DialogHeader>
           <DialogTitle className="text-2xl md:text-3xl uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow">Checkout</DialogTitle>
         </DialogHeader>
