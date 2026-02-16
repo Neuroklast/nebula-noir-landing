@@ -41,11 +41,11 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
           transition={{ duration: 1 }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 bioshock-glow-animated uppercase tracking-[0.25em]">
-            Artifact Collection
+            Artefakt Kollektion
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
           <p className="text-base md:text-lg text-foreground/70 mt-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Each piece is handcrafted with mystical intention. Browse our collection of cosmic accessories.
+            Jedes Stück wird mit mystischer Intention von Hand gefertigt. Durchstöbere unsere Kollektion kosmischer Accessoires.
           </p>
         </motion.div>
 

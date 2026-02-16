@@ -19,16 +19,16 @@ export function ContactSection() {
     e.preventDefault()
     
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Please fill in all fields')
+      toast.error('Bitte fülle alle Felder aus')
       return
     }
 
     if (!formData.email.includes('@')) {
-      toast.error('Please enter a valid email address')
+      toast.error('Bitte gib eine gültige E-Mail-Adresse ein')
       return
     }
 
-    toast.success('Message sent! We will contact you through the cosmic void.')
+    toast.success('Nachricht gesendet! Wir kontaktieren dich durch die kosmische Leere.')
     setFormData({ name: '', email: '', message: '' })
   }
 
@@ -45,11 +45,11 @@ export function ContactSection() {
             <div className="text-7xl bioshock-glow-animated">✉</div>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 uppercase tracking-[0.25em] bioshock-glow-animated">
-            Custom Orders & Inquiries
+            Maßanfertigungen & Anfragen
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
           <p className="text-base md:text-lg text-foreground/70 mt-8 font-light">
-            Seeking a bespoke piece or have questions about our artifacts? Reach out through the ether.
+            Du suchst ein maßgeschneidertes Stück oder hast Fragen zu unseren Artefakten? Kontaktiere uns durch den Äther.
           </p>
         </motion.div>
 
@@ -74,13 +74,13 @@ export function ContactSection() {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="bg-background border-0 border-b-2 border-foreground/30 focus:border-foreground rounded-none px-0 text-base transition-all duration-300"
-              placeholder="Your name"
+              placeholder="Dein Name"
             />
           </div>
 
           <div className="space-y-3">
             <Label htmlFor="email" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-              Email
+              E-Mail
             </Label>
             <Input
               id="email"
@@ -88,20 +88,20 @@ export function ContactSection() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="bg-background border-0 border-b-2 border-foreground/30 focus:border-foreground rounded-none px-0 text-base transition-all duration-300"
-              placeholder="your.email@example.com"
+              placeholder="deine.email@beispiel.de"
             />
           </div>
 
           <div className="space-y-3">
             <Label htmlFor="message" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-              Message
+              Nachricht
             </Label>
             <Textarea
               id="message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="bg-background border-2 border-foreground/30 focus:border-foreground min-h-[180px] text-base resize-none transition-all duration-300"
-              placeholder="Tell us about your vision or inquiry..."
+              placeholder="Erzähle uns von deiner Vision oder Anfrage..."
             />
           </div>
 
@@ -109,16 +109,16 @@ export function ContactSection() {
             type="submit"
             className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.25em] font-semibold py-6 text-base transition-all duration-500"
           >
-            Send Message
+            Nachricht senden
           </Button>
         </motion.form>
 
         <div className="mt-12 text-center space-y-3">
           <p className="text-foreground/60 text-sm uppercase tracking-wider">
-            Custom orders typically require 2-4 weeks for creation.
+            Maßanfertigungen benötigen in der Regel 2-4 Wochen für die Fertigung.
           </p>
           <p className="text-foreground/50 text-xs italic">
-            All pieces are handcrafted with intention and care.
+            Alle Stücke werden mit Intention und Sorgfalt von Hand gefertigt.
           </p>
         </div>
       </div>

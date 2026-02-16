@@ -9,14 +9,18 @@ import { CatalogSection } from '@/components/CatalogSection'
 import { ContactSection } from '@/components/ContactSection'
 import { FooterSection } from '@/components/FooterSection'
 import { CheckoutDialog } from '@/components/CheckoutDialog'
+import { LegalPage } from '@/components/LegalPage'
 import { ArtDecoFrameAnimation } from '@/components/ArtDecoFrameAnimation'
 import { ArtDecoBackground } from '@/components/ArtDecoBackground'
 import { Product, CartItem } from '@/lib/types'
+import { LegalSection } from '@/lib/legal-content'
 import { toast } from 'sonner'
 
 function App() {
   const [cart, setCart] = useKV<CartItem[]>('nebula-noir-cart', [])
   const [checkoutOpen, setCheckoutOpen] = useState(false)
+  const [legalSection, setLegalSection] = useState<LegalSection | null>(null)
+  const [legalOpen, setLegalOpen] = useState(false)
 
   const handleAddToCart = (product: Product) => {
     setCart((currentCart) => {
@@ -70,6 +74,11 @@ function App() {
     setCart([])
   }
 
+  const handleLegalPageOpen = (section: LegalSection) => {
+    setLegalSection(section)
+    setLegalOpen(true)
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="crt-scanline" />
@@ -90,13 +99,19 @@ function App() {
       <CatalogSection onAddToCart={handleAddToCart} />
       <SectionTransition />
       <ContactSection />
-      <FooterSection />
+      <FooterSection onLegalPageOpen={handleLegalPageOpen} />
 
       <CheckoutDialog 
         open={checkoutOpen}
         onOpenChange={setCheckoutOpen}
         cart={cart || []}
         onCheckoutComplete={handleCheckoutComplete}
+      />
+
+      <LegalPage 
+        section={legalSection}
+        open={legalOpen}
+        onOpenChange={setLegalOpen}
       />
 
       <Toaster 

@@ -1,12 +1,17 @@
 import logoImage from '@/assets/images/IMG_0085_(1).svg'
+import { LegalSection } from '@/lib/legal-content'
 
-export function FooterSection() {
+interface FooterSectionProps {
+  onLegalPageOpen: (section: LegalSection) => void
+}
+
+export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-background border-t-2 border-foreground/20 py-16">
       <div className="container max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-6">
             <div className="flex items-center gap-4">
               <img 
@@ -17,49 +22,106 @@ export function FooterSection() {
               />
               <h3 className="text-2xl uppercase tracking-[0.2em] bioshock-glow-animated">Nebula Noir</h3>
             </div>
-            <p className="text-foreground/70 leading-relaxed font-light">
-              Handcrafted occult and alternative accessories. Cosmic Art Deco Goth for nonconformist souls.
+            <p className="text-foreground/70 leading-relaxed font-light text-sm">
+              Handgefertigter okkulter & alternativer Schmuck. Cosmic Art Deco Goth für nonkonformistische Seelen.
             </p>
           </div>
 
           <div>
-            <h4 className="text-base uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Navigation</h4>
+            <h4 className="text-sm uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Shop</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#catalog" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
-                  Collection
+                <a href="#catalog" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
+                  Kollektion
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
-                  Philosophy
+                <a href="#about" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
+                  Philosophie
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
+                <a href="#contact" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
+                  Maßanfertigungen
+                </a>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onLegalPageOpen('customOrders')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
                   Custom Orders
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Info</h4>
+            <ul className="space-y-3">
+              <li>
+                <button 
+                  onClick={() => onLegalPageOpen('about')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
+                  Über Uns
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onLegalPageOpen('versand')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
+                  Versand
+                </button>
+              </li>
+              <li>
+                <a 
+                  href="https://www.etsy.com/shop/nebulanoirnn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider"
+                >
+                  Etsy Shop
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-base uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Community</h4>
+            <h4 className="text-sm uppercase tracking-[0.25em] mb-6 bioshock-glow-animated">Rechtliches</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
-                  Instagram
-                </a>
+                <button 
+                  onClick={() => onLegalPageOpen('impressum')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
+                  Impressum
+                </button>
               </li>
               <li>
-                <a href="#" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
-                  Etsy Shop
-                </a>
+                <button 
+                  onClick={() => onLegalPageOpen('datenschutz')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
+                  Datenschutz
+                </button>
               </li>
               <li>
-                <a href="#" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-sm tracking-wider">
-                  Festival Schedule
-                </a>
+                <button 
+                  onClick={() => onLegalPageOpen('agb')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
+                  AGB
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onLegalPageOpen('widerruf')}
+                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                >
+                  Widerruf
+                </button>
               </li>
             </ul>
           </div>
@@ -67,11 +129,11 @@ export function FooterSection() {
 
         <div className="border-t border-foreground/20 pt-8">
           <div className="text-center space-y-3">
-            <p className="text-foreground/60 text-sm uppercase tracking-[0.15em]">
-              © {currentYear} Nebula Noir. All artifacts handcrafted with mystical intention.
+            <p className="text-foreground/60 text-xs uppercase tracking-[0.15em]">
+              © {currentYear} Nebula Noir. Alle Artefakte handgefertigt mit mystischer Intention.
             </p>
             <p className="text-foreground/50 text-xs tracking-wider">
-              www.nebula-noir.com
+              Made in Germany · Handcrafted with Dark Elegance
             </p>
           </div>
         </div>

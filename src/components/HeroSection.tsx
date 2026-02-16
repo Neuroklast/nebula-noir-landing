@@ -52,8 +52,8 @@ export function HeroSection() {
 
             <div className="max-w-3xl mx-auto fade-in-up stagger-2">
               <p className="text-base md:text-lg lg:text-xl text-foreground/75 leading-relaxed font-light tracking-wide">
-                Handcrafted occult and alternative accessories that transcend the boundary between elegance and darkness. 
-                Each piece is a unique artifact, lovingly created from resin, PVC, and precious metals.
+                Handgefertigte okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Dunkelheit überschreiten. 
+                Jedes Stück ist ein einzigartiges Artefakt, liebevoll erschaffen aus Resin, PVC und Edelmetallen.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export function HeroSection() {
                 href="#catalog" 
                 className="group relative px-10 py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background"
               >
-                <span className="relative z-10">Explore Collection</span>
+                <span className="relative z-10">Kollektion entdecken</span>
                 <div className="absolute inset-0 bg-foreground transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               </a>
               <a 
@@ -70,7 +70,7 @@ export function HeroSection() {
                 className="group relative px-10 py-5 bg-transparent border-2 border-primary/50 text-foreground font-semibold uppercase tracking-[0.25em] transition-all duration-500 overflow-hidden hover:border-primary"
                 style={{ boxShadow: '0 0 20px rgba(102, 51, 153, 0.2)' }}
               >
-                <span className="relative z-10 group-hover:text-primary transition-colors">Our Philosophy</span>
+                <span className="relative z-10 group-hover:text-primary transition-colors">Unsere Philosophie</span>
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </a>
             </div>
