@@ -20,11 +20,6 @@ export function HeroSection() {
 
       <div className="container max-w-6xl mx-auto px-6 py-24 relative z-10">
         <div className="relative p-8 md:p-16 lg:p-20">
-          <div className="art-deco-corner top-left"></div>
-          <div className="art-deco-corner top-right"></div>
-          <div className="art-deco-corner bottom-left"></div>
-          <div className="art-deco-corner bottom-right"></div>
-          
           <div className="text-center space-y-12 fade-in-up">
             <div className="flex justify-center mb-12">
               <div className="relative parallax-float">
@@ -83,14 +78,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <div className="w-0.5 h-16 bg-gradient-to-b from-foreground/50 to-transparent" />
-          <div className="w-8 h-12 border-2 border-foreground/40 flex justify-center pt-2">
-            <div className="w-1 h-3 bg-foreground/40 animate-pulse" />
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

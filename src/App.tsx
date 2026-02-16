@@ -10,6 +10,7 @@ import { ContactSection } from '@/components/ContactSection'
 import { FooterSection } from '@/components/FooterSection'
 import { CheckoutDialog } from '@/components/CheckoutDialog'
 import { ArtDecoFrameAnimation } from '@/components/ArtDecoFrameAnimation'
+import { ArtDecoBackground } from '@/components/ArtDecoBackground'
 import { Product, CartItem } from '@/lib/types'
 import { toast } from 'sonner'
 
@@ -72,6 +73,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="crt-scanline" />
+      <ArtDecoBackground />
       <ArtDecoFrameAnimation />
       
       <Navigation 
