@@ -34,18 +34,18 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled ? 'bg-background/98 backdrop-blur-md border-b-2 border-foreground/20 shadow-[0_0_30px_rgba(0,0,0,0.8)]' : 'bg-transparent'
     }`}>
-      <div className="container max-w-7xl mx-auto px-6 py-3">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 py-2 md:py-3">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-4 group relative">
+          <a href="#" className="flex items-center gap-2 md:gap-4 group relative">
             <div className="relative">
               <img 
                 src={logoImage} 
                 alt="Nebula Noir" 
-                className="h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 transition-all duration-500 group-hover:scale-105"
+                className="h-14 w-14 md:h-20 md:w-20 lg:h-24 lg:w-24 xl:h-28 xl:w-28 transition-all duration-500 group-hover:scale-105"
                 style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 25px rgba(102, 51, 153, 0.3))' }}
               />
             </div>
-            <span className="text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-[0.25em] hidden sm:inline bioshock-glow-animated">
+            <span className="text-base md:text-xl lg:text-2xl xl:text-3xl font-bold uppercase tracking-[0.15em] md:tracking-[0.25em] hidden sm:inline bioshock-glow-animated">
               Nebula Noir
             </span>
           </a>

@@ -1,16 +1,19 @@
 import { Product } from '@/lib/types'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ShoppingCart } from '@phosphor-icons/react'
+import { Eye } from '@phosphor-icons/react'
 
 interface ProductCardProps {
   product: Product
-  onAddToCart: (product: Product) => void
+  onViewDetails: (product: Product) => void
 }
 
-export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export function ProductCard({ product, onViewDetails }: ProductCardProps) {
   return (
-    <div className="group relative bg-card transition-all duration-500 nebula-glow-hover overflow-hidden metallic-border">
+    <div 
+      className="group relative bg-card transition-all duration-500 nebula-glow-hover overflow-hidden metallic-border cursor-pointer"
+      onClick={() => onViewDetails(product)}
+    >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="aspect-square overflow-hidden bg-muted relative">
@@ -26,35 +29,41 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             Made to Order
           </Badge>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+          <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+            <Eye size={48} weight="bold" className="text-foreground bioshock-glow" />
+          </div>
+        </div>
       </div>
       
-      <div className="p-6 space-y-4 relative z-10">
+      <div className="p-4 md:p-6 space-y-3 md:space-y-4 relative z-10">
         <div>
-          <h3 className="text-xl md:text-2xl mb-3 group-hover:text-foreground transition-colors uppercase tracking-[0.15em] bioshock-glow">
+          <h3 className="text-lg md:text-xl lg:text-2xl mb-2 md:mb-3 group-hover:text-foreground transition-colors uppercase tracking-[0.15em] bioshock-glow line-clamp-2">
             {product.name}
           </h3>
-          <p className="text-sm text-foreground/70 leading-relaxed font-light">
+          <p className="text-xs md:text-sm text-foreground/70 leading-relaxed font-light line-clamp-2">
             {product.description}
           </p>
         </div>
 
         {product.madeToOrder && product.estimatedDays && (
           <p className="text-xs text-foreground/50 italic uppercase tracking-wider">
-            ⧗ Estimated production: {product.estimatedDays} days
+            ⧗ {product.estimatedDays} Tage
           </p>
         )}
 
-        <div className="flex items-center justify-between pt-6 border-t border-foreground/20">
-          <div className="text-2xl md:text-3xl font-light text-foreground tracking-wider bioshock-glow">
+        <div className="flex items-center justify-between pt-4 md:pt-6 border-t border-foreground/20">
+          <div className="text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-wider bioshock-glow">
             €{product.price.toFixed(2)}
           </div>
           <Button
-            onClick={() => onAddToCart(product)}
-            className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.2em] font-semibold flex items-center gap-2 transition-all duration-500 px-6 py-3"
+            onClick={(e) => {
+              e.stopPropagation()
+              onViewDetails(product)
+            }}
+            className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.2em] font-semibold flex items-center gap-2 transition-all duration-500 px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm"
           >
-            <ShoppingCart size={20} weight="bold" />
-            Add
+            Details
           </Button>
         </div>
       </div>

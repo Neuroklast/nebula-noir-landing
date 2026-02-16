@@ -21,56 +21,56 @@ export function AboutSection() {
       </div>
 
       <motion.div 
-        className="container max-w-6xl mx-auto px-6 relative z-10"
+        className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10"
         initial={{ opacity: 0, y: 60 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 bioshock-glow-animated">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated px-4">
             DIE NEBULA NOIR PHILOSOPHIE
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 mb-24">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-12 mb-16 md:mb-24 px-4">
           <motion.div 
-            className="text-center space-y-6 relative p-8 metallic-border"
+            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 metallic-border"
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>✦</div>
-            <h3 className="text-2xl md:text-3xl uppercase tracking-[0.2em]">Mission</h3>
-            <p className="text-foreground/75 leading-relaxed text-base font-light">
+            <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>✦</div>
+            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Mission</h3>
+            <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               Wir fertigen okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Kink überschreiten. 
               Jedes Stück ist ein handgefertigtes Artefakt, das Dunkelheit tragbar und ästhetisch macht.
             </p>
           </motion.div>
 
           <motion.div 
-            className="text-center space-y-6 relative p-8 metallic-border"
+            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 metallic-border"
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="text-7xl mb-4 text-primary bioshock-glow-animated">◆</div>
-            <h3 className="text-2xl md:text-3xl uppercase tracking-[0.2em]">Identität</h3>
-            <p className="text-foreground/75 leading-relaxed text-base font-light">
+            <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated transform rotate-180">☾</div>
+            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Identität</h3>
+            <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), 
               der unendlichen Tiefe kosmischer Nebel und der dunklen Ästhetik der Gothic-Subkultur.
             </p>
           </motion.div>
 
           <motion.div 
-            className="text-center space-y-6 relative p-8 metallic-border"
+            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 metallic-border"
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☽</div>
-            <h3 className="text-2xl md:text-3xl uppercase tracking-[0.2em]">Handwerk</h3>
-            <p className="text-foreground/75 leading-relaxed text-base font-light">
+            <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated transform rotate-180" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
+            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Handwerk</h3>
+            <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. 
               Keine Massenproduktion—nur einzigartige Stücke für nonkonformistische Seelen.
             </p>
@@ -78,39 +78,34 @@ export function AboutSection() {
         </div>
 
         <motion.div 
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto px-4"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          <div className="relative p-10 md:p-16 metallic-border">
-            <div className="art-deco-corner top-left"></div>
-            <div className="art-deco-corner top-right"></div>
-            <div className="art-deco-corner bottom-left"></div>
-            <div className="art-deco-corner bottom-right"></div>
-            
-            <h3 className="text-3xl md:text-4xl lg:text-5xl mb-12 text-center uppercase tracking-[0.25em] bioshock-glow-animated">Unsere Werte</h3>
-            <ul className="space-y-8 text-base md:text-lg">
-              <li className="flex items-start gap-4">
-                <span className="text-primary text-2xl mt-1 flex-shrink-0">☽</span>
+          <div className="relative p-6 md:p-10 lg:p-16 metallic-border">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 md:mb-12 text-center uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated">Unsere Werte</h3>
+            <ul className="space-y-6 md:space-y-8 text-sm md:text-base lg:text-lg">
+              <li className="flex items-start gap-3 md:gap-4">
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Handwerk:</strong> Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.
                 </span>
               </li>
-              <li className="flex items-start gap-4">
-                <span className="text-primary text-2xl mt-1 flex-shrink-0">☽</span>
+              <li className="flex items-start gap-3 md:gap-4">
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Dunkle Ästhetik:</strong> Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.
                 </span>
               </li>
-              <li className="flex items-start gap-4">
-                <span className="text-primary text-2xl mt-1 flex-shrink-0">☽</span>
+              <li className="flex items-start gap-3 md:gap-4">
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Individualität:</strong> Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.
                 </span>
               </li>
-              <li className="flex items-start gap-4">
-                <span className="text-primary text-2xl mt-1 flex-shrink-0">☽</span>
+              <li className="flex items-start gap-3 md:gap-4">
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Inklusivität:</strong> Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.
                 </span>
@@ -119,8 +114,8 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        <div className="text-center mt-20">
-          <p className="text-xl md:text-2xl text-foreground/60 italic font-light tracking-wide leading-relaxed max-w-3xl mx-auto">
+        <div className="text-center mt-12 md:mt-20 px-4">
+          <p className="text-lg md:text-xl lg:text-2xl text-foreground/60 italic font-light tracking-wide leading-relaxed max-w-3xl mx-auto">
             "Für moderne Hexen, Gothic-Seelen und alle, die Eleganz in der Leere finden."
           </p>
         </div>

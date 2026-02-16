@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Product } from '@/lib/types'
 import { PRODUCTS, CATEGORIES } from '@/lib/products'
 import { ProductCard } from './ProductCard'
+import { ProductDetailDialog } from './ProductDetailDialog'
 import { Button } from '@/components/ui/button'
 import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
@@ -12,11 +13,18 @@ interface CatalogSectionProps {
 
 export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [detailDialogOpen, setDetailDialogOpen] = useState(false)
   const { ref, isVisible } = useScrollTrigger(0.1)
 
   const filteredProducts = selectedCategory === 'all' 
     ? PRODUCTS 
     : PRODUCTS.filter(p => p.category === selectedCategory)
+
+  const handleViewDetails = (product: Product) => {
+    setSelectedProduct(product)
+    setDetailDialogOpen(true)
+  }
 
   return (
     <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden" ref={ref}>
@@ -33,24 +41,24 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         </svg>
       </div>
       
-      <div className="container max-w-7xl mx-auto px-6 relative z-10">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 bioshock-glow-animated uppercase tracking-[0.25em]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4">
             Artefakt Kollektion
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
-          <p className="text-base md:text-lg text-foreground/70 mt-10 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-sm md:text-base lg:text-lg text-foreground/70 mt-6 md:mt-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
             Jedes Stück wird mit mystischer Intention von Hand gefertigt. Durchstöbere unsere Kollektion kosmischer Accessoires.
           </p>
         </motion.div>
 
         <motion.div 
-          className="flex flex-wrap justify-center gap-4 mb-16"
+          className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12 md:mb-16 px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -60,7 +68,7 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
               key={category.value}
               onClick={() => setSelectedCategory(category.value)}
               variant={selectedCategory === category.value ? 'default' : 'outline'}
-              className={`uppercase tracking-[0.2em] transition-all duration-500 px-8 py-3 text-sm font-semibold ${
+              className={`uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all duration-500 px-4 md:px-8 py-2 md:py-3 text-xs md:text-sm font-semibold ${
                 selectedCategory === category.value 
                   ? 'bg-foreground text-background border-2 border-foreground bioshock-glow-animated' 
                   : 'border-2 border-foreground/50 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/10'
@@ -71,7 +79,7 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 px-4">
           {filteredProducts.map((product, index) => (
             <motion.div 
               key={product.id}
@@ -79,7 +87,7 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + (index * 0.1) }}
             >
-              <ProductCard product={product} onAddToCart={onAddToCart} />
+              <ProductCard product={product} onViewDetails={handleViewDetails} />
             </motion.div>
           ))}
         </div>
@@ -90,6 +98,13 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
           </div>
         )}
       </div>
+
+      <ProductDetailDialog 
+        product={selectedProduct}
+        open={detailDialogOpen}
+        onOpenChange={setDetailDialogOpen}
+        onAddToCart={onAddToCart}
+      />
     </section>
   )
 }

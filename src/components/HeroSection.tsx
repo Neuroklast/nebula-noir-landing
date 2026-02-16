@@ -18,15 +18,15 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="container max-w-6xl mx-auto px-6 py-24 relative z-10">
-        <div className="relative p-8 md:p-16 lg:p-20">
-          <div className="text-center space-y-12 fade-in-up">
-            <div className="flex justify-center mb-12">
+      <div className="container max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10">
+        <div className="relative p-4 md:p-8 lg:p-16 xl:p-20">
+          <div className="text-center space-y-8 md:space-y-12 fade-in-up">
+            <div className="flex justify-center mb-8 md:mb-12">
               <div className="relative parallax-float">
                 <img 
                   src={logoImage} 
                   alt="Nebula Noir" 
-                  className="h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80"
+                  className="h-32 w-32 sm:h-40 sm:w-40 md:h-56 md:w-56 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
                   style={{ 
                     filter: 'drop-shadow(0 0 40px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 80px rgba(102, 51, 153, 0.5))'
                   }}
@@ -35,39 +35,39 @@ export function HeroSection() {
               </div>
             </div>
             
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-[0.25em] leading-tight bioshock-glow-animated">
+            <div className="space-y-4 md:space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[0.15em] md:tracking-[0.25em] leading-tight bioshock-glow-animated px-2">
                 NEBULA NOIR
               </h1>
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-foreground to-foreground bioshock-glow-animated" />
-                <span className="text-lg md:text-xl uppercase tracking-[0.3em] text-foreground/80">◆</span>
-                <div className="w-24 h-0.5 bg-gradient-to-l from-transparent via-foreground to-foreground bioshock-glow-animated" />
+              <div className="flex items-center justify-center gap-3 md:gap-4">
+                <div className="w-16 md:w-24 h-0.5 bg-gradient-to-r from-transparent via-foreground to-foreground bioshock-glow-animated" />
+                <span className="text-base md:text-lg uppercase tracking-[0.3em] text-foreground/80">☾</span>
+                <div className="w-16 md:w-24 h-0.5 bg-gradient-to-l from-transparent via-foreground to-foreground bioshock-glow-animated" />
               </div>
             </div>
 
-            <p className="text-2xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] text-foreground/90 fade-in-up stagger-1 uppercase">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light tracking-[0.15em] md:tracking-[0.2em] text-foreground/90 fade-in-up stagger-1 uppercase px-4">
               Cosmic Art Deco Goth
             </p>
 
-            <div className="max-w-3xl mx-auto fade-in-up stagger-2">
-              <p className="text-base md:text-lg lg:text-xl text-foreground/75 leading-relaxed font-light tracking-wide">
+            <div className="max-w-3xl mx-auto fade-in-up stagger-2 px-4">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground/75 leading-relaxed font-light tracking-wide">
                 Handgefertigte okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Dunkelheit überschreiten. 
                 Jedes Stück ist ein einzigartiges Artefakt, liebevoll erschaffen aus Resin, PVC und Edelmetallen.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-12 fade-in-up stagger-3">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center pt-8 md:pt-12 fade-in-up stagger-3 px-4">
               <a 
                 href="#catalog" 
-                className="group relative px-10 py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background"
+                className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background text-sm md:text-base"
               >
                 <span className="relative z-10">Kollektion entdecken</span>
                 <div className="absolute inset-0 bg-foreground transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               </a>
               <a 
                 href="#about" 
-                className="group relative px-10 py-5 bg-transparent border-2 border-primary/50 text-foreground font-semibold uppercase tracking-[0.25em] transition-all duration-500 overflow-hidden hover:border-primary"
+                className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-primary/50 text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden hover:border-primary text-sm md:text-base"
                 style={{ boxShadow: '0 0 20px rgba(102, 51, 153, 0.2)' }}
               >
                 <span className="relative z-10 group-hover:text-primary transition-colors">Unsere Philosophie</span>
