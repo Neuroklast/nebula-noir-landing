@@ -56,13 +56,13 @@ export function CheckoutDialog({ open, onOpenChange, cart, onCheckoutComplete }:
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl w-[95vw] bg-card border-2 border-foreground/30 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl w-[95vw] bg-card border-2 border-foreground/30 max-h-[90vh] overflow-y-auto flex flex-col">
         <DialogHeader>
           <DialogTitle className="text-2xl md:text-3xl uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow">Checkout</DialogTitle>
         </DialogHeader>
 
-        <div className="mt-6">
-          <div className="mb-6 md:mb-8 p-4 md:p-6 relative metallic-border">
+        <div className="mt-6 overflow-y-auto flex-1">
+          <div className="mb-6 md:mb-8 p-4 md:p-6 relative border-2 border-foreground/30 bg-background/50">
             <h3 className="text-base md:text-lg uppercase tracking-[0.15em] md:tracking-[0.2em] mb-4 md:mb-6 bioshock-glow">Order Summary</h3>
             <div className="space-y-2 md:space-y-3">
               {cart.map(item => (

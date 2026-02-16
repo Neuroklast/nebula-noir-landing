@@ -33,13 +33,13 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden" ref={ref}>
+    <section id="contact" className="py-16 md:py-24 lg:py-32 bg-background relative overflow-hidden max-w-full" ref={ref}>
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <motion.div 
           className="text-center mb-12 md:mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+          animate={isVisible ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : {}}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex justify-center mb-6 md:mb-8">
             <div className="text-5xl md:text-7xl bioshock-glow-animated">✉</div>
@@ -55,10 +55,10 @@ export function ContactSection() {
 
         <motion.form 
           onSubmit={handleSubmit} 
-          className="relative p-6 md:p-10 lg:p-14 space-y-6 md:space-y-8 metallic-border"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative p-6 md:p-10 lg:p-14 space-y-6 md:space-y-8 border-2 border-foreground/30 bg-background/50"
+          initial={{ opacity: 0, clipPath: 'inset(50% 50%)' }}
+          animate={isVisible ? { opacity: 1, clipPath: 'inset(0% 0%)' } : {}}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="space-y-3">
             <Label htmlFor="name" className="text-sm uppercase tracking-[0.2em] text-foreground/90">

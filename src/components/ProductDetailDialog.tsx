@@ -22,15 +22,15 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl w-[95vw] h-[90vh] md:h-auto max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden">
+      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden flex flex-col">
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="relative h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="relative flex flex-col h-full"
             >
               <button
                 onClick={() => onOpenChange(false)}
@@ -39,12 +39,12 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
                 <X size={24} weight="bold" />
               </button>
 
-              <div className="grid md:grid-cols-2 gap-0 h-full overflow-auto">
+              <div className="grid md:grid-cols-2 gap-0 overflow-y-auto flex-1">
                 <motion.div 
-                  className="relative aspect-square md:aspect-auto bg-muted overflow-hidden"
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="relative aspect-square md:aspect-auto bg-muted overflow-hidden md:min-h-[400px]"
+                  initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' }}
+                  animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+                  transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <img 
                     src={product.image} 
@@ -61,34 +61,34 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
                 </motion.div>
 
                 <motion.div 
-                  className="p-8 md:p-12 flex flex-col justify-between"
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="p-8 md:p-12 flex flex-col justify-between overflow-y-auto"
+                  initial={{ opacity: 0, clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
+                  animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div>
                     <DialogTitle className="sr-only">{product.name}</DialogTitle>
                     <motion.h2 
                       className="text-3xl md:text-4xl lg:text-5xl mb-6 uppercase tracking-[0.2em] bioshock-glow-animated"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.3 }}
+                      initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+                      animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+                      transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
                       {product.name}
                     </motion.h2>
 
                     <motion.div 
                       className="art-deco-divider mb-8"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     />
 
                     <motion.p 
                       className="text-base md:text-lg text-foreground/80 leading-relaxed mb-8 font-light"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.5 }}
+                      initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+                      animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+                      transition={{ duration: 0.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     >
                       {product.description}
                     </motion.p>
@@ -96,9 +96,9 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
                     {product.madeToOrder && product.estimatedDays && (
                       <motion.div 
                         className="mb-8 p-4 border-l-2 border-primary bg-primary/5"
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.4, delay: 0.6 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <p className="text-sm text-foreground/70 uppercase tracking-wider">
                           ⧗ Geschätzte Produktionszeit: {product.estimatedDays} Tage
@@ -111,9 +111,9 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
 
                     <motion.div 
                       className="space-y-4 text-sm text-foreground/60 font-light leading-relaxed"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 0.7 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <p className="uppercase tracking-wider">
                         <strong className="text-foreground/90">Material:</strong> Hochwertige Resin-, PVC- und Edelmetall-Komponenten
@@ -129,9 +129,9 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
 
                   <motion.div 
                     className="mt-8 pt-8 border-t-2 border-foreground/20 flex items-center justify-between"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.4, delay: 0.8 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="text-4xl md:text-5xl font-light text-foreground tracking-wider bioshock-glow">
                       €{product.price.toFixed(2)}

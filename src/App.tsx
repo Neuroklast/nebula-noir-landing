@@ -80,7 +80,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden max-w-full">
       <div className="crt-scanline" />
       <ArtDecoBackground />
       <ArtDecoFrameAnimation />

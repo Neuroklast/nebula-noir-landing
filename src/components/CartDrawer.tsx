@@ -32,23 +32,23 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-full sm:max-w-lg bg-card border-l-2 border-foreground/30">
-        <SheetHeader>
+      <SheetContent className="w-full sm:max-w-lg bg-card border-l-2 border-foreground/30 flex flex-col overflow-hidden">
+        <SheetHeader className="flex-shrink-0">
           <SheetTitle className="text-3xl uppercase tracking-[0.25em] bioshock-glow">Your Cart</SheetTitle>
         </SheetHeader>
 
         {cart.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-[60vh] space-y-6">
+          <div className="flex flex-col items-center justify-center flex-1 space-y-6">
             <ShoppingCart size={80} weight="thin" className="text-foreground/30" />
             <p className="text-lg text-foreground/60 uppercase tracking-wider">Your cart is empty</p>
             <p className="text-sm text-foreground/40 font-light">Add some cosmic artifacts to begin</p>
           </div>
         ) : (
-          <div className="flex flex-col h-[calc(100vh-120px)] mt-6">
+          <div className="flex flex-col flex-1 overflow-hidden mt-6">
             <ScrollArea className="flex-1 pr-4">
               <div className="space-y-6">
                 {cart.map((item) => (
-                  <div key={item.product.id} className="relative p-5 space-y-4 metallic-border">
+                  <div key={item.product.id} className="relative p-5 space-y-4 border-2 border-foreground/30 bg-background/50">
                     <div className="flex gap-4">
                       <img 
                         src={item.product.image} 
@@ -103,7 +103,7 @@ export function CartDrawer({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
               </div>
             </ScrollArea>
 
-            <div className="border-t-2 border-foreground/30 pt-6 mt-6 space-y-6">
+            <div className="border-t-2 border-foreground/30 pt-6 mt-6 space-y-6 flex-shrink-0">
               <div className="flex justify-between items-center text-xl">
                 <span className="uppercase tracking-[0.25em] font-semibold">Total:</span>
                 <span className="text-3xl font-light bioshock-glow">€{totalPrice.toFixed(2)}</span>

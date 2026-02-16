@@ -27,7 +27,7 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   }
 
   return (
-    <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden" ref={ref}>
+    <section id="catalog" className="py-24 md:py-32 bg-card relative overflow-hidden max-w-full" ref={ref}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>
@@ -44,9 +44,9 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
       <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
           className="text-center mb-12 md:mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+          animate={isVisible ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : {}}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4">
             Artefakt Kollektion
@@ -59,9 +59,9 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
 
         <motion.div 
           className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12 md:mb-16 px-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={isVisible ? { opacity: 1, scaleX: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           {CATEGORIES.map(category => (
             <Button
@@ -83,9 +83,9 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
           {filteredProducts.map((product, index) => (
             <motion.div 
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + (index * 0.1) }}
+              initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' }}
+              animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
+              transition={{ duration: 0.6, delay: 0.3 + (index * 0.08), ease: [0.22, 1, 0.36, 1] }}
             >
               <ProductCard product={product} onViewDetails={handleViewDetails} />
             </motion.div>

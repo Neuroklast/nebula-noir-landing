@@ -2,7 +2,7 @@ import logoImage from '@/assets/images/IMG_0085_(1).svg'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center cosmic-bg overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center cosmic-bg overflow-hidden max-w-full">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@ export function HeroSection() {
 
       <div className="container max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-24 relative z-10">
         <div className="relative p-4 md:p-8 lg:p-16 xl:p-20">
-          <div className="text-center space-y-8 md:space-y-12 fade-in-up">
+          <div className="text-center space-y-8 md:space-y-12 art-deco-reveal">
             <div className="flex justify-center mb-8 md:mb-12">
               <div className="relative parallax-float">
                 <img 
@@ -46,18 +46,18 @@ export function HeroSection() {
               </div>
             </div>
 
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light tracking-[0.15em] md:tracking-[0.2em] text-foreground/90 fade-in-up stagger-1 uppercase px-4">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light tracking-[0.15em] md:tracking-[0.2em] text-foreground/90 art-deco-reveal uppercase px-4" style={{ animationDelay: '0.1s' }}>
               Cosmic Art Deco Goth
             </p>
 
-            <div className="max-w-3xl mx-auto fade-in-up stagger-2 px-4">
+            <div className="max-w-3xl mx-auto art-deco-reveal-center px-4" style={{ animationDelay: '0.2s' }}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground/75 leading-relaxed font-light tracking-wide">
                 Handgefertigte okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Dunkelheit überschreiten. 
                 Jedes Stück ist ein einzigartiges Artefakt, liebevoll erschaffen aus Resin, PVC und Edelmetallen.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center pt-8 md:pt-12 fade-in-up stagger-3 px-4">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center pt-8 md:pt-12 art-deco-reveal-center px-4" style={{ animationDelay: '0.4s' }}>
               <a 
                 href="#catalog" 
                 className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background text-sm md:text-base"

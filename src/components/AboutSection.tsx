@@ -5,7 +5,7 @@ export function AboutSection() {
   const { ref, isVisible } = useScrollTrigger(0.1)
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-24 md:py-32 bg-background relative overflow-hidden max-w-full" ref={ref}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>
@@ -22,9 +22,9 @@ export function AboutSection() {
 
       <motion.div 
         className="container max-w-6xl mx-auto px-4 md:px-6 relative z-10"
-        initial={{ opacity: 0, y: 60 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+        animate={isVisible ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : {}}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated px-4">
@@ -35,10 +35,10 @@ export function AboutSection() {
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-12 mb-16 md:mb-24 px-4">
           <motion.div 
-            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 metallic-border"
-            initial={{ opacity: 0, y: 40 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 border-2 border-foreground/30 bg-background/50"
+            initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)' }}
+            animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>✦</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Mission</h3>
@@ -49,10 +49,10 @@ export function AboutSection() {
           </motion.div>
 
           <motion.div 
-            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 metallic-border"
-            initial={{ opacity: 0, y: 40 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 border-2 border-foreground/30 bg-background/50"
+            initial={{ opacity: 0, clipPath: 'polygon(50% 0, 50% 0, 50% 100%, 50% 100%)' }}
+            animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated transform rotate-180">☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Identität</h3>
@@ -63,10 +63,10 @@ export function AboutSection() {
           </motion.div>
 
           <motion.div 
-            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 metallic-border"
-            initial={{ opacity: 0, y: 40 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-center space-y-4 md:space-y-6 relative p-6 md:p-8 border-2 border-foreground/30 bg-background/50"
+            initial={{ opacity: 0, clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
+            animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
+            transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated transform rotate-180" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Handwerk</h3>
@@ -79,11 +79,11 @@ export function AboutSection() {
 
         <motion.div 
           className="max-w-4xl mx-auto px-4"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 1, delay: 0.8 }}
+          initial={{ opacity: 0, clipPath: 'inset(50% 50%)' }}
+          animate={isVisible ? { opacity: 1, clipPath: 'inset(0% 0%)' } : {}}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative p-6 md:p-10 lg:p-16 metallic-border">
+          <div className="relative p-6 md:p-10 lg:p-16 border-2 border-foreground/30 bg-background/50">
             <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 md:mb-12 text-center uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated">Unsere Werte</h3>
             <ul className="space-y-6 md:space-y-8 text-sm md:text-base lg:text-lg">
               <li className="flex items-start gap-3 md:gap-4">
