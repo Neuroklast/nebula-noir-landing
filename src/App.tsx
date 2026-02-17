@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Toaster } from '@/components/ui/sonner'
 import { Navigation } from '@/components/Navigation'
@@ -21,6 +21,36 @@ function App() {
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [legalSection, setLegalSection] = useState<LegalSection | null>(null)
   const [legalOpen, setLegalOpen] = useState(false)
+
+  useEffect(() => {
+    const cursorGlow = document.createElement('div')
+    cursorGlow.id = 'cursor-glow'
+    document.body.appendChild(cursorGlow)
+
+    const moveCursor = (e: MouseEvent) => {
+      cursorGlow.style.left = `${e.clientX}px`
+      cursorGlow.style.top = `${e.clientY}px`
+    }
+
+    const showCursor = () => {
+      cursorGlow.style.opacity = '1'
+    }
+
+    const hideCursor = () => {
+      cursorGlow.style.opacity = '0'
+    }
+
+    document.addEventListener('mousemove', moveCursor)
+    document.addEventListener('mouseenter', showCursor)
+    document.addEventListener('mouseleave', hideCursor)
+
+    return () => {
+      document.removeEventListener('mousemove', moveCursor)
+      document.removeEventListener('mouseenter', showCursor)
+      document.removeEventListener('mouseleave', hideCursor)
+      cursorGlow.remove()
+    }
+  }, [])
 
   const handleAddToCart = (product: Product) => {
     setCart((currentCart) => {

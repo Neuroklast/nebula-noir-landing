@@ -54,7 +54,7 @@ export function AboutSection() {
             animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated transform rotate-180">☾</div>
+            <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated">☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Identität</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), 
@@ -68,7 +68,7 @@ export function AboutSection() {
             animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
             transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated transform rotate-180" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
+            <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Handwerk</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. 
@@ -87,25 +87,25 @@ export function AboutSection() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 md:mb-12 text-center uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated">Unsere Werte</h3>
             <ul className="space-y-6 md:space-y-8 text-sm md:text-base lg:text-lg">
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Handwerk:</strong> Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Dunkle Ästhetik:</strong> Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Individualität:</strong> Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 transform rotate-180">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">Inklusivität:</strong> Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.
                 </span>
