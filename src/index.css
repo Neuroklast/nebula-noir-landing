@@ -265,6 +265,14 @@
     0 0 20px rgba(102, 51, 153, 0.15);
 }
 
+.spark-theme-bioshock-glow {
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    0 0 15px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(102, 51, 153, 0.15);
+}
+
 @keyframes bioshock-pulse {
   0%, 100% {
     text-shadow: 
@@ -283,6 +291,10 @@
 }
 
 .bioshock-glow-animated {
+  animation: bioshock-pulse 20s ease-in-out infinite;
+}
+
+.spark-theme-bioshock-glow-animated {
   animation: bioshock-pulse 20s ease-in-out infinite;
 }
 

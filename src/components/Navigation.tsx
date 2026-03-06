@@ -45,7 +45,7 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
                 style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 25px rgba(102, 51, 153, 0.3))' }}
               />
             </div>
-            <span className="text-base md:text-xl lg:text-2xl xl:text-3xl font-bold uppercase tracking-[0.15em] md:tracking-[0.25em] hidden sm:inline bioshock-glow-animated">
+            <span className="text-base md:text-xl lg:text-2xl xl:text-3xl font-bold uppercase tracking-[0.15em] md:tracking-[0.25em] hidden sm:inline spark-theme-bioshock-glow-animated">
               Nebula Noir
             </span>
           </a>

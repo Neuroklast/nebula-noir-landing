@@ -15,6 +15,7 @@ import { ArtDecoBackground } from '@/components/ArtDecoBackground'
 import { Product, CartItem } from '@/lib/types'
 import { LegalSection } from '@/lib/legal-content'
 import { toast } from 'sonner'
+import '@/themes/nebula-noir-theme/styles.css'
 
 function App() {
   const [cart, setCart] = useKV<CartItem[]>('nebula-noir-cart', [])
