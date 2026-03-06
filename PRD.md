@@ -95,6 +95,13 @@ Animations should feel like celestial movements—slow, inevitable, mysterious. 
 - **Cart Interactions**: Drawer slides from right with ease-out, items fade in sequentially
 - **Button Presses**: Quick scale down (0.98) on click, cosmic violet glow expands
 - **Background**: Subtle slow-moving gradient shift in void background to simulate nebula movement (60s duration)
+- **Art Deco Corners**: Geometric corner accents fade in and rotate 360° on cards and forms, with subtle scaling
+- **Art Deco Dividers**: Animated section dividers with drawing lines and central geometric shapes that expand
+- **Geometric Expand**: Elements reveal with clip-path polygon animation from center outward
+- **Mechanical Slides**: Left/right slide animations with scaling for authentic Art Deco mechanical feel
+- **Card Hover Effects**: Gradient overlays that fade in on hover with Art Deco geometric patterns
+- **Glow Pulse**: Subtle pulsing glow effects on accent elements and buttons (4s duration)
+- **Button Hover**: Expanding border frames on buttons that grow outward on hover
 
 ## Component Selection
 

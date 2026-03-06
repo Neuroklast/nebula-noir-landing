@@ -365,6 +365,112 @@
   }
 }
 
+@keyframes geometric-expand {
+  0% {
+    opacity: 0;
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.geometric-expand {
+  animation: geometric-expand 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes deco-slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) scaleX(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+.deco-slide-left {
+  animation: deco-slide-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes deco-slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scaleX(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+.deco-slide-right {
+  animation: deco-slide-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes deco-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-5deg);
+  }
+  60% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.deco-scale-in {
+  animation: deco-scale-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes border-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.border-draw {
+  stroke-dasharray: 1000;
+  animation: border-draw 2s ease-out forwards;
+}
+
+@keyframes corner-accent {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.corner-accent {
+  animation: corner-accent 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
 .art-deco-reveal {
   animation: artDecoReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
@@ -452,6 +558,10 @@
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
 .stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+.stagger-9 { animation-delay: 0.9s; }
+.stagger-10 { animation-delay: 1.0s; }
 
 @keyframes parallax-float {
   0%, 100% {
@@ -913,4 +1023,105 @@
 .legal-content a:hover {
   color: oklch(0.65 0.20 295);
   text-shadow: 0 0 10px oklch(0.50 0.18 295 / 0.5);
+}
+
+@keyframes art-deco-button-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.2),
+      inset 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.4),
+      inset 0 0 20px rgba(255, 255, 255, 0.15),
+      0 0 30px rgba(102, 51, 153, 0.3);
+  }
+}
+
+.art-deco-button-hover {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.art-deco-button-hover::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.art-deco-button-hover:hover::before {
+  border-color: currentColor;
+  inset: -6px;
+  opacity: 0.5;
+}
+
+.art-deco-card-hover {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.art-deco-card-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(102, 51, 153, 0.05) 25%, 
+    rgba(102, 51, 153, 0.1) 50%, 
+    rgba(102, 51, 153, 0.05) 75%, 
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.art-deco-card-hover:hover::after {
+  opacity: 1;
+}
+
+@keyframes glow-pulse-subtle {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 10px rgba(102, 51, 153, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 20px rgba(102, 51, 153, 0.4));
+  }
+}
+
+.glow-pulse-subtle {
+  animation: glow-pulse-subtle 4s ease-in-out infinite;
+}
+
+@keyframes mechanical-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mechanical-rotate-slow {
+  animation: mechanical-rotate 60s linear infinite;
+}
+
+@keyframes deco-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.deco-flicker {
+  animation: deco-flicker 3s ease-in-out infinite;
 }

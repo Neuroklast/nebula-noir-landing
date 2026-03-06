@@ -1,5 +1,6 @@
 import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
+import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
 
 export function AboutSection() {
   const { ref, isVisible } = useScrollTrigger(0.1)
@@ -30,7 +31,7 @@ export function AboutSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated px-4">
             DIE NEBULA NOIR PHILOSOPHIE
           </h2>
-          <div className="art-deco-divider max-w-md mx-auto" />
+          <ArtDecoAnimatedDivider className="max-w-md mx-auto" />
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-12 mb-16 md:mb-24 px-4">

@@ -60,14 +60,14 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center pt-8 md:pt-12 art-deco-reveal-center px-4" style={{ animationDelay: '0.4s' }}>
               <a 
                 href="#catalog" 
-                className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background text-sm md:text-base"
+                className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background text-sm md:text-base art-deco-button-hover"
               >
                 <span className="relative z-10">Kollektion entdecken</span>
                 <div className="absolute inset-0 bg-foreground transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               </a>
               <a 
                 href="#about" 
-                className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-primary/50 text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden hover:border-primary text-sm md:text-base"
+                className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-primary/50 text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden hover:border-primary text-sm md:text-base art-deco-button-hover glow-pulse-subtle"
                 style={{ boxShadow: '0 0 20px rgba(102, 51, 153, 0.2)' }}
               >
                 <span className="relative z-10 group-hover:text-primary transition-colors">Unsere Philosophie</span>

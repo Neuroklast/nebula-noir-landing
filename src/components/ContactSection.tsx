@@ -6,6 +6,8 @@ import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
+import { ArtDecoCorner } from './ArtDecoCorner'
+import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -47,7 +49,7 @@ export function ContactSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated px-4">
             Maßanfertigungen & Anfragen
           </h2>
-          <div className="art-deco-divider max-w-md mx-auto" />
+          <ArtDecoAnimatedDivider className="max-w-md mx-auto" />
           <p className="text-sm md:text-base lg:text-lg text-foreground/70 mt-6 md:mt-8 font-light px-4 leading-relaxed">
             Du suchst ein maßgeschneidertes Stück oder hast Fragen zu unseren Artefakten? Kontaktiere uns durch den Äther.
           </p>
@@ -60,6 +62,8 @@ export function ContactSection() {
           animate={isVisible ? { opacity: 1, clipPath: 'inset(0% 0%)' } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
+          <ArtDecoCorner position="top-left" size={50} delay={0.5} />
+          <ArtDecoCorner position="bottom-right" size={50} delay={0.6} />
           <div className="space-y-3">
             <Label htmlFor="name" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
               Name

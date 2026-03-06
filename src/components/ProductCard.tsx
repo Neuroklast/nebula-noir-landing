@@ -2,6 +2,7 @@ import { Product } from '@/lib/types'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Eye } from '@phosphor-icons/react'
+import { ArtDecoCorner } from './ArtDecoCorner'
 
 interface ProductCardProps {
   product: Product
@@ -11,9 +12,12 @@ interface ProductCardProps {
 export function ProductCard({ product, onViewDetails }: ProductCardProps) {
   return (
     <div 
-      className="group relative bg-card transition-all duration-500 nebula-glow-hover overflow-hidden metallic-border cursor-pointer"
+      className="group relative bg-card transition-all duration-500 nebula-glow-hover overflow-hidden metallic-border cursor-pointer art-deco-card-hover"
       onClick={() => onViewDetails(product)}
     >
+      <ArtDecoCorner position="top-left" size={40} delay={0} />
+      <ArtDecoCorner position="bottom-right" size={40} delay={0.1} />
+      
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="aspect-square overflow-hidden bg-muted relative">
