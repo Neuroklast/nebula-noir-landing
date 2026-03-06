@@ -12,6 +12,7 @@ import { CheckoutDialog } from '@/components/CheckoutDialog'
 import { LegalPage } from '@/components/LegalPage'
 import { ArtDecoFrameAnimation } from '@/components/ArtDecoFrameAnimation'
 import { ArtDecoBackground } from '@/components/ArtDecoBackground'
+import LoadingScreen from '@/themes/nebula-noir-theme/LoadingScreen'
 import { Product, CartItem } from '@/lib/types'
 import { LegalSection } from '@/lib/legal-content'
 import { toast } from 'sonner'
@@ -22,6 +23,7 @@ function App() {
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [legalSection, setLegalSection] = useState<LegalSection | null>(null)
   const [legalOpen, setLegalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const cursorGlow = document.createElement('div')
@@ -108,6 +110,14 @@ function App() {
   const handleLegalPageOpen = (section: LegalSection) => {
     setLegalSection(section)
     setLegalOpen(true)
+  }
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+  }
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} duration={3500} />
   }
 
   return (

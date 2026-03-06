@@ -222,3 +222,65 @@
 .spark-theme-stagger-3 { animation-delay: 0.3s; }
 .spark-theme-stagger-4 { animation-delay: 0.4s; }
 .spark-theme-stagger-5 { animation-delay: 0.5s; }
+
+.spark-theme-loading-frame-svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.frame-line-loading {
+  stroke: oklch(0.98 0 0);
+  stroke-width: 2;
+  fill: none;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  stroke-linecap: square;
+}
+
+.moon-symbol-loading {
+  fill: oklch(0.98 0 0);
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  font-family: 'Poiret One', cursive;
+}
+
+.spark-theme-logo-glow {
+  animation: spark-theme-logo-pulse 3s ease-in-out infinite;
+}
+
+@keyframes spark-theme-logo-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 30px rgba(102, 51, 153, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 50px rgba(102, 51, 153, 0.4));
+  }
+}
+
+@keyframes spark-theme-loading-shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.spark-theme-loading-text {
+  background: linear-gradient(
+    90deg,
+    oklch(0.98 0 0) 0%,
+    oklch(0.50 0.18 295) 50%,
+    oklch(0.98 0 0) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: spark-theme-loading-shimmer 3s linear infinite;
+}
