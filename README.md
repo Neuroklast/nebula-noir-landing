@@ -1,23 +1,24 @@
-# ✨ Welcome to Your Spark Template!
-You've just launched your brand-new Spark Template Codespace — everything’s fired up and ready for you to explore, build, and create with Spark!
+# Nebula Noir
 
-This template is your blank canvas. It comes with a minimal setup to help you get started quickly with Spark development.
+Cosmic Art Deco Goth jewelry brand site. Next.js App Router, Supabase, Cloudflare R2.
 
-🚀 What's Inside?
-- A clean, minimal Spark environment
-- Pre-configured for local development
-- Ready to scale with your ideas
-  
-🧠 What Can You Do?
+This is a gallery, brand, events, Instagram, and contact surface. Commerce stays on Etsy.
 
-Right now, this is just a starting point — the perfect place to begin building and testing your Spark applications.
+## Quick start
 
-🧹 Just Exploring?
-No problem! If you were just checking things out and don’t need to keep this code:
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-- Simply delete your Spark.
-- Everything will be cleaned up — no traces left behind.
+Empty Supabase keys = Demo Mode (fixtures, no remote writes).
 
-📄 License For Spark Template Resources 
+## Docs
 
-The Spark Template files and resources from GitHub are licensed under the terms of the MIT license, Copyright GitHub, Inc.
+- `AGENTS.md` — architecture and design freeze
+- `DEPLOYMENT.md` — Vercel, Supabase `reset.sql`, R2, Instagram
+- `QA_CHECKLIST.md` — test cases
+- `SECURITY.md` — RLS and secrets
+- `INTEGRATION-SUMMARY.md` — schema and services
+- `CHANGELOG.md` / `LESSONS_LEARNED.md`

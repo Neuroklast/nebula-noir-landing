@@ -1,31 +1,70 @@
-Thanks for helping make GitHub safe for everyone.
-
 # Security
 
-GitHub takes the security of our software products and services seriously, including all of the open source code repositories managed through our GitHub organizations, such as [GitHub](https://github.com/GitHub).
+## Reporting
 
-Even though [open source repositories are outside of the scope of our bug bounty program](https://bounty.github.com/index.html#scope) and therefore not eligible for bounty rewards, we will ensure that your finding gets passed along to the appropriate maintainers for remediation. 
+Do not file public GitHub issues for vulnerabilities. Email the site operator (see Impressum).
 
-## Reporting Security Issues
+## Environment variables
 
-If you believe you have found a security vulnerability in any GitHub-owned repository, please report it to us through coordinated disclosure.
+### Public (`NEXT_PUBLIC_*`)
 
-**Please do not report security vulnerabilities through public GitHub issues, discussions, or pull requests.**
+Safe to ship to the browser:
 
-Instead, please send an email to opensource-security[@]github.com.
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` (RLS-enforced)
+- `NEXT_PUBLIC_HERO_VIDEO_URL`
 
-Please include as much of the information listed below as you can to help us better understand and resolve the issue:
+### Secret (server only)
 
-  * The type of issue (e.g., buffer overflow, SQL injection, or cross-site scripting)
-  * Full paths of source file(s) related to the manifestation of the issue
-  * The location of the affected source code (tag/branch/commit or direct URL)
-  * Any special configuration required to reproduce the issue
-  * Step-by-step instructions to reproduce the issue
-  * Proof-of-concept or exploit code (if possible)
-  * Impact of the issue, including how an attacker might exploit the issue
+Never prefix with `NEXT_PUBLIC_`. Never import into client components.
 
-This information will help us triage your report more quickly.
+- `SUPABASE_SERVICE_ROLE_KEY` — bypasses RLS; cron + admin server actions only
+- `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_ENDPOINT`
+- `INSTAGRAM_ACCESS_TOKEN` (Instagram Login user token), `INSTAGRAM_APP_SECRET`
+- `CRON_SECRET`
 
-## Policy
+`R2_PUBLIC_URL` is not a credential but is server-used when writing object URLs.
 
-See [GitHub's Safe Harbor Policy](https://docs.github.com/en/site-policy/security-policies/github-bug-bounty-program-legal-safe-harbor#1-safe-harbor-terms)
+## Supabase RLS (see `supabase/reset.sql`)
+
+| Table | anon | authenticated admin |
+|---|---|---|
+| `categories` | SELECT | ALL |
+| `gallery_images` | SELECT where `published` | ALL |
+| `events` | SELECT where `published` | ALL |
+| `brand_info` | SELECT | ALL |
+| `instagram_posts` | SELECT | SELECT (writes via service role) |
+| `instagram_auth` | none | none (service role only) |
+| `contact_inquiries` | INSERT | SELECT, UPDATE |
+| `profiles` | none | SELECT own row; admin role set only via SQL/service |
+
+Admin check: JWT user id exists in `profiles` with `role = 'admin'`.
+
+Service role is used only in:
+
+- `src/lib/supabase/service.ts`
+- Instagram cron/sync route
+- Never `createBrowserClient` with the service key
+
+## R2 upload limits
+
+- Max size: 10 MB
+- MIME allowlist: `image/jpeg`, `image/png`, `image/webp`, `image/gif`, `image/svg+xml`
+- Auth: admin session required
+- Keys: `gallery/{uuid}.{ext}` or `instagram/{id}.{ext}`
+- No public write on the bucket; Next.js server uses S3-compatible credentials
+
+## Cron
+
+`/api/cron/instagram` requires `Authorization: Bearer $CRON_SECRET` (or Vercel Cron header).
+
+## Contact form
+
+Validate name/email/message server-side. Truncate oversized payloads. RLS INSERT is not a substitute for rate limiting (add WAF/Vercel firewall in production).
+
+## Auth
+
+- Email/password via Supabase Auth
+- Middleware gates `/admin`
+- Demo Mode has no real auth; admin writes are no-ops

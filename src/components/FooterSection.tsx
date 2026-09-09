@@ -1,12 +1,29 @@
-import logoImage from '@/assets/images/IMG_0085_(1).svg'
 import { LegalSection } from '@/lib/legal-content'
 
-interface FooterSectionProps {
-  onLegalPageOpen: (section: LegalSection) => void
-}
+const legalLinkClass =
+  'text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left'
 
-export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
+export function FooterSection() {
   const currentYear = new Date().getFullYear()
+
+  const legalHref = (section: LegalSection) => {
+    switch (section) {
+      case 'impressum':
+        return '/impressum'
+      case 'datenschutz':
+        return '/datenschutz'
+      case 'agb':
+        return '/agb'
+      case 'widerruf':
+        return '/widerruf'
+      case 'versand':
+        return '/versand'
+      case 'customOrders':
+        return '/custom-orders'
+      case 'about':
+        return '/ueber-uns'
+    }
+  }
 
   return (
     <footer className="border-t-2 border-foreground/20 py-12 md:py-16 overflow-hidden max-w-full">
@@ -15,7 +32,7 @@ export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-3 md:gap-4">
               <img 
-                src={logoImage} 
+                src="/images/IMG_0085_(1).svg" 
                 alt="Nebula Noir" 
                 className="h-10 w-10 md:h-12 md:w-12"
                 style={{ filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))' }}
@@ -31,27 +48,27 @@ export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
             <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">Shop</h4>
             <ul className="space-y-2 md:space-y-3">
               <li>
-                <a href="#catalog" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
+                <a href="/#catalog" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
                   Kollektion
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
+                <a href="/#about" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
                   Philosophie
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
+                <a href="/#contact" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
                   Maßanfertigungen
                 </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('customOrders')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('customOrders')}
+                  className={legalLinkClass}
                 >
                   Custom Orders
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -60,20 +77,20 @@ export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
             <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">Info</h4>
             <ul className="space-y-2 md:space-y-3">
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('about')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('about')}
+                  className={legalLinkClass}
                 >
                   Über Uns
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('versand')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('versand')}
+                  className={legalLinkClass}
                 >
                   Versand
-                </button>
+                </a>
               </li>
               <li>
                 <a 
@@ -92,36 +109,36 @@ export function FooterSection({ onLegalPageOpen }: FooterSectionProps) {
             <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">Rechtliches</h4>
             <ul className="space-y-2 md:space-y-3">
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('impressum')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('impressum')}
+                  className={legalLinkClass}
                 >
                   Impressum
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('datenschutz')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('datenschutz')}
+                  className={legalLinkClass}
                 >
                   Datenschutz
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('agb')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('agb')}
+                  className={legalLinkClass}
                 >
                   AGB
-                </button>
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onLegalPageOpen('widerruf')}
-                  className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left"
+                <a 
+                  href={legalHref('widerruf')}
+                  className={legalLinkClass}
                 >
                   Widerruf
-                </button>
+                </a>
               </li>
             </ul>
           </div>

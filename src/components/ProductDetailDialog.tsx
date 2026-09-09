@@ -1,24 +1,21 @@
+'use client'
+
 import { Product } from '@/lib/types'
+import { CATEGORIES } from '@/lib/products'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ShoppingCart, X } from '@phosphor-icons/react'
+import { EnvelopeSimple, X } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface ProductDetailDialogProps {
   product: Product | null
   open: boolean
   onOpenChange: (open: boolean) => void
-  onAddToCart: (product: Product) => void
 }
 
-export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }: ProductDetailDialogProps) {
+export function ProductDetailDialog({ product, open, onOpenChange }: ProductDetailDialogProps) {
   if (!product) return null
-
-  const handleAddToCart = () => {
-    onAddToCart(product)
-    onOpenChange(false)
-  }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -134,14 +131,16 @@ export function ProductDetailDialog({ product, open, onOpenChange, onAddToCart }
                     transition={{ duration: 0.5, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="text-4xl md:text-5xl font-light text-foreground tracking-wider bioshock-glow">
-                      €{product.price.toFixed(2)}
+                      {CATEGORIES.find((c) => c.value === product.category)?.label ?? product.category}
                     </div>
                     <Button
-                      onClick={handleAddToCart}
+                      asChild
                       className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.2em] font-semibold flex items-center gap-3 transition-all duration-500 px-8 py-4 text-base"
                     >
-                      <ShoppingCart size={24} weight="bold" />
-                      In den Warenkorb
+                      <a href="/#contact" onClick={() => onOpenChange(false)}>
+                        <EnvelopeSimple size={24} weight="bold" />
+                        Anfrage senden
+                      </a>
                     </Button>
                   </motion.div>
                 </motion.div>

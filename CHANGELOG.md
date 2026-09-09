@@ -1,0 +1,75 @@
+# Changelog
+
+All notable changes to this project are documented in reverse chronological order.
+
+## [0.2.3] — 2026-09-09
+
+### Fixed
+
+- Contact and login forms block double submit; Demo Mode contact toast is honest.
+- Mobile nav closes on link tap; Instagram control is a single interactive element.
+- Hash links clear the fixed nav (`scroll-padding` / `scroll-margin`).
+- Intro loading screen plays once per session.
+- Hero video waits for `loadedmetadata`, scrubs on rAF, hides on error.
+- Card grayscale hover no longer overridden by inline `filter`.
+- Event `datetime-local` values stored as ISO; admin lists `router.refresh` instead of full reload.
+- Gallery upload revalidates `/` and `/admin/gallery`.
+- Cursor glow skipped on coarse pointers.
+
+### Removed
+
+- Unused shop/alternate components (`CartDrawer`, `CheckoutDialog`, `LegalPage`, `Hero`, `About`, `Footer`, `Showcase`, `ErrorFallback`).
+
+## [0.2.2] — 2026-09-09
+
+### Added
+
+- Gallery seed in `reset.sql` (same 12 artifacts as fixtures).
+- `profiles` insert trigger on `auth.users`.
+- `instagram_auth` row for refreshed Instagram Login tokens.
+
+### Fixed
+
+- Empty Events/Instagram no longer insert extra section dividers.
+- Live Supabase reads no longer fall back to Instagram/gallery fixtures when tables are empty.
+
+## [0.2.1] — 2026-09-09
+
+### Changed
+
+- Instagram sync uses Instagram API with Instagram Login only (`graph.instagram.com/v22.0/{user-id}/media`).
+- Token-only config: `INSTAGRAM_USER_ID` optional (`GET /me`).
+- Carousel and video posts store a still (thumbnail / first image), copied to R2 when configured.
+
+## [0.2.0] — 2026-09-09
+
+### Added
+
+- Next.js App Router application shell (`app/`).
+- Supabase schema (`supabase/reset.sql`) for gallery, categories, contact, brand info, events, Instagram cache, admin profiles.
+- Cloudflare R2 upload path for gallery images (server-only).
+- Demo Mode when Supabase public env vars are missing.
+- Dynamic gallery (former catalog UI without shop chrome).
+- Instagram section + cron sync for `@nebula_noir.official`.
+- Contact form persistence to `contact_inquiries`.
+- CMS-backed brand info + events list.
+- Static legal routes (Impressum, Datenschutz, AGB, Widerruf, Versand, Custom Orders, Über uns).
+- Scrubbable hero video layer behind the existing hero content.
+- Supabase Auth admin (`/login`, `/admin/*`).
+- Root documentation set: `AGENTS.md`, `QA_CHECKLIST.md`, `SECURITY.md`, `DEPLOYMENT.md`, `INTEGRATION-SUMMARY.md`, `LESSONS_LEARNED.md`.
+- `.env.example` with Supabase, R2, Instagram, cron, and hero variables.
+
+### Changed
+
+- Cart, checkout, and prices removed from the live UI (gallery, not shop). Etsy remains commerce.
+- Footer legal entries are static pages instead of dialogs.
+- `useKV` cart persistence replaced; no client Spark KV.
+
+### Removed
+
+- GitHub Spark runtime (`@github/spark`, Spark Vite plugins, `spark.meta.json`, `runtime.config.json`).
+- Vite dev/build pipeline.
+
+### Fixed
+
+- Spark error-boundary copy no longer refers to “this spark”.

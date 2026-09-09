@@ -12,6 +12,11 @@ dist
 dist-ssr
 *-dist
 *.local
+.next
+out
+*.tsbuildinfo
+.env.local
+.env*.local
 
 # Editor directories and files
 .vscode/*

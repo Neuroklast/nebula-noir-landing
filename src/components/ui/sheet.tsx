@@ -1,3 +1,5 @@
+"use client"
+
 import { ComponentProps } from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
 import XIcon from "lucide-react/dist/esm/icons/x"

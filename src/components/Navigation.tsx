@@ -1,20 +1,19 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { CartItem } from '@/lib/types'
-import { CartDrawer } from './CartDrawer'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { List } from '@phosphor-icons/react'
-import logoImage from '@/assets/images/IMG_0085_(1).svg'
+import { InstagramLogo, List } from '@phosphor-icons/react'
 
 interface NavigationProps {
-  cart: CartItem[]
-  onUpdateQuantity: (productId: string, newQuantity: number) => void
-  onRemoveItem: (productId: string) => void
-  onCheckout: () => void
+  homeHref?: string
+  showEvents?: boolean
+  showInstagram?: boolean
 }
 
-export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }: NavigationProps) {
+export function Navigation({ homeHref = '/', showEvents = true, showInstagram = true }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +24,11 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
   }, [])
 
   const navLinks = [
-    { href: '#catalog', label: 'Collection' },
-    { href: '#about', label: 'Philosophy' },
-    { href: '#contact', label: 'Custom Orders' }
+    { href: '/#catalog', label: 'Collection' },
+    { href: '/#about', label: 'Philosophy' },
+    ...(showEvents ? [{ href: '/#events', label: 'Events' }] : []),
+    ...(showInstagram ? [{ href: '/#instagram', label: 'Instagram' }] : []),
+    { href: '/#contact', label: 'Custom Orders' }
   ]
 
   return (
@@ -36,10 +37,10 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
     }`}>
       <div className="container max-w-7xl mx-auto px-4 md:px-6 py-2 md:py-3">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 md:gap-4 group relative">
+          <a href={homeHref} className="flex items-center gap-2 md:gap-4 group relative">
             <div className="relative">
               <img 
-                src={logoImage} 
+                src="/images/IMG_0085_(1).svg" 
                 alt="Nebula Noir" 
                 className="h-14 w-14 md:h-20 md:w-20 lg:h-24 lg:w-24 xl:h-28 xl:w-28 transition-all duration-500 group-hover:scale-105"
                 style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 25px rgba(102, 51, 153, 0.3))' }}
@@ -64,23 +65,32 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
           </div>
 
           <div className="flex items-center gap-4">
-            <CartDrawer 
-              cart={cart} 
-              onUpdateQuantity={onUpdateQuantity}
-              onRemoveItem={onRemoveItem}
-              onCheckout={onCheckout}
-            />
+            <Button 
+              asChild
+              variant="outline" 
+              size="icon"
+              className="relative metallic-border hover:bg-foreground hover:text-background transition-all duration-500"
+            >
+              <a
+                href="https://www.instagram.com/nebula_noir.official"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <InstagramLogo size={24} weight="bold" />
+              </a>
+            </Button>
 
-            <Sheet>
+            <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="outline" size="icon" className="metallic-border">
+                <Button variant="outline" size="icon" className="metallic-border" aria-label="Menü">
                   <List size={24} weight="bold" />
                 </Button>
               </SheetTrigger>
               <SheetContent className="bg-card border-l-2 border-foreground/30">
                 <div className="flex justify-center mb-8 mt-4">
                   <img 
-                    src={logoImage} 
+                    src="/images/IMG_0085_(1).svg" 
                     alt="Nebula Noir" 
                     className="h-28 w-28"
                     style={{ filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 30px rgba(102, 51, 153, 0.4))' }}
@@ -91,6 +101,7 @@ export function Navigation({ cart, onUpdateQuantity, onRemoveItem, onCheckout }:
                     <a
                       key={link.href}
                       href={link.href}
+                      onClick={() => setMenuOpen(false)}
                       className="text-2xl uppercase tracking-[0.25em] hover:text-foreground transition-all duration-300 text-foreground/90 bioshock-glow-animated"
                     >
                       {link.label}

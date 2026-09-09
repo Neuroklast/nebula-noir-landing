@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -8,6 +10,7 @@ import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 import { ArtDecoCorner } from './ArtDecoCorner'
 import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
+import { submitContact } from '@/lib/actions/contact'
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,10 +18,12 @@ export function ContactSection() {
     email: '',
     message: ''
   })
+  const [submitting, setSubmitting] = useState(false)
   const { ref, isVisible } = useScrollTrigger(0.1)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (submitting) return
     
     if (!formData.name || !formData.email || !formData.message) {
       toast.error('Bitte fülle alle Felder aus')
@@ -30,12 +35,24 @@ export function ContactSection() {
       return
     }
 
-    toast.success('Nachricht gesendet! Wir kontaktieren dich durch die kosmische Leere.')
+    setSubmitting(true)
+    const result = await submitContact(formData)
+    setSubmitting(false)
+    if (!result.ok) {
+      toast.error(result.error)
+      return
+    }
+
+    if (result.demo) {
+      toast.success('Demo Mode: Nachricht lokal bestätigt, nicht gespeichert.')
+    } else {
+      toast.success('Nachricht gesendet! Wir kontaktieren dich durch die kosmische Leere.')
+    }
     setFormData({ name: '', email: '', message: '' })
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24 lg:py-32 relative overflow-hidden max-w-full" ref={ref}>
+    <section id="contact" className="py-16 md:py-24 lg:py-32 relative overflow-hidden max-w-full" ref={ref} style={{ scrollMarginTop: '7rem' }}>
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <motion.div 
           className="text-center mb-12 md:mb-16"
@@ -106,6 +123,7 @@ export function ContactSection() {
 
           <Button
             type="submit"
+            disabled={submitting}
             className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.15em] md:tracking-[0.25em] font-semibold py-4 md:py-6 text-sm md:text-base transition-all duration-500"
           >
             Nachricht senden
