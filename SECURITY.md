@@ -49,10 +49,9 @@ Service role is used only in:
 
 ## R2 upload limits
 
-- Max size: 10 MB
-- MIME allowlist: `image/jpeg`, `image/png`, `image/webp`, `image/gif`, `image/svg+xml`
-- Auth: admin session required
-- Keys: `gallery/{uuid}.{ext}` or `instagram/{id}.{ext}`
+- Images: max 10 MB; JPEG/PNG/WebP/GIF/SVG; `gallery/{uuid}.{ext}`
+- Hero video: max 80 MB; MP4/WebM/MOV; `hero/{uuid}.{ext}` via 120s presigned PUT (admin only)
+- Auth: admin session required for all uploads
 - No public write on the bucket; Next.js server uses S3-compatible credentials
 
 ## Cron

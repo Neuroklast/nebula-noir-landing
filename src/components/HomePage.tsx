@@ -21,9 +21,10 @@ interface HomePageProps {
   brandInfo: Record<string, BrandInfo>
   events: EventItem[]
   instagram: InstagramPost[]
+  heroVideoUrl?: string
 }
 
-export function HomePage({ products, brandInfo, events, instagram }: HomePageProps) {
+export function HomePage({ products, brandInfo, events, instagram, heroVideoUrl }: HomePageProps) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export function HomePage({ products, brandInfo, events, instagram }: HomePagePro
       <div className="relative z-[20]">
         <Navigation showEvents={events.length > 0} showInstagram={instagram.length > 0} />
         
-        <HeroSection />
+        <HeroSection videoUrl={heroVideoUrl} />
         <SectionTransition />
         <AboutSection info={brandInfo} />
         {events.length > 0 ? (

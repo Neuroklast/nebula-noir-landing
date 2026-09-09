@@ -3,11 +3,11 @@
 import { HeroVideoBackground } from './HeroVideoBackground'
 import { useT } from '@/i18n/context'
 
-export function HeroSection() {
+export function HeroSection({ videoUrl }: { videoUrl?: string }) {
   const t = useT()
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden max-w-full">
-      <HeroVideoBackground />
+      <HeroVideoBackground src={videoUrl} />
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

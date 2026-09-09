@@ -1,4 +1,5 @@
 import { DeleteObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { isR2Configured } from '@/lib/env'
 
 const ALLOWED_TYPES = new Set([
@@ -9,10 +10,17 @@ const ALLOWED_TYPES = new Set([
   'image/svg+xml',
 ])
 
+const ALLOWED_VIDEO_TYPES = new Set(['video/mp4', 'video/webm', 'video/quicktime'])
+
 export const R2_MAX_BYTES = 10 * 1024 * 1024
+export const R2_VIDEO_MAX_BYTES = 80 * 1024 * 1024
 
 export function isAllowedImageType(mime: string): boolean {
   return ALLOWED_TYPES.has(mime)
+}
+
+export function isAllowedVideoType(mime: string): boolean {
+  return ALLOWED_VIDEO_TYPES.has(mime)
 }
 
 export function getR2Client(): S3Client | null {
@@ -69,7 +77,24 @@ export function extensionForMime(mime: string): string {
       return 'gif'
     case 'image/svg+xml':
       return 'svg'
+    case 'video/mp4':
+      return 'mp4'
+    case 'video/webm':
+      return 'webm'
+    case 'video/quicktime':
+      return 'mov'
     default:
       return 'bin'
   }
+}
+
+export async function presignPut(key: string, contentType: string): Promise<string> {
+  const client = getR2Client()
+  if (!client) throw new Error('R2 is not configured')
+  const command = new PutObjectCommand({
+    Bucket: process.env.R2_BUCKET_NAME,
+    Key: key,
+    ContentType: contentType,
+  })
+  return getSignedUrl(client, command, { expiresIn: 120 })
 }

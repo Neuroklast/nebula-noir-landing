@@ -1,14 +1,15 @@
 import { HomePage } from '@/components/HomePage'
-import { brandMap, galleryAsProducts, getBrandInfo, getEvents, getGallery, getInstagramPosts } from '@/lib/data'
+import { brandMap, galleryAsProducts, getBrandInfo, getEvents, getGallery, getHeroVideoUrl, getInstagramPosts } from '@/lib/data'
 
 export const dynamic = 'force-dynamic'
 
 export default async function Page() {
-  const [gallery, brandInfo, events, instagram] = await Promise.all([
+  const [gallery, brandInfo, events, instagram, heroVideoUrl] = await Promise.all([
     getGallery(),
     getBrandInfo(),
     getEvents(),
     getInstagramPosts(),
+    getHeroVideoUrl(),
   ])
 
   return (
@@ -17,6 +18,7 @@ export default async function Page() {
       brandInfo={brandMap(brandInfo)}
       events={events}
       instagram={instagram}
+      heroVideoUrl={heroVideoUrl}
     />
   )
 }

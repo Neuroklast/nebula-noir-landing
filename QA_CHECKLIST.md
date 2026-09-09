@@ -60,7 +60,9 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 - [ ] Contact heading does not split `MASSANFERTIGUNGEN` mid-word on a 375px viewport.
 - [ ] Favicon is the Nebula Noir logo.
 - [ ] Demo Instagram/gallery images load from `/demo/instagram/*.jpg`.
-- [ ] Hero uses `/hero.mp4` when no `NEXT_PUBLIC_HERO_VIDEO_URL` is set.
+- [ ] Without a hero video the Art Deco pattern remains (no `/hero.mp4`).
+- [ ] Admin `/admin/hero` uploads MP4 via R2 presign; after save the landing hero scrubs on scroll.
+- [ ] Demo Mode hero upload shows a disabled toast.
 - [ ] Mobile menu closes after choosing a section.
 - [ ] Contact submit while in-flight does not send twice.
 - [ ] Gallery card hover still goes grayscale → color.

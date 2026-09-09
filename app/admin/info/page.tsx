@@ -3,7 +3,7 @@ import { getBrandInfo } from '@/lib/data'
 import { isDemoMode } from '@/lib/env'
 
 export default async function AdminInfoPage() {
-  const items = await getBrandInfo()
+  const items = (await getBrandInfo()).filter((item) => item.key !== 'hero_video')
   return (
     <div className="space-y-8">
       <h2 className="text-3xl uppercase tracking-[0.2em] bioshock-glow-animated">Info</h2>

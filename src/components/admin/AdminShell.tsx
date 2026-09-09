@@ -22,6 +22,7 @@ export function AdminShell({
     { href: '/admin/info', label: t('admin.info') },
     { href: '/admin/inquiries', label: t('admin.inquiries') },
     { href: '/admin/instagram', label: t('admin.instagram') },
+    { href: '/admin/hero', label: t('admin.hero') },
   ]
 
   const logout = async () => {

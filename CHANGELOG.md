@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in reverse chronological order.
 
+## [0.3.1] — 2026-09-09
+
+### Added
+
+- Admin **Hero-Video**: scrubbable background uploaded to R2 (presigned PUT), URL in `brand_info.hero_video`.
+
+### Removed
+
+- Bundled `public/hero.mp4`. Without an upload the Art Deco pattern stays.
+
 ## [0.3.0] — 2026-09-09
 
 ### Added
