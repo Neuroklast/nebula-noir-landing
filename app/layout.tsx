@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { CursorGlow } from '@/components/CursorGlow'
+import { SmoothScroll } from '@/components/SmoothScroll'
 import { LocaleProvider } from '@/i18n/context'
 import type { Locale } from '@/i18n/messages'
 import '@/main.css'
@@ -35,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <LocaleProvider initialLocale={locale}>
+          <SmoothScroll />
           <CursorGlow />
           {children}
         </LocaleProvider>

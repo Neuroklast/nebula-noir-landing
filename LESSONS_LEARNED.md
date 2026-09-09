@@ -42,7 +42,11 @@ instagram.com blocks unauthenticated fetch. Demo media must be files in `public/
 
 ## Intro screen vs App Router
 
-The original SPA ran the loading screen once. In App Router, visiting `/` again remounts `HomePage`. Gate with `sessionStorage` after the first completion or every internal navigation replays 3.5s.
+The original SPA ran the loading screen once. `sessionStorage` skip made the intro disappear for the rest of the tab. Play it on every `/` mount; lock `html`/`body` overflow and stop Lenis via `nn-intro-lock` so the overlay cannot be scrolled away.
+
+## Lenis
+
+Use window-root Lenis with `autoRaf` and `respectReducedMotion`. Do not wrap the React tree in a way that remounts children. `prevent` dialogs/sheets. Skip `/admin` and `/login`. Native `scroll` + `getBoundingClientRect` still work because Lenis scrolls the window.
 
 ## Empty CMS vs fixtures
 

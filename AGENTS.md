@@ -29,7 +29,8 @@ Allowed exceptions (product decisions):
 
 - Next.js App Router at `app/`. Shared UI and libs at `src/`.
 - Path alias `@/*` → `src/*`.
-- Client island: `src/components/HomePage.tsx` owns the landing experience (loading screen, cursor glow consumers, motion sections).
+- Client island: `src/components/HomePage.tsx` owns the landing experience (loading screen, cursor glow consumers, motion sections). Intro plays on every `/` visit.
+- Smooth scroll: Lenis in `src/components/SmoothScroll.tsx` (public pages only).
 - Server components fetch in `app/page.tsx` via `src/lib/data.ts`.
 - Demo Mode: if `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is missing, all reads use `src/lib/fixtures/`. Mutations no-op with a user-visible toast.
 - R2 uploads only on the server. Never expose R2 secrets to the client.

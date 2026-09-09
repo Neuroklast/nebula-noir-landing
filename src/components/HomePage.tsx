@@ -28,18 +28,24 @@ export function HomePage({ products, brandInfo, events, instagram, heroVideoUrl 
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    if (sessionStorage.getItem('nn-intro') === '1') {
-      setIsLoading(false)
+    document.documentElement.classList.toggle('nn-intro-lock', isLoading)
+    const html = document.documentElement
+    const body = document.body
+    const prevHtml = html.style.overflow
+    const prevBody = body.style.overflow
+    if (isLoading) {
+      html.style.overflow = 'hidden'
+      body.style.overflow = 'hidden'
     }
-  }, [])
-
-  const handleLoadingComplete = () => {
-    sessionStorage.setItem('nn-intro', '1')
-    setIsLoading(false)
-  }
+    return () => {
+      html.classList.remove('nn-intro-lock')
+      html.style.overflow = prevHtml
+      body.style.overflow = prevBody
+    }
+  }, [isLoading])
 
   if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} duration={3500} />
+    return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} duration={3500} />
   }
 
   return (

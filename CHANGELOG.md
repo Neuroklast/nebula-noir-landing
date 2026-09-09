@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in reverse chronological order.
 
+## [0.3.3] — 2026-09-09
+
+### Added
+
+- Lenis smooth wheel scroll on public pages (`respectReducedMotion`, dialogs/sheets skipped, stopped during intro).
+
+### Fixed
+
+- Loading screen plays on every visit to `/` (sessionStorage skip removed). Body scroll locked for the intro.
+
 ## [0.3.2] — 2026-09-09
 
 ### Changed
