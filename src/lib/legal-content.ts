@@ -301,11 +301,10 @@ export const LEGAL_CONTENT = {
         Wir arbeiten mit:
       </p>
       <ul>
-        <li>Epoxidharz (transparent, schwarz, mit Glitzer/Einschlüssen)</li>
-        <li>PVC (verschiedene Farben und Stärken)</li>
-        <li>Metalle: Silber 925, Messing, Edelstahl</li>
-        <li>Natursteine: Amethyst, Onyx, Mondstein, etc.</li>
-        <li>Ketten und Hardware in verschiedenen Ausführungen</li>
+        <li>Kunstleder</li>
+        <li>PVC</li>
+        <li>Schwere Metallketten, Nieten, große Ringe</li>
+        <li>Fluoreszierendes Neon (Lila, Blau, Grün)</li>
       </ul>
 
       <h3>Preise</h3>
@@ -325,81 +324,60 @@ export const LEGAL_CONTENT = {
     content: `
       <h3>Die Marke</h3>
       <p>
-        Nebula Noir ist eine unabhängige Schmuck- und Accessoire-Marke, die sich der dunklen Ästhetik und handwerklicher Perfektion verschrieben hat.
+        Nebula Noir ist eine kleine Schmuckmarke aus Deutschland. Cybergoth, Industrial, Cyberpunk, Dark Alternative.
       </p>
 
       <h3>Die Philosophie</h3>
       <p>
-        <strong>Cosmic Art Deco Goth</strong> – Die Fusion aus der geometrischen Strenge des Art Déco (1920er Jahre), 
-        der unendlichen Tiefe des Kosmos und der dunklen Ästhetik der Gothic-Subkultur.
+        <strong>Cybergoth Industrial</strong> – Neon auf Schwarz. Ketten, Nieten, große Ringe.
       </p>
       <p>
-        Wir glauben, dass wahre Schönheit in Schatten, im Bizarren und im Unapologetischen liegt. 
-        Jedes Schmuckstück ist ein Artefakt – handgefertigt, einzigartig und mit mystischer Intention erschaffen.
+        Statementschmuck für Festivals, Clubnächte und Szene-Events. Keine Massenware.
       </p>
 
       <h3>Handwerk</h3>
       <p>
-        Alle Produkte werden von Hand in Deutschland gefertigt. Wir nutzen hochwertige Materialien wie 
-        Epoxidharz, PVC, Silber 925, Messing und natürliche Edelsteine.
+        Alles von Hand in Deutschland. Kunstleder, PVC, schwere Metallketten, Nieten, große Ringe, fluoreszierendes Neon.
       </p>
       <p>
-        Keine Massenproduktion. Jedes Stück ist ein Unikat.
+        Keine Serie, keine Massenproduktion.
       </p>
 
       <h3>Für wen?</h3>
       <p>
-        Nebula Noir richtet sich an:
+        Schwarze Szene, Cosplay, Nerdkultur. Festivals, Clubs, Szene-Events.
       </p>
-      <ul>
-        <li>Gothic & Dark Wave Enthusiasten</li>
-        <li>Modern Witches & Occult Practitioners</li>
-        <li>Alternative Fashion Liebhaber</li>
-        <li>LARP & Cosplay Gemeinschaft</li>
-        <li>Festival-Gänger (WGT, Mera Luna, Amphi, etc.)</li>
-        <li>Alle, die sich außerhalb der Norm bewegen</li>
-      </ul>
 
       <h3>Werte</h3>
       <ul>
-        <li><strong>Handcraft:</strong> Jedes Produkt ist handgefertigt – kein Stück gleicht dem anderen.</li>
-        <li><strong>Slow Fashion:</strong> Qualität über Quantität. Nachhaltige Produktion statt Fast Fashion.</li>
-        <li><strong>Individualität:</strong> Schmuck als Ausdruck nonkonformistischer Identität.</li>
-        <li><strong>Inklusivität:</strong> Für alle Körper, Identitäten und ästhetischen Präferenzen.</li>
+        <li><strong>Handwerk:</strong> Jedes Stück einzeln. Kunstleder, PVC, Ketten, Nieten, Neon.</li>
+        <li><strong>Look:</strong> Schwarz, Metall, fluoreszierendes Neon. Industrial, Clublicht, Subkultur.</li>
+        <li><strong>Statement:</strong> Laut tragen. Festivals, Clubs, Szene-Events.</li>
+        <li><strong>Szene:</strong> Schwarze Szene, Cosplay, Nerdkultur. Jeder Körper, jedes Geschlecht.</li>
       </ul>
 
       <h3>Made in Germany</h3>
       <p>
-        Alle Nebula Noir Produkte werden in Deutschland entworfen und handgefertigt.
+        Entwurf und Fertigung in Deutschland.
       </p>
 
-      <h3>Materialien & Nachhaltigkeit</h3>
-      <p>
-        Wir verwenden ausschließlich hochwertige und langlebige Materialien:
-      </p>
+      <h3>Materialien</h3>
       <ul>
-        <li><strong>Epoxidharz:</strong> Kristallklar und robust, ideal für Einschlüsse und Farbeffekte</li>
-        <li><strong>PVC:</strong> Flexibel, langlebig und hautfreundlich</li>
-        <li><strong>Metalle:</strong> Silber 925, Messing, Edelstahl – nickelfrei</li>
-        <li><strong>Natursteine:</strong> Amethyst, Onyx, Mondstein, Labradorit</li>
+        <li><strong>Kunstleder:</strong> Breite Choker, Harness, Basis</li>
+        <li><strong>PVC:</strong> Hart, neonfähig, Clubtauglich</li>
+        <li><strong>Metall:</strong> Schwere Ketten, Nieten, große Ringe</li>
+        <li><strong>Neon:</strong> Fluoreszierend, Lila, Blau, Grün</li>
       </ul>
       <p>
-        Verpackungen sind recycelbar und wiederverwendbar. Wir verzichten auf unnötigen Plastikabfall.
+        Verpackung recycelbar, ohne unnötiges Plastik.
       </p>
 
-      <h3>Die Gründerin</h3>
+      <h3>Events</h3>
       <p>
-        Nebula Noir wurde von einer leidenschaftlichen Künstlerin gegründet, die in der Gothic- und Alternative-Szene verwurzelt ist. 
-        Jedes Design ist eine Verschmelzung aus historischer Ästhetik, Mystizismus und zeitgenössischer Subkultur.
-      </p>
-
-      <h3>Community</h3>
-      <p>
-        Wir sind stolz darauf, Teil der alternativen Community zu sein. Nebula Noir ist regelmäßig auf Festivals wie dem 
-        Wave-Gotik-Treffen, M'era Luna und weiteren Events vertreten.
+        Wir stehen auf Festivals, unter anderem Wave-Gotik-Treffen, M'era Luna und LOYG Festival (Bochum).
       </p>
       <p>
-        Folge uns auf Instagram (@nebulanoirnn) für Behind-the-Scenes, neue Designs und exklusive Releases.
+        Instagram: @nebula_noir.official
       </p>
     `
   }

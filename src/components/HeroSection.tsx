@@ -46,7 +46,7 @@ export function HeroSection({ videoUrl }: { videoUrl?: string }) {
               </h1>
               <div className="flex items-center justify-center gap-3 md:gap-4">
                 <div className="w-16 md:w-24 h-0.5 bg-gradient-to-r from-transparent via-foreground to-foreground bioshock-glow-animated" />
-                <span className="text-base md:text-lg uppercase tracking-[0.3em] text-foreground/80">☾</span>
+                <span className="text-base md:text-lg uppercase tracking-[0.3em] text-foreground/80 spark-theme-moon-symbol">☾</span>
                 <div className="w-16 md:w-24 h-0.5 bg-gradient-to-l from-transparent via-foreground to-foreground bioshock-glow-animated" />
               </div>
             </div>

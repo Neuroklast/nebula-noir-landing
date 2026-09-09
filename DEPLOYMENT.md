@@ -34,6 +34,33 @@ on conflict (id) do update set role = 'admin';
 5. Copy Project URL and anon key into `NEXT_PUBLIC_SUPABASE_*`.
 6. Copy service role key into `SUPABASE_SERVICE_ROLE_KEY` (Vercel encrypted env).
 
+Live DB already seeded? Do **not** re-run `reset.sql` (it drops tables). Instead update copy and add LOYG:
+
+```sql
+update public.brand_info set title = 'Mission', body = 'Lautes Statement für die schwarze Szene, Cosplay und Nerdkultur. Keine Massenware.' where key = 'mission';
+update public.brand_info set title = 'Identität', body = 'Cybergoth, Industrial, Cyberpunk, Dark Alternative. Neon auf Schwarz. Ketten, Nieten, große Ringe.' where key = 'identity';
+update public.brand_info set title = 'Handwerk', body = 'Kunstleder, PVC, schwere Metallketten, Nieten, große Ringe, fluoreszierendes Neon. Von Hand. Keine Serie.' where key = 'craft';
+update public.brand_info set title = 'Handwerk', body = 'Jedes Stück einzeln. Kunstleder, PVC, Ketten, Nieten, Neon – von uns verarbeitet.' where key = 'value_handwerk';
+update public.brand_info set title = 'Look', body = 'Schwarz, Metall, fluoreszierendes Neon. Industrial, Clublicht, Subkultur.' where key = 'value_aesthetik';
+update public.brand_info set title = 'Statement', body = 'Laut tragen. Festivals, Clubs, Szene-Events.' where key = 'value_individualitaet';
+update public.brand_info set title = 'Szene', body = 'Schwarze Szene, Cosplay, Nerdkultur. Jeder Körper, jedes Geschlecht.' where key = 'value_inklusivitaet';
+update public.brand_info set title = 'Zitat', body = 'Für Festivals, Clubnächte und Szene-Events.' where key = 'quote';
+
+insert into public.events (title, venue, city, starts_at, ends_at, description, url, published)
+select
+  'LOYG Festival',
+  'Bochumer Eventcenter, Rombacher Hütte 6–8',
+  'Bochum',
+  '2026-09-12 14:00:00+02',
+  '2026-09-12 22:00:00+02',
+  'Stand im Künstlerbereich. Let Out Your Geek: Popkultur, Cosplay, Gaming und Musik. Samstag 14–22 Uhr, letzter Einlass 20 Uhr. Aftershow 22:30–03:30 (ab 18).',
+  'https://bochumer-eventcenter.de/',
+  true
+where not exists (
+  select 1 from public.events where title = 'LOYG Festival' and starts_at = '2026-09-12 14:00:00+02'
+);
+```
+
 ## 3. Cloudflare R2
 
 1. R2 → Create bucket (e.g. `nebula-noir-gallery`).

@@ -8,10 +8,10 @@ Living snapshot of product status, schema, and services.
 |---|---|---|
 | Hero | Static + optional video URL | Existing hero, video behind |
 | About | `brand_info` / fixtures | Existing AboutSection |
-| Events | `events` | New section, existing card language |
+| Events | `events` | New section, existing card language; landing shows upcoming only (LOYG 2026-09-12) |
 | Gallery | `gallery_images` + R2 / fixtures | Existing catalog chrome, no prices/cart |
 | Instagram | `instagram_posts` / fixtures | Instagram Login API, `@nebula_noir.official` |
-| i18n | `src/i18n/messages.ts` | DE default, EN cookie `nn-locale` |
+| i18n | `src/i18n/messages.ts` | DE default, EN cookie `nn-locale`; Cybergoth Industrial copy |
 | Hero video | `brand_info.hero_video` + R2 `hero/` | Admin `/admin/hero`, scroll-scrub |
 | Contact | `contact_inquiries` | Existing form |
 | Legal | `src/lib/legal-content.ts` | Static routes |

@@ -11,7 +11,7 @@ interface HeroProps {
 
 export default function Hero({ 
   title = "NEBULA NOIR", 
-  subtitle = "Cosmic Art Deco Goth",
+  subtitle = "Cybergoth Industrial",
   ctaText = "EXPLORE COLLECTION",
   onCtaClick 
 }: HeroProps) {

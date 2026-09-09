@@ -60,8 +60,8 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
           </p>
         )}
 
-        <div className="flex items-center justify-between pt-4 md:pt-6 border-t border-foreground/20">
-          <div className="text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-wider spark-theme-bioshock-glow">
+        <div className="flex items-center justify-between gap-2 pt-4 md:pt-6 border-t border-foreground/20">
+          <div className="min-w-0 text-base md:text-lg lg:text-xl font-light text-foreground tracking-wider spark-theme-bioshock-glow truncate">
             {t(`categories.${product.category}`)}
           </div>
           <Button
@@ -69,7 +69,7 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
               e.stopPropagation()
               onViewDetails(product)
             }}
-            className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.2em] font-semibold flex items-center gap-2 transition-all duration-500 px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm spark-theme-art-deco-button"
+            className="shrink-0 bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.2em] font-semibold flex items-center gap-2 transition-all duration-500 px-3 md:px-4 py-2 md:py-3 text-xs md:text-sm spark-theme-art-deco-button"
           >
             {t('catalog.details')}
           </Button>

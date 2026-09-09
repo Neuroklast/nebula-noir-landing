@@ -4,7 +4,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '1',
     name: 'Void Serpent Choker',
-    description: 'Handcrafted PVC choker with silver serpent charm and adjustable chain. A statement piece channeling cosmic darkness.',
+    description: 'PVC-Choker, Kunstleder, schwere Kette, große Ringe.',
     price: 45.00,
     category: 'chokers',
     image: '/demo/instagram/01.jpg',
@@ -13,8 +13,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '2',
-    name: 'Nebula Resin Ring',
-    description: 'Transparent resin ring infused with violet glitter and silver flakes, capturing the essence of distant nebulae.',
+    name: 'Neon Resin Ring',
+    description: 'PVC/Resin-Ring mit fluoreszierendem Neon.',
     price: 28.00,
     category: 'rings',
     image: '/demo/instagram/02.jpg',
@@ -23,8 +23,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '3',
-    name: 'Lunar Phase Earrings',
-    description: 'Sterling silver crescent moon earrings with geometric Art Deco detailing. Celebrate the cycles of darkness and light.',
+    name: 'Chain Ring Earrings',
+    description: 'Metallringe an Kette. Industrial-Hardware.',
     price: 38.00,
     category: 'earrings',
     image: '/demo/instagram/03.jpg',
@@ -32,8 +32,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '4',
-    name: 'Gothic Pentacle Bracelet',
-    description: 'Adjustable chain bracelet featuring hand-cast pentacle charm. For modern witches and occult enthusiasts.',
+    name: 'Rivet Chain Bracelet',
+    description: 'Kette, Nieten, große Ringe. Kunstleder-Details.',
     price: 42.00,
     category: 'bracelets',
     image: '/demo/instagram/04.jpg',
@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
   {
     id: '5',
     name: 'Cyber Hex Choker',
-    description: 'Black PVC base with toxic green hex pattern and silver hardware. Dieselpunk meets dark future.',
+    description: 'Kunstleder/PVC-Choker, Neon-Hex, Metall-Hardware.',
     price: 52.00,
     category: 'chokers',
     image: '/demo/instagram/05.jpg',
@@ -52,8 +52,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '6',
-    name: 'Starlight Resin Bangle',
-    description: 'Wide resin bangle with embedded silver leaf and cosmic purple swirls. Each piece is completely unique.',
+    name: 'Neon Resin Bangle',
+    description: 'Breiter PVC/Resin-Reif, fluoreszierendes Neon.',
     price: 48.00,
     category: 'bracelets',
     image: '/demo/instagram/06.jpg',
@@ -62,8 +62,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '7',
-    name: 'Occult Sigil Ring',
-    description: 'Hand-engraved brass ring featuring custom sigil design. A talisman for personal power and mysticism.',
+    name: 'Industrial Steel Ring',
+    description: 'Schwerer Metallring, von Hand graviert.',
     price: 35.00,
     category: 'rings',
     image: '/demo/instagram/07.jpg',
@@ -72,8 +72,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '8',
-    name: 'Deco Diamond Studs',
-    description: 'Geometric Art Deco inspired silver studs. Minimalist elegance with gothic undertones.',
+    name: 'Neon Studs',
+    description: 'Metallstecker, fluoreszierendes Neon.',
     price: 32.00,
     category: 'earrings',
     image: '/demo/instagram/08.jpg',
@@ -81,8 +81,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '9',
-    name: 'Ritual Waist Chain',
-    description: 'Adjustable chain belt with hanging moon charms and violet crystal beads. Festival and ritual wear.',
+    name: 'Ring Chain Belt',
+    description: 'Kettengürtel, große Ringe, Nieten.',
     price: 58.00,
     category: 'accessories',
     image: '/demo/instagram/09.jpg',
@@ -91,8 +91,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '10',
-    name: 'Cosmic Collar Necklace',
-    description: 'Statement collar piece with layered chains and celestial charms. Art Deco meets cosmic goth.',
+    name: 'Chain Collar',
+    description: 'Kragen aus schweren Ketten und großen Ringen.',
     price: 68.00,
     category: 'chokers',
     image: '/demo/instagram/10.jpg',
@@ -101,8 +101,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '11',
-    name: 'Shadow Crystal Ring',
-    description: 'Black resin ring with embedded raw amethyst crystal. Natural stone meets handcrafted design.',
+    name: 'Black Resin Ring',
+    description: 'Schwarzer PVC/Resin-Ring, Metallkern.',
     price: 40.00,
     category: 'rings',
     image: '/demo/instagram/07.jpg',
@@ -111,8 +111,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: '12',
-    name: 'Witching Hour Earrings',
-    description: 'Long chain earrings with pentacle and crescent moon charms. Statement pieces for the bold.',
+    name: 'Drop Chain Earrings',
+    description: 'Lange Kettenohrringe, Ringe, Nieten.',
     price: 44.00,
     category: 'earrings',
     image: '/demo/instagram/08.jpg',
@@ -121,7 +121,7 @@ export const PRODUCTS: Product[] = [
 ]
 
 export const CATEGORIES = [
-  { value: 'all', label: 'Alle Artefakte' },
+  { value: 'all', label: 'Alle Stücke' },
   { value: 'chokers', label: 'Chokers' },
   { value: 'bracelets', label: 'Armbänder' },
   { value: 'rings', label: 'Ringe' },

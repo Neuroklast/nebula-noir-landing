@@ -12,6 +12,11 @@ function formatRange(start: string, end: string | null | undefined, locale: stri
   const startLabel = s.toLocaleDateString(tag, { day: '2-digit', month: 'short', year: 'numeric' })
   if (!end) return startLabel
   const e = new Date(end)
+  const sameDay = s.toDateString() === e.toDateString()
+  if (sameDay) {
+    const time: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' }
+    return `${startLabel} · ${s.toLocaleTimeString(tag, time)} – ${e.toLocaleTimeString(tag, time)}`
+  }
   return `${startLabel} – ${e.toLocaleDateString(tag, { day: '2-digit', month: 'short', year: 'numeric' })}`
 }
 
@@ -48,7 +53,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
               animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
+              <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated spark-theme-moon-symbol" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
               <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">{event.title}</h3>
               <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
                 {event.venue}{event.city ? ` · ${event.city}` : ''}

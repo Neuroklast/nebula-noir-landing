@@ -46,7 +46,7 @@ export function ArtDecoAnimatedDivider({ className = '', delay = 0 }: ArtDecoAni
             animationDelay: `${delay + 0.5}s`
           }}
         >
-          ☾
+          <span className="spark-theme-moon-symbol">☾</span>
         </div>
         
         <div 

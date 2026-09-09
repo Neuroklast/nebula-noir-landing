@@ -19,9 +19,9 @@ export function ThemeDemo() {
   ]
 
   const products = [
-    { id: 1, name: 'Cosmic Choker', price: '€45', description: 'Handcrafted PVC choker with moon phase details' },
-    { id: 2, name: 'Nebula Ring', price: '€32', description: 'Sterling silver ring with purple resin nebula' },
-    { id: 3, name: 'Stardust Earrings', price: '€28', description: 'Art Deco inspired geometric earrings' }
+    { id: 1, name: 'Cyber Hex Choker', price: '€45', description: 'Kunstleder, PVC, Kette, Nieten, Neon' },
+    { id: 2, name: 'Industrial Steel Ring', price: '€32', description: 'Schwerer Metallring, große Ringschiene' },
+    { id: 3, name: 'Neon Studs', price: '€28', description: 'Metallstecker, fluoreszierendes Neon' }
   ]
 
   return (
@@ -43,7 +43,7 @@ export function ThemeDemo() {
 
             <Hero 
               title="NEBULA NOIR"
-              subtitle="Cosmic Art Deco Goth"
+               subtitle="Cybergoth Industrial"
               ctaText="EXPLORE COLLECTION"
               onCtaClick={() => {
                 document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
@@ -58,8 +58,7 @@ export function ThemeDemo() {
                   ABOUT US
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed tracking-wide">
-                  Handgefertigte okkulte und alternative Accessoires. Jedes Stück ist ein Unikat, 
-                  das die Grenze zwischen Eleganz und Dunkelheit überschreitet.
+                  Statementschmuck für Festivals, Clubnächte und Szene-Events. Kunstleder, PVC, Ketten, Nieten, Neon.
                 </p>
               </div>
             </section>
@@ -77,7 +76,7 @@ export function ThemeDemo() {
                     <Card key={product.id} delay={index * 0.2}>
                       <div className="space-y-4">
                         <div className="aspect-square bg-muted/20 mb-4 flex items-center justify-center">
-                          <span className="text-6xl spark-theme-bioshock-glow">☾</span>
+                          <span className="text-6xl spark-theme-bioshock-glow spark-theme-moon-symbol">☾</span>
                         </div>
                         
                         <h3 className="text-xl tracking-[0.15em] text-foreground">

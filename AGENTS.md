@@ -4,7 +4,7 @@ Read this file at the start of every session. Follow it before writing code.
 
 ## Product
 
-Nebula Noir is a Cosmic Art Deco Goth jewelry brand site. The live frontend was a GitHub Spark + Vite SPA. It is now a Next.js App Router app with Supabase (data + auth) and Cloudflare R2 (gallery media). Etsy remains the shop. This site is a gallery, brand, events, Instagram, and contact surface.
+Nebula Noir is a Cybergoth / Industrial / Cyberpunk / Dark Alternative jewelry brand site. Copy is hard and technical: faux leather, PVC, heavy chains, rivets, oversized rings, fluorescent neon. Audience: black scene, cosplay, nerd culture, festivals, club nights. Do not write Art Deco, 1920s, occult, or mystical copy. The live frontend was a GitHub Spark + Vite SPA. It is now a Next.js App Router app with Supabase (data + auth) and Cloudflare R2 (gallery media). Etsy remains the shop. This site is a gallery, brand, events, Instagram, and contact surface. Visual chrome (including `art-deco-*` CSS class names) stays frozen; the words do not.
 
 ## Design Freeze (absolute)
 

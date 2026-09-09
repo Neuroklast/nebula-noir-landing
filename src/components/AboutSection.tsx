@@ -63,7 +63,7 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
             animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated">☾</div>
+            <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated spark-theme-moon-symbol">☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">{t('about.identityTitle')}</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               {pick(info, 'identity', t('about.identity'))}
@@ -76,7 +76,7 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
             animate={isVisible ? { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' } : {}}
             transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
+            <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated spark-theme-moon-symbol" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">{t('about.craftTitle')}</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
               {pick(info, 'craft', t('about.craft'))}
@@ -94,25 +94,25 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
             <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 md:mb-12 text-center uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated">{t('about.valuesTitle')}</h3>
             <ul className="space-y-6 md:space-y-8 text-sm md:text-base lg:text-lg">
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 spark-theme-moon-symbol">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">{t('about.valueCraftLabel')}:</strong> {pick(info, 'value_handwerk', t('about.valueCraft'))}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 spark-theme-moon-symbol">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">{t('about.valueAestheticLabel')}:</strong> {pick(info, 'value_aesthetik', t('about.valueAesthetic'))}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 spark-theme-moon-symbol">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">{t('about.valueIndividualLabel')}:</strong> {pick(info, 'value_individualitaet', t('about.valueIndividual'))}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
-                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
+                <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0 spark-theme-moon-symbol">☾</span>
                 <span className="text-foreground/80 font-light">
                   <strong className="text-foreground uppercase tracking-wider">{t('about.valueInclusiveLabel')}:</strong> {pick(info, 'value_inklusivitaet', t('about.valueInclusive'))}
                 </span>

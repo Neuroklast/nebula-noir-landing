@@ -8,8 +8,8 @@ import './styles.css'
 
 export const sparkTheme = {
   id: 'nebula-noir-theme',
-  name: 'Nebula Noir - Cosmic Art Deco Goth',
-  description: 'A dark, elegant theme inspired by Art Deco geometry, cosmic aesthetics, and gothic sensibilities. Features subtle CRT effects, glowing purple accents, and mechanical animations.',
+  name: 'Nebula Noir - Cybergoth Industrial',
+  description: 'Dark industrial chrome, CRT overlay, neon-violet glow. Visual class names stay; brand copy is Cybergoth / Industrial / Cyberpunk / Dark Alternative.',
   version: '1.0.0',
   author: 'Nebula Noir',
   

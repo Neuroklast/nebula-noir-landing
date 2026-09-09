@@ -1,7 +1,7 @@
 'use client'
 
 import { Product } from '@/lib/types'
-import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { EnvelopeSimple, X } from '@phosphor-icons/react'
@@ -21,6 +21,8 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] md:w-[calc(100vw-4rem)] md:max-w-[calc(100vw-4rem)] lg:w-[calc(100vw-6rem)] lg:max-w-[calc(100vw-6rem)] max-h-[90vh] p-0 bg-background border-2 border-foreground overflow-hidden flex flex-col">
+        <DialogTitle className="sr-only">{product.name}</DialogTitle>
+        <DialogDescription className="sr-only">{product.description}</DialogDescription>
         <AnimatePresence>
           {open && (
             <motion.div
@@ -65,7 +67,6 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                   transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div>
-                    <DialogTitle className="sr-only">{product.name}</DialogTitle>
                     <motion.h2 
                       className="text-3xl md:text-4xl lg:text-5xl mb-6 uppercase tracking-[0.2em] bioshock-glow-animated"
                       initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
