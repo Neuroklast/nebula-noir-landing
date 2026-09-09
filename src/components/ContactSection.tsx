@@ -11,6 +11,7 @@ import { motion } from 'framer-motion'
 import { ArtDecoCorner } from './ArtDecoCorner'
 import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
 import { submitContact } from '@/lib/actions/contact'
+import { useT } from '@/i18n/context'
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -20,18 +21,19 @@ export function ContactSection() {
   })
   const [submitting, setSubmitting] = useState(false)
   const { ref, isVisible } = useScrollTrigger(0.1)
+  const t = useT()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (submitting) return
     
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Bitte fülle alle Felder aus')
+      toast.error(t('contact.fillAll'))
       return
     }
 
     if (!formData.email.includes('@')) {
-      toast.error('Bitte gib eine gültige E-Mail-Adresse ein')
+      toast.error(t('contact.invalidEmail'))
       return
     }
 
@@ -44,9 +46,9 @@ export function ContactSection() {
     }
 
     if (result.demo) {
-      toast.success('Demo Mode: Nachricht lokal bestätigt, nicht gespeichert.')
+      toast.success(t('contact.demoSent'))
     } else {
-      toast.success('Nachricht gesendet! Wir kontaktieren dich durch die kosmische Leere.')
+      toast.success(t('contact.sent'))
     }
     setFormData({ name: '', email: '', message: '' })
   }
@@ -63,18 +65,18 @@ export function ContactSection() {
           <div className="flex justify-center mb-6 md:mb-8">
             <div className="text-5xl md:text-7xl bioshock-glow-animated">✉</div>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated px-4">
-            Maßanfertigungen & Anfragen
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated px-4 whitespace-pre-line">
+            {t('contact.title')}
           </h2>
           <ArtDecoAnimatedDivider className="max-w-md mx-auto" />
           <p className="text-sm md:text-base lg:text-lg text-foreground/70 mt-6 md:mt-8 font-light px-4 leading-relaxed">
-            Du suchst ein maßgeschneidertes Stück oder hast Fragen zu unseren Artefakten? Kontaktiere uns durch den Äther.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
         <motion.form 
           onSubmit={handleSubmit} 
-          className="relative p-6 md:p-10 lg:p-14 space-y-6 md:space-y-8 border-2 border-foreground/30 bg-background/50"
+           className="relative p-6 md:p-10 lg:p-14 space-y-6 md:space-y-8 border-2 border-foreground/30 bg-background/50 max-w-full overflow-hidden"
           initial={{ opacity: 0, clipPath: 'inset(50% 50%)' }}
           animate={isVisible ? { opacity: 1, clipPath: 'inset(0% 0%)' } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -83,20 +85,20 @@ export function ContactSection() {
           <ArtDecoCorner position="bottom-right" size={50} delay={0.6} />
           <div className="space-y-3">
             <Label htmlFor="name" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-              Name
+              {t('contact.name')}
             </Label>
             <Input
               id="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="bg-background border-0 border-b-2 border-foreground/30 focus:border-foreground rounded-none px-0 text-base transition-all duration-300"
-              placeholder="Dein Name"
+              placeholder={t('contact.namePlaceholder')}
             />
           </div>
 
           <div className="space-y-3">
             <Label htmlFor="email" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-              E-Mail
+              {t('contact.email')}
             </Label>
             <Input
               id="email"
@@ -104,20 +106,20 @@ export function ContactSection() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="bg-background border-0 border-b-2 border-foreground/30 focus:border-foreground rounded-none px-0 text-base transition-all duration-300"
-              placeholder="deine.email@beispiel.de"
+              placeholder={t('contact.emailPlaceholder')}
             />
           </div>
 
           <div className="space-y-3">
             <Label htmlFor="message" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-              Nachricht
+              {t('contact.message')}
             </Label>
             <Textarea
               id="message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="bg-background border-2 border-foreground/30 focus:border-foreground min-h-[180px] text-base resize-none transition-all duration-300"
-              placeholder="Erzähle uns von deiner Vision oder Anfrage..."
+              placeholder={t('contact.messagePlaceholder')}
             />
           </div>
 
@@ -126,16 +128,16 @@ export function ContactSection() {
             disabled={submitting}
             className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.15em] md:tracking-[0.25em] font-semibold py-4 md:py-6 text-sm md:text-base transition-all duration-500"
           >
-            Nachricht senden
+            {t('contact.send')}
           </Button>
         </motion.form>
 
         <div className="mt-8 md:mt-12 text-center space-y-3 px-4">
           <p className="text-foreground/60 text-xs md:text-sm uppercase tracking-wider">
-            Maßanfertigungen benötigen in der Regel 2-4 Wochen für die Fertigung.
+            {t('contact.leadTime')}
           </p>
           <p className="text-foreground/50 text-xs italic">
-            Alle Stücke werden mit Intention und Sorgfalt von Hand gefertigt.
+            {t('contact.handmade')}
           </p>
         </div>
       </div>

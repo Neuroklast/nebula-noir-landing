@@ -8,12 +8,14 @@ import { ProductDetailDialog } from './ProductDetailDialog'
 import { Button } from '@/components/ui/button'
 import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
+import { useT } from '@/i18n/context'
 
 interface CatalogSectionProps {
   products?: Product[]
 }
 
 export function CatalogSection({ products = PRODUCTS }: CatalogSectionProps) {
+  const t = useT()
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [detailDialogOpen, setDetailDialogOpen] = useState(false)
@@ -50,12 +52,12 @@ export function CatalogSection({ products = PRODUCTS }: CatalogSectionProps) {
           animate={isVisible ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4">
-            Artefakt Kollektion
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4 whitespace-pre-line">
+            {t('catalog.title')}
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
           <p className="text-sm md:text-base lg:text-lg text-foreground/70 mt-6 md:mt-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
-            Jedes Stück wird mit mystischer Intention von Hand gefertigt. Durchstöbere unsere Kollektion kosmischer Accessoires.
+            {t('catalog.subtitle')}
           </p>
         </motion.div>
 
@@ -77,7 +79,7 @@ export function CatalogSection({ products = PRODUCTS }: CatalogSectionProps) {
                   : 'border-2 border-foreground/50 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/10'
               }`}
             >
-              {category.label}
+              {t(`categories.${category.value}`)}
             </Button>
           ))}
         </motion.div>
@@ -97,7 +99,7 @@ export function CatalogSection({ products = PRODUCTS }: CatalogSectionProps) {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-xl text-foreground/60 uppercase tracking-wider">No artifacts found in this category.</p>
+            <p className="text-xl text-foreground/60 uppercase tracking-wider">{t('catalog.empty')}</p>
           </div>
         )}
       </div>

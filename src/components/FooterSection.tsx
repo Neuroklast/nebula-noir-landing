@@ -1,9 +1,13 @@
+'use client'
+
 import { LegalSection } from '@/lib/legal-content'
+import { useT } from '@/i18n/context'
 
 const legalLinkClass =
   'text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider text-left'
 
 export function FooterSection() {
+  const t = useT()
   const currentYear = new Date().getFullYear()
 
   const legalHref = (section: LegalSection) => {
@@ -40,26 +44,26 @@ export function FooterSection() {
               <h3 className="text-lg md:text-2xl uppercase tracking-[0.15em] md:tracking-[0.2em] bioshock-glow-animated">Nebula Noir</h3>
             </div>
             <p className="text-foreground/70 leading-relaxed font-light text-xs md:text-sm">
-              Handgefertigter okkulter & alternativer Schmuck. Cosmic Art Deco Goth für nonkonformistische Seelen.
+              {t('footer.blurb')}
             </p>
           </div>
 
           <div>
-            <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">Shop</h4>
+            <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">{t('footer.shop')}</h4>
             <ul className="space-y-2 md:space-y-3">
               <li>
                 <a href="/#catalog" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
-                  Kollektion
+                  {t('footer.collection')}
                 </a>
               </li>
               <li>
                 <a href="/#about" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
-                  Philosophie
+                  {t('footer.philosophy')}
                 </a>
               </li>
               <li>
                 <a href="/#contact" className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider">
-                  Maßanfertigungen
+                  {t('footer.custom')}
                 </a>
               </li>
               <li>
@@ -67,21 +71,21 @@ export function FooterSection() {
                   href={legalHref('customOrders')}
                   className={legalLinkClass}
                 >
-                  Custom Orders
+                  {t('footer.customOrders')}
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">Info</h4>
+            <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">{t('footer.info')}</h4>
             <ul className="space-y-2 md:space-y-3">
               <li>
                 <a 
                   href={legalHref('about')}
                   className={legalLinkClass}
                 >
-                  Über Uns
+                  {t('footer.about')}
                 </a>
               </li>
               <li>
@@ -89,7 +93,7 @@ export function FooterSection() {
                   href={legalHref('versand')}
                   className={legalLinkClass}
                 >
-                  Versand
+                  {t('footer.shipping')}
                 </a>
               </li>
               <li>
@@ -99,21 +103,21 @@ export function FooterSection() {
                   rel="noopener noreferrer"
                   className="text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider"
                 >
-                  Etsy Shop
+                  {t('footer.etsy')}
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">Rechtliches</h4>
+            <h4 className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.25em] mb-4 md:mb-6 bioshock-glow-animated">{t('footer.legal')}</h4>
             <ul className="space-y-2 md:space-y-3">
               <li>
                 <a 
                   href={legalHref('impressum')}
                   className={legalLinkClass}
                 >
-                  Impressum
+                  {t('footer.impressum')}
                 </a>
               </li>
               <li>
@@ -121,7 +125,7 @@ export function FooterSection() {
                   href={legalHref('datenschutz')}
                   className={legalLinkClass}
                 >
-                  Datenschutz
+                  {t('footer.privacy')}
                 </a>
               </li>
               <li>
@@ -129,7 +133,7 @@ export function FooterSection() {
                   href={legalHref('agb')}
                   className={legalLinkClass}
                 >
-                  AGB
+                  {t('footer.terms')}
                 </a>
               </li>
               <li>
@@ -137,7 +141,7 @@ export function FooterSection() {
                   href={legalHref('widerruf')}
                   className={legalLinkClass}
                 >
-                  Widerruf
+                  {t('footer.withdrawal')}
                 </a>
               </li>
             </ul>
@@ -147,10 +151,10 @@ export function FooterSection() {
         <div className="border-t border-foreground/20 pt-6 md:pt-8">
           <div className="text-center space-y-2 md:space-y-3">
             <p className="text-foreground/60 text-xs uppercase tracking-[0.15em]">
-              © {currentYear} Nebula Noir. Alle Artefakte handgefertigt mit mystischer Intention.
+              {t('footer.copyright', { year: currentYear })}
             </p>
             <p className="text-foreground/50 text-xs tracking-wider">
-              Made in Germany · Handcrafted with Dark Elegance
+              {t('footer.madeIn')}
             </p>
           </div>
         </div>

@@ -4,8 +4,10 @@ import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 import { ArtDecoCorner } from './ArtDecoCorner'
 import type { InstagramPost } from '@/lib/types'
+import { useT } from '@/i18n/context'
 
 export function InstagramSection({ posts }: { posts: InstagramPost[] }) {
+  const t = useT()
   const { ref, isVisible } = useScrollTrigger(0.1)
   if (!posts.length) return null
 
@@ -19,11 +21,11 @@ export function InstagramSection({ posts }: { posts: InstagramPost[] }) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4">
-            Instagram
+            {t('instagram.title')}
           </h2>
           <div className="art-deco-divider max-w-md mx-auto" />
           <p className="text-sm md:text-base lg:text-lg text-foreground/70 mt-6 md:mt-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
-            Neueste Artefakte von @nebula_noir.official
+            {t('instagram.subtitle')}
           </p>
         </motion.div>
 

@@ -3,15 +3,8 @@
 import { createBrowserSupabase } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { Toaster } from '@/components/ui/sonner'
-
-const links = [
-  { href: '/admin', label: 'Übersicht' },
-  { href: '/admin/gallery', label: 'Galerie' },
-  { href: '/admin/events', label: 'Events' },
-  { href: '/admin/info', label: 'Info' },
-  { href: '/admin/inquiries', label: 'Anfragen' },
-  { href: '/admin/instagram', label: 'Instagram' },
-]
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { useT } from '@/i18n/context'
 
 export function AdminShell({
   children,
@@ -21,6 +14,15 @@ export function AdminShell({
   demo?: boolean
 }) {
   const router = useRouter()
+  const t = useT()
+  const links = [
+    { href: '/admin', label: t('admin.overview') },
+    { href: '/admin/gallery', label: t('admin.gallery') },
+    { href: '/admin/events', label: t('admin.events') },
+    { href: '/admin/info', label: t('admin.info') },
+    { href: '/admin/inquiries', label: t('admin.inquiries') },
+    { href: '/admin/instagram', label: t('admin.instagram') },
+  ]
 
   const logout = async () => {
     const supabase = createBrowserSupabase()
@@ -35,7 +37,7 @@ export function AdminShell({
       <div className="relative z-[20]">
         <header className="border-b-2 border-foreground/20 py-6">
           <div className="container max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <h1 className="text-2xl uppercase tracking-[0.2em] bioshock-glow-animated">Admin</h1>
+            <h1 className="text-2xl uppercase tracking-[0.2em] bioshock-glow-animated">{t('admin.title')}</h1>
             <nav className="flex flex-wrap gap-4">
               {links.map((link) => (
                 <a
@@ -50,15 +52,16 @@ export function AdminShell({
                 href="/"
                 className="text-sm uppercase tracking-[0.2em] text-foreground/90 hover:text-foreground transition-all duration-300"
               >
-                Site
+                {t('admin.site')}
               </a>
+              <LanguageSwitcher />
               {!demo ? (
                 <button
                   type="button"
                   onClick={logout}
                   className="text-sm uppercase tracking-[0.2em] text-foreground/90 hover:text-foreground transition-all duration-300"
                 >
-                  Logout
+                  {t('admin.logout')}
                 </button>
               ) : null}
             </nav>
@@ -67,7 +70,7 @@ export function AdminShell({
         {demo ? (
           <div className="border-b border-foreground/20 bg-primary/10">
             <p className="container max-w-6xl mx-auto px-4 md:px-6 py-3 text-xs uppercase tracking-wider text-foreground/80">
-              Demo Mode — Writes disabled. Set Supabase keys to enable auth and persistence.
+              {t('admin.demoBanner')}
             </p>
           </div>
         ) : null}

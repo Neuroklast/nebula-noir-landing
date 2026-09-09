@@ -4,16 +4,20 @@ import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
 import type { EventItem } from '@/lib/types'
+import { useI18n, useT } from '@/i18n/context'
 
-function formatRange(start: string, end?: string | null) {
+function formatRange(start: string, end: string | null | undefined, locale: string) {
+  const tag = locale === 'en' ? 'en-GB' : 'de-DE'
   const s = new Date(start)
-  const startLabel = s.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' })
+  const startLabel = s.toLocaleDateString(tag, { day: '2-digit', month: 'short', year: 'numeric' })
   if (!end) return startLabel
   const e = new Date(end)
-  return `${startLabel} – ${e.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' })}`
+  return `${startLabel} – ${e.toLocaleDateString(tag, { day: '2-digit', month: 'short', year: 'numeric' })}`
 }
 
 export function EventsSection({ events }: { events: EventItem[] }) {
+  const t = useT()
+  const { locale } = useI18n()
   const { ref, isVisible } = useScrollTrigger(0.1)
   if (!events.length) return null
 
@@ -26,12 +30,12 @@ export function EventsSection({ events }: { events: EventItem[] }) {
           animate={isVisible ? { opacity: 1, clipPath: 'inset(0 0% 0 0)' } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4">
-            Stände & Events
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated uppercase tracking-[0.2em] md:tracking-[0.25em] px-4 whitespace-pre-line">
+            {t('events.title')}
           </h2>
           <ArtDecoAnimatedDivider className="max-w-md mx-auto" />
           <p className="text-sm md:text-base lg:text-lg text-foreground/70 mt-6 md:mt-10 max-w-2xl mx-auto font-light leading-relaxed px-4">
-            Finde Nebula Noir auf Festivals, Märkten und in der Leere dazwischen.
+            {t('events.subtitle')}
           </p>
         </motion.div>
 
@@ -50,7 +54,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
                 {event.venue}{event.city ? ` · ${event.city}` : ''}
               </p>
               <p className="text-xs md:text-sm uppercase tracking-wider text-foreground/60">
-                {formatRange(event.startsAt, event.endsAt)}
+                {formatRange(event.startsAt, event.endsAt, locale)}
               </p>
               <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
                 {event.description}
@@ -62,7 +66,7 @@ export function EventsSection({ events }: { events: EventItem[] }) {
                   rel="noopener noreferrer"
                   className="inline-block text-foreground/70 hover:text-foreground transition-all duration-300 uppercase text-xs tracking-wider"
                 >
-                  Details
+                  {t('events.details')}
                 </a>
               ) : null}
             </motion.div>

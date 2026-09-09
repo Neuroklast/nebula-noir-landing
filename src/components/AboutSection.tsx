@@ -4,12 +4,14 @@ import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
 import type { BrandInfo } from '@/lib/types'
+import { useT } from '@/i18n/context'
 
 function pick(info: Record<string, BrandInfo> | undefined, key: string, fallback: string) {
   return info?.[key]?.body ?? fallback
 }
 
 export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
+  const t = useT()
   const { ref, isVisible } = useScrollTrigger(0.1)
 
   return (
@@ -35,8 +37,8 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated px-4">
-            DIE NEBULA NOIR PHILOSOPHIE
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 md:mb-8 bioshock-glow-animated px-4 whitespace-pre-line">
+            {t('about.title')}
           </h2>
           <ArtDecoAnimatedDivider className="max-w-md mx-auto" />
         </div>
@@ -49,9 +51,9 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>✦</div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Mission</h3>
+            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">{t('about.missionTitle')}</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
-              {pick(info, 'mission', 'Wir fertigen okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Kink überschreiten. Jedes Stück ist ein handgefertigtes Artefakt, das Dunkelheit tragbar und ästhetisch macht.')}
+              {pick(info, 'mission', t('about.mission'))}
             </p>
           </motion.div>
 
@@ -62,9 +64,9 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated">☾</div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Identität</h3>
+            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">{t('about.identityTitle')}</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
-              {pick(info, 'identity', 'Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), der unendlichen Tiefe kosmischer Nebel und der dunklen Ästhetik der Gothic-Subkultur.')}
+              {pick(info, 'identity', t('about.identity'))}
             </p>
           </motion.div>
 
@@ -75,9 +77,9 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
             transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Handwerk</h3>
+            <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">{t('about.craftTitle')}</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
-              {pick(info, 'craft', 'Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. Keine Massenproduktion—nur einzigartige Stücke für nonkonformistische Seelen.')}
+              {pick(info, 'craft', t('about.craft'))}
             </p>
           </motion.div>
         </div>
@@ -89,30 +91,30 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
           transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="relative p-6 md:p-10 lg:p-16 border-2 border-foreground/30 bg-background/50">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 md:mb-12 text-center uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated">Unsere Werte</h3>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-8 md:mb-12 text-center uppercase tracking-[0.15em] md:tracking-[0.25em] bioshock-glow-animated">{t('about.valuesTitle')}</h3>
             <ul className="space-y-6 md:space-y-8 text-sm md:text-base lg:text-lg">
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Handwerk:</strong> {pick(info, 'value_handwerk', 'Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.')}
+                  <strong className="text-foreground uppercase tracking-wider">{t('about.valueCraftLabel')}:</strong> {pick(info, 'value_handwerk', t('about.valueCraft'))}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Dunkle Ästhetik:</strong> {pick(info, 'value_aesthetik', 'Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.')}
+                  <strong className="text-foreground uppercase tracking-wider">{t('about.valueAestheticLabel')}:</strong> {pick(info, 'value_aesthetik', t('about.valueAesthetic'))}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Individualität:</strong> {pick(info, 'value_individualitaet', 'Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.')}
+                  <strong className="text-foreground uppercase tracking-wider">{t('about.valueIndividualLabel')}:</strong> {pick(info, 'value_individualitaet', t('about.valueIndividual'))}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Inklusivität:</strong> {pick(info, 'value_inklusivitaet', 'Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.')}
+                  <strong className="text-foreground uppercase tracking-wider">{t('about.valueInclusiveLabel')}:</strong> {pick(info, 'value_inklusivitaet', t('about.valueInclusive'))}
                 </span>
               </li>
             </ul>
@@ -121,7 +123,7 @@ export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
 
         <div className="text-center mt-12 md:mt-20 px-4">
           <p className="text-lg md:text-xl lg:text-2xl text-foreground/60 italic font-light tracking-wide leading-relaxed max-w-3xl mx-auto">
-            {`"${pick(info, 'quote', 'Für moderne Hexen, Gothic-Seelen und alle, die Eleganz in der Leere finden.')}"`}
+            {`"${pick(info, 'quote', t('about.quote'))}"`}
           </p>
         </div>
       </motion.div>

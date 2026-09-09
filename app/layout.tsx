@@ -1,21 +1,29 @@
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
 import { CursorGlow } from '@/components/CursorGlow'
+import { LocaleProvider } from '@/i18n/context'
+import type { Locale } from '@/i18n/messages'
 import '@/main.css'
 import '@/styles/theme.css'
 import '@/index.css'
 import '@/themes/nebula-noir-theme/styles.css'
 
 export const metadata: Metadata = {
-  title: 'NEBULA NOIR - Handgefertigter Okkulter & Alternativer Schmuck | Cosmic Art Deco Goth',
+  title: 'NEBULA NOIR | Cosmic Art Deco Goth',
   description:
-    'Handgefertigte okkulte und alternative Accessoires. Cosmic Art Deco Goth Schmuck aus Resin, PVC und Edelmetallen. Made in Germany.',
-  keywords:
-    'Gothic Schmuck, Alternative Accessoires, Handgefertigter Schmuck, Okkulter Schmuck, Art Deco, Resin Schmuck, PVC Choker, Deutschland',
+    'Handmade occult and alternative jewelry. Cosmic Art Deco Goth. Made in Germany.',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookie = (await cookies()).get('nn-locale')?.value
+  const locale: Locale = cookie === 'en' ? 'en' : 'de'
+
   return (
-    <html lang="de" style={{ scrollPaddingTop: '7rem' }}>
+    <html lang={locale} style={{ scrollPaddingTop: '7rem' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -23,10 +31,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body>
-        <CursorGlow />
-        {children}
+        <LocaleProvider initialLocale={locale}>
+          <CursorGlow />
+          {children}
+        </LocaleProvider>
       </body>
     </html>
   )

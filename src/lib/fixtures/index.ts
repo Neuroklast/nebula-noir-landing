@@ -83,55 +83,15 @@ export const fixtureEvents: EventItem[] = [
 ]
 
 export const fixtureInstagram: InstagramPost[] = [
-  {
-    id: 'ig-1',
-    caption: 'Void Serpent Choker — Cosmic Art Deco Goth.',
-    mediaType: 'IMAGE',
-    mediaUrl: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80',
-    permalink: 'https://www.instagram.com/nebula_noir.official/',
-    timestamp: '2026-08-01T12:00:00Z',
-  },
-  {
-    id: 'ig-2',
-    caption: 'Nebula Resin Ring.',
-    mediaType: 'IMAGE',
-    mediaUrl: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80',
-    permalink: 'https://www.instagram.com/nebula_noir.official/',
-    timestamp: '2026-08-04T12:00:00Z',
-  },
-  {
-    id: 'ig-3',
-    caption: 'Lunar Phase Earrings.',
-    mediaType: 'IMAGE',
-    mediaUrl: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80',
-    permalink: 'https://www.instagram.com/nebula_noir.official/',
-    timestamp: '2026-08-08T12:00:00Z',
-  },
-  {
-    id: 'ig-4',
-    caption: 'Gothic Pentacle Bracelet.',
-    mediaType: 'IMAGE',
-    mediaUrl: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80',
-    permalink: 'https://www.instagram.com/nebula_noir.official/',
-    timestamp: '2026-08-12T12:00:00Z',
-  },
-  {
-    id: 'ig-5',
-    caption: 'Starlight Resin Bangle.',
-    mediaType: 'IMAGE',
-    mediaUrl: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80',
-    permalink: 'https://www.instagram.com/nebula_noir.official/',
-    timestamp: '2026-08-16T12:00:00Z',
-  },
-  {
-    id: 'ig-6',
-    caption: 'Cosmic Collar Necklace.',
-    mediaType: 'IMAGE',
-    mediaUrl: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80',
-    permalink: 'https://www.instagram.com/nebula_noir.official/',
-    timestamp: '2026-08-20T12:00:00Z',
-  },
-]
+  '01','02','03','04','05','06','07','08','09','10',
+].map((n, i) => ({
+  id: `ig-${n}`,
+  caption: '@nebula_noir.official',
+  mediaType: 'IMAGE',
+  mediaUrl: `/demo/instagram/${n}.jpg`,
+  permalink: 'https://www.instagram.com/nebula_noir.official/',
+  timestamp: new Date(Date.UTC(2026, 7, 1 + i * 3)).toISOString(),
+}))
 
 export function isJewelryCategory(value: string): value is JewelryCategory {
   return ['chokers', 'bracelets', 'rings', 'earrings', 'accessories'].includes(value)
