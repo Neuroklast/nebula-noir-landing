@@ -4,8 +4,10 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 
 ## UI parity (design freeze)
 
-- [ ] Loading screen still plays (~3.5s) on first visit, Poiret One wordmark, CRT overlay, logo glow.
-- [ ] Returning to `/` in the same session skips the intro.
+- [ ] Loading screen plays (~3.5s) on every visit to `/`, Poiret One wordmark, CRT overlay, logo glow.
+- [ ] Body does not scroll under the intro overlay.
+- [ ] Wheel scroll on public pages is smoothed (Lenis); `prefers-reduced-motion` is 1:1.
+- [ ] Dialogs, sheets, and `/admin` `/login` are not Lenis-smoothed.
 - [ ] Custom cursor glow follows the pointer; default cursor remains hidden.
 - [ ] CRT scanline, Art Deco background canvases, and frame overlay still appear.
 - [ ] Hero: logo size/glow, `NEBULA NOIR` heading, moon divider, subtitle, body copy, both CTAs — same classes and spacing as pre-migration.

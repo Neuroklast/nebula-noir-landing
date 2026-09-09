@@ -13,6 +13,7 @@ Living snapshot of product status, schema, and services.
 | Instagram | `instagram_posts` / fixtures | Instagram Login API, `@nebula_noir.official` |
 | i18n | `src/i18n/messages.ts` | DE default, EN cookie `nn-locale`; Cybergoth Industrial copy |
 | Hero video | `brand_info.hero_video` + R2 `hero/` | Admin `/admin/hero`, scroll-scrub |
+| Scroll | Lenis | Public pages, reduced-motion safe |
 | Contact | `contact_inquiries` | Existing form |
 | Legal | `src/lib/legal-content.ts` | Static routes |
 | Shop | Etsy | Footer + detail CTA |
