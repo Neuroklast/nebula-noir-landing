@@ -12,6 +12,14 @@ interface LoadingScreenProps {
 export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
+  const [viewport, setViewport] = useState({ w: 1200, h: 800 })
+
+  useEffect(() => {
+    const onResize = () => setViewport({ w: window.innerWidth, h: window.innerHeight })
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   useEffect(() => {
     const startTime = Date.now()
@@ -92,9 +100,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
 
             <g className="top-right-loading-corner">
               <motion.line
-                x1="calc(100vw - 30px)"
+                x1={viewport.w - 30}
                 y1="30"
-                x2="calc(100vw - 30px)"
+                x2={viewport.w - 30}
                 y2="150"
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -102,9 +110,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0 }}
               />
               <motion.line
-                x1="calc(100vw - 150px)"
+                x1={viewport.w - 150}
                 y1="30"
-                x2="calc(100vw - 30px)"
+                x2={viewport.w - 30}
                 y2="30"
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -112,9 +120,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
               />
               <motion.line
-                x1="calc(100vw - 45px)"
+                x1={viewport.w - 45}
                 y1="45"
-                x2="calc(100vw - 45px)"
+                x2={viewport.w - 45}
                 y2="120"
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -122,9 +130,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
               />
               <motion.line
-                x1="calc(100vw - 120px)"
+                x1={viewport.w - 120}
                 y1="45"
-                x2="calc(100vw - 45px)"
+                x2={viewport.w - 45}
                 y2="45"
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -135,40 +143,40 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
 
             <g className="bottom-right-loading-corner">
               <motion.line
-                x1="calc(100vw - 30px)"
-                y1="calc(100vh - 150px)"
-                x2="calc(100vw - 30px)"
-                y2="calc(100vh - 30px)"
+                x1={viewport.w - 30}
+                y1={viewport.h - 150}
+                x2={viewport.w - 30}
+                y2={viewport.h - 30}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0 }}
               />
               <motion.line
-                x1="calc(100vw - 150px)"
-                y1="calc(100vh - 30px)"
-                x2="calc(100vw - 30px)"
-                y2="calc(100vh - 30px)"
+                x1={viewport.w - 150}
+                y1={viewport.h - 30}
+                x2={viewport.w - 30}
+                y2={viewport.h - 30}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
               />
               <motion.line
-                x1="calc(100vw - 45px)"
-                y1="calc(100vh - 120px)"
-                x2="calc(100vw - 45px)"
-                y2="calc(100vh - 45px)"
+                x1={viewport.w - 45}
+                y1={viewport.h - 120}
+                x2={viewport.w - 45}
+                y2={viewport.h - 45}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
               />
               <motion.line
-                x1="calc(100vw - 120px)"
-                y1="calc(100vh - 45px)"
-                x2="calc(100vw - 45px)"
-                y2="calc(100vh - 45px)"
+                x1={viewport.w - 120}
+                y1={viewport.h - 45}
+                x2={viewport.w - 45}
+                y2={viewport.h - 45}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
@@ -179,9 +187,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
             <g className="bottom-left-loading-corner">
               <motion.line
                 x1="30"
-                y1="calc(100vh - 150px)"
+                y1={viewport.h - 150}
                 x2="30"
-                y2="calc(100vh - 30px)"
+                y2={viewport.h - 30}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
@@ -189,9 +197,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
               />
               <motion.line
                 x1="30"
-                y1="calc(100vh - 30px)"
+                y1={viewport.h - 30}
                 x2="150"
-                y2="calc(100vh - 30px)"
+                y2={viewport.h - 30}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
@@ -199,9 +207,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
               />
               <motion.line
                 x1="45"
-                y1="calc(100vh - 120px)"
+                y1={viewport.h - 120}
                 x2="45"
-                y2="calc(100vh - 45px)"
+                y2={viewport.h - 45}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
@@ -209,9 +217,9 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
               />
               <motion.line
                 x1="45"
-                y1="calc(100vh - 45px)"
+                y1={viewport.h - 45}
                 x2="120"
-                y2="calc(100vh - 45px)"
+                y2={viewport.h - 45}
                 className="frame-line-loading"
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 0.85 }}
@@ -220,46 +228,54 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
             </g>
 
             <g className="loading-moon-accents">
-              <motion.text
-                x="60"
-                y="75"
-                className="moon-symbol-loading"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.7, scale: 1 }}
-                transition={{ duration: 0.4, delay: 1.1 }}
-              >
-                ☾
-              </motion.text>
-              <motion.text
-                x="calc(100vw - 80px)"
-                y="75"
-                className="moon-symbol-loading"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.7, scale: 1 }}
-                transition={{ duration: 0.4, delay: 1.1 }}
-              >
-                ☾
-              </motion.text>
-              <motion.text
-                x="calc(100vw - 80px)"
-                y="calc(100vh - 55px)"
-                className="moon-symbol-loading"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.7, scale: 1 }}
-                transition={{ duration: 0.4, delay: 1.1 }}
-              >
-                ☾
-              </motion.text>
-              <motion.text
-                x="60"
-                y="calc(100vh - 55px)"
-                className="moon-symbol-loading"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.7, scale: 1 }}
-                transition={{ duration: 0.4, delay: 1.1 }}
-              >
-                ☾
-              </motion.text>
+              <g transform="rotate(90 60 75)">
+                <motion.text
+                  x="60"
+                  y="75"
+                  className="moon-symbol-loading"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 0.7, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 1.1 }}
+                >
+                  ☾
+                </motion.text>
+              </g>
+              <g transform={`rotate(90 ${viewport.w - 80} 75)`}>
+                <motion.text
+                  x={viewport.w - 80}
+                  y="75"
+                  className="moon-symbol-loading"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 0.7, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 1.1 }}
+                >
+                  ☾
+                </motion.text>
+              </g>
+              <g transform={`rotate(90 ${viewport.w - 80} ${viewport.h - 55})`}>
+                <motion.text
+                  x={viewport.w - 80}
+                  y={viewport.h - 55}
+                  className="moon-symbol-loading"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 0.7, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 1.1 }}
+                >
+                  ☾
+                </motion.text>
+              </g>
+              <g transform={`rotate(90 60 ${viewport.h - 55})`}>
+                <motion.text
+                  x="60"
+                  y={viewport.h - 55}
+                  className="moon-symbol-loading"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 0.7, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 1.1 }}
+                >
+                  ☾
+                </motion.text>
+              </g>
             </g>
           </svg>
 
@@ -309,7 +325,7 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                   transition={{ duration: 0.6, delay: 1.2 }}
                   className="text-xs tracking-[0.3em] text-muted-foreground uppercase"
                 >
-                  Cosmic Art Deco Goth
+                  Cybergoth Industrial
                 </motion.p>
 
                 <motion.div

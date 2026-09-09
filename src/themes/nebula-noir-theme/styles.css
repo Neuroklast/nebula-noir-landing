@@ -29,7 +29,7 @@
 
 .spark-theme-moon-symbol {
   display: inline-block;
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .spark-theme-deco-line-wrapper {

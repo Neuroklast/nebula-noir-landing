@@ -20,9 +20,16 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 
 - [ ] No cart icon in the nav.
 - [ ] No checkout dialog.
-- [ ] Product cards show category label instead of euro price; Details button classes unchanged.
+- [ ] Product cards show category label instead of euro price; Details sits beside the category without overlap.
 - [ ] Detail dialog has no “In den Warenkorb” / price; inquiry CTA uses the previous button classes.
-- [ ] Category filters: Alle Artefakte, Chokers, Armbänder, Ringe, Ohrringe, Accessoires.
+- [ ] Category filters: Alle Stücke, Chokers, Armbänder, Ringe, Ohrringe, Accessoires.
+- [ ] Nav: Anfragen (not Maßanfertigung); DE/EN does not overlap the last link.
+- [ ] Crescent moons open at the top (U / half-moon), not left or right.
+- [ ] Copy has no Art Deco, 1920s, occult, or mystical wording. Tagline is Cybergoth Industrial.
+- [ ] Copy names Kunstleder, PVC, Ketten, Nieten, große Ringe, Neon. Audience is schwarze Szene / Cosplay / Nerdkultur.
+- [ ] Events: LOYG Festival Bochum 12.09.2026 14–22 Uhr; past WGT / M’era Luna 2026 hidden on the landing page.
+- [ ] Opening a product dialog does not log Missing Description.
+- [ ] Loading screen does not log SVG `<text>` calc() length errors.
 
 ## Environment fallback (Demo Mode)
 

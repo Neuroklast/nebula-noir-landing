@@ -9,9 +9,9 @@ import '@/index.css'
 import '@/themes/nebula-noir-theme/styles.css'
 
 export const metadata: Metadata = {
-  title: 'NEBULA NOIR | Cosmic Art Deco Goth',
+  title: 'NEBULA NOIR | Cybergoth Industrial',
   description:
-    'Handmade occult and alternative jewelry. Cosmic Art Deco Goth. Made in Germany.',
+    'Statement jewelry for the black scene. Faux leather, PVC, chains, rivets, neon. Made in Germany.',
   icons: {
     icon: '/favicon.svg',
     apple: '/favicon.svg',

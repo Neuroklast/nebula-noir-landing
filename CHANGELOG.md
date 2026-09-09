@@ -2,6 +2,25 @@
 
 All notable changes to this project are documented in reverse chronological order.
 
+## [0.3.2] — 2026-09-09
+
+### Changed
+
+- Brand copy is Cybergoth / Industrial / Cyberpunk / Dark Alternative only. No Art Deco, 1920s, occult, or mystical wording.
+- Public copy names materials: Kunstleder, PVC, Ketten, Nieten, große Ringe, Neon. Audience: schwarze Szene, Cosplay, Nerdkultur.
+- Crescent moons open upward (U / half-moon), including CSS dividers and loading frame.
+- Nav label `Maßanfertigung` → `Anfragen`; desktop links from `xl` so DE/EN no longer collide.
+- Product card footer no longer overlaps category + Details.
+
+### Added
+
+- LOYG Festival (Let Out Your Geek), Bochum, 12 Sep 2026, 14–22, Bochumer Eventcenter. Public events list hides past stands.
+
+### Fixed
+
+- Loading SVG no longer uses `calc()` on `<text>`/`<line>` (console length errors).
+- Product detail `DialogContent` has a `Description`; mobile nav sheet has title + description.
+
 ## [0.3.1] — 2026-09-09
 
 ### Added

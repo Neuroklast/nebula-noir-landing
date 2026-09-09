@@ -7,7 +7,7 @@ export default async function Page() {
   const [gallery, brandInfo, events, instagram, heroVideoUrl] = await Promise.all([
     getGallery(),
     getBrandInfo(),
-    getEvents(),
+    getEvents({ upcomingOnly: true }),
     getInstagramPosts(),
     getHeroVideoUrl(),
   ])

@@ -48,17 +48,26 @@ export async function getBrandInfo(): Promise<BrandInfo[]> {
   return data as BrandInfo[]
 }
 
-export async function getEvents(): Promise<EventItem[]> {
-  if (isDemoMode()) return fixtureEvents
+function isUpcomingEvent(event: Pick<EventItem, 'startsAt' | 'endsAt'>, now = Date.now()) {
+  const end = Date.parse(event.endsAt || event.startsAt)
+  return Number.isNaN(end) || end >= now
+}
+
+export async function getEvents(opts?: { upcomingOnly?: boolean }): Promise<EventItem[]> {
+  const upcomingOnly = opts?.upcomingOnly === true
+  const filterUpcoming = (events: EventItem[]) =>
+    upcomingOnly ? events.filter((event) => isUpcomingEvent(event)) : events
+
+  if (isDemoMode()) return filterUpcoming(fixtureEvents)
   const supabase = await createServerSupabase()
-  if (!supabase) return fixtureEvents
+  if (!supabase) return filterUpcoming(fixtureEvents)
   const { data, error } = await supabase
     .from('events')
     .select('id, title, venue, city, starts_at, ends_at, description, url')
     .eq('published', true)
     .order('starts_at', { ascending: true })
   if (error || !data) return []
-  return data.map((row) => ({
+  const events: EventItem[] = data.map((row) => ({
     id: row.id as string,
     title: row.title as string,
     venue: (row.venue as string) || '',
@@ -68,6 +77,7 @@ export async function getEvents(): Promise<EventItem[]> {
     description: (row.description as string) || '',
     url: (row.url as string) || null,
   }))
+  return filterUpcoming(events)
 }
 
 export async function getInstagramPosts(): Promise<InstagramPost[]> {

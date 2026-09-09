@@ -20,42 +20,42 @@ export const fixtureBrandInfo: BrandInfo[] = [
   {
     key: 'mission',
     title: 'Mission',
-    body: 'Wir fertigen okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Kink überschreiten. Jedes Stück ist ein handgefertigtes Artefakt, das Dunkelheit tragbar und ästhetisch macht.',
+    body: 'Lautes Statement für die schwarze Szene, Cosplay und Nerdkultur. Keine Massenware.',
   },
   {
     key: 'identity',
     title: 'Identität',
-    body: 'Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), der unendlichen Tiefe kosmischer Nebel und der dunklen Ästhetik der Gothic-Subkultur.',
+    body: 'Cybergoth, Industrial, Cyberpunk, Dark Alternative. Neon auf Schwarz. Ketten, Nieten, große Ringe.',
   },
   {
     key: 'craft',
     title: 'Handwerk',
-    body: 'Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. Keine Massenproduktion—nur einzigartige Stücke für nonkonformistische Seelen.',
+    body: 'Kunstleder, PVC, schwere Metallketten, Nieten, große Ringe, fluoreszierendes Neon. Von Hand. Keine Serie.',
   },
   {
     key: 'value_handwerk',
     title: 'Handwerk',
-    body: 'Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.',
+    body: 'Jedes Stück einzeln. Kunstleder, PVC, Ketten, Nieten, Neon – von uns verarbeitet.',
   },
   {
     key: 'value_aesthetik',
-    title: 'Dunkle Ästhetik',
-    body: 'Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.',
+    title: 'Look',
+    body: 'Schwarz, Metall, fluoreszierendes Neon. Industrial, Clublicht, Subkultur.',
   },
   {
     key: 'value_individualitaet',
-    title: 'Individualität',
-    body: 'Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.',
+    title: 'Statement',
+    body: 'Laut tragen. Festivals, Clubs, Szene-Events.',
   },
   {
     key: 'value_inklusivitaet',
-    title: 'Inklusivität',
-    body: 'Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.',
+    title: 'Szene',
+    body: 'Schwarze Szene, Cosplay, Nerdkultur. Jeder Körper, jedes Geschlecht.',
   },
   {
     key: 'quote',
     title: 'Zitat',
-    body: 'Für moderne Hexen, Gothic-Seelen und alle, die Eleganz in der Leere finden.',
+    body: 'Für Festivals, Clubnächte und Szene-Events.',
   },
 ]
 
@@ -67,7 +67,7 @@ export const fixtureEvents: EventItem[] = [
     city: 'Leipzig',
     startsAt: '2026-05-21T10:00:00+02:00',
     endsAt: '2026-05-25T22:00:00+02:00',
-    description: 'Nebula Noir Stand — Cosmic Art Deco Goth Artefakte vor Ort.',
+    description: 'Stand vor Ort. Aktuelle Stücke zum Anfassen.',
     url: 'https://www.wave-gotik-treffen.de',
   },
   {
@@ -77,8 +77,19 @@ export const fixtureEvents: EventItem[] = [
     city: 'Hildesheim',
     startsAt: '2026-08-08T10:00:00+02:00',
     endsAt: '2026-08-09T23:00:00+02:00',
-    description: 'Festival-Stand mit aktueller Kollektion und Maßanfertigungs-Beratung.',
+    description: 'Festival-Stand. Kollektion und Custom-Beratung.',
     url: 'https://www.meraluna.de',
+  },
+  {
+    id: 'loyg-2026',
+    title: 'LOYG Festival',
+    venue: 'Bochumer Eventcenter, Rombacher Hütte 6–8',
+    city: 'Bochum',
+    startsAt: '2026-09-12T14:00:00+02:00',
+    endsAt: '2026-09-12T22:00:00+02:00',
+    description:
+      'Stand im Künstlerbereich. Let Out Your Geek: Nerdkultur, Cosplay, Gaming, Musik. Samstag 14–22 Uhr, letzter Einlass 20 Uhr. Aftershow 22:30–03:30 (ab 18).',
+    url: 'https://bochumer-eventcenter.de/',
   },
 ]
 

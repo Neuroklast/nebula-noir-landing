@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { InstagramLogo, List } from '@phosphor-icons/react'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { useT } from '@/i18n/context'
@@ -54,7 +54,7 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
             </span>
           </a>
 
-          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
+          <div className="hidden xl:flex items-center gap-5 xl:gap-8">
             {navLinks.map(link => (
               <a
                 key={link.href}
@@ -67,8 +67,8 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
             ))}
           </div>
 
-          <div className="flex items-center gap-3 md:gap-4">
-            <div className="hidden sm:block">
+          <div className="flex items-center gap-3 md:gap-4 shrink-0">
+            <div className="hidden sm:block shrink-0">
               <LanguageSwitcher />
             </div>
             <Button 
@@ -88,12 +88,14 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
             </Button>
 
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-              <SheetTrigger asChild className="lg:hidden">
+              <SheetTrigger asChild className="xl:hidden">
                 <Button variant="outline" size="icon" className="metallic-border" aria-label={t('nav.menu')}>
                   <List size={24} weight="bold" />
                 </Button>
               </SheetTrigger>
               <SheetContent className="bg-card border-l-2 border-foreground/30">
+                <SheetTitle className="sr-only">{t('nav.menu')}</SheetTitle>
+                <SheetDescription className="sr-only">{t('nav.menu')}</SheetDescription>
                 <div className="flex justify-center mb-8 mt-4">
                   <img 
                     src="/images/IMG_0085_(1).svg" 

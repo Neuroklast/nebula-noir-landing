@@ -220,31 +220,31 @@ insert into public.categories (slug, label, sort_order) values
   ('accessories', 'Accessoires', 5);
 
 insert into public.brand_info (key, title, body) values
-  ('mission', 'Mission', 'Wir fertigen okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Kink überschreiten. Jedes Stück ist ein handgefertigtes Artefakt, das Dunkelheit tragbar und ästhetisch macht.'),
-  ('identity', 'Identität', 'Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), der unendlichen Tiefe kosmischer Nebel und der dunklen Ästhetik der Gothic-Subkultur.'),
-  ('craft', 'Handwerk', 'Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. Keine Massenproduktion—nur einzigartige Stücke für nonkonformistische Seelen.'),
-  ('value_handwerk', 'Handwerk', 'Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.'),
-  ('value_aesthetik', 'Dunkle Ästhetik', 'Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.'),
-  ('value_individualitaet', 'Individualität', 'Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.'),
-  ('value_inklusivitaet', 'Inklusivität', 'Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.'),
-  ('quote', 'Zitat', 'Für moderne Hexen, Gothic-Seelen und alle, die Eleganz in der Leere finden.');
+  ('mission', 'Mission', 'Lautes Statement für die schwarze Szene, Cosplay und Nerdkultur. Keine Massenware.'),
+  ('identity', 'Identität', 'Cybergoth, Industrial, Cyberpunk, Dark Alternative. Neon auf Schwarz. Ketten, Nieten, große Ringe.'),
+  ('craft', 'Handwerk', 'Kunstleder, PVC, schwere Metallketten, Nieten, große Ringe, fluoreszierendes Neon. Von Hand. Keine Serie.'),
+  ('value_handwerk', 'Handwerk', 'Jedes Stück einzeln. Kunstleder, PVC, Ketten, Nieten, Neon – von uns verarbeitet.'),
+  ('value_aesthetik', 'Look', 'Schwarz, Metall, fluoreszierendes Neon. Industrial, Clublicht, Subkultur.'),
+  ('value_individualitaet', 'Statement', 'Laut tragen. Festivals, Clubs, Szene-Events.'),
+  ('value_inklusivitaet', 'Szene', 'Schwarze Szene, Cosplay, Nerdkultur. Jeder Körper, jedes Geschlecht.'),
+  ('quote', 'Zitat', 'Für Festivals, Clubnächte und Szene-Events.');
 
 insert into public.gallery_images (title, description, public_url, category_id, sort_order)
 select v.title, v.description, v.public_url, c.id, v.sort_order
 from (
   values
-    ('Void Serpent Choker', 'Handcrafted PVC choker with silver serpent charm and adjustable chain. A statement piece channeling cosmic darkness.', 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80', 'chokers', 1),
-    ('Nebula Resin Ring', 'Transparent resin ring infused with violet glitter and silver flakes, capturing the essence of distant nebulae.', 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80', 'rings', 2),
-    ('Lunar Phase Earrings', 'Sterling silver crescent moon earrings with geometric Art Deco detailing. Celebrate the cycles of darkness and light.', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', 'earrings', 3),
-    ('Gothic Pentacle Bracelet', 'Adjustable chain bracelet featuring hand-cast pentacle charm. For modern witches and occult enthusiasts.', 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80', 'bracelets', 4),
-    ('Cyber Hex Choker', 'Black PVC base with toxic green hex pattern and silver hardware. Dieselpunk meets dark future.', 'https://images.unsplash.com/photo-1610217438102-c550ab935b72?w=800&q=80', 'chokers', 5),
-    ('Starlight Resin Bangle', 'Wide resin bangle with embedded silver leaf and cosmic purple swirls. Each piece is completely unique.', 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80', 'bracelets', 6),
-    ('Occult Sigil Ring', 'Hand-engraved brass ring featuring custom sigil design. A talisman for personal power and mysticism.', 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&q=80', 'rings', 7),
-    ('Deco Diamond Studs', 'Geometric Art Deco inspired silver studs. Minimalist elegance with gothic undertones.', 'https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=800&q=80', 'earrings', 8),
-    ('Ritual Waist Chain', 'Adjustable chain belt with hanging moon charms and violet crystal beads. Festival and ritual wear.', 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80', 'accessories', 9),
-    ('Cosmic Collar Necklace', 'Statement collar piece with layered chains and celestial charms. Art Deco meets cosmic goth.', 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80', 'chokers', 10),
-    ('Shadow Crystal Ring', 'Black resin ring with embedded raw amethyst crystal. Natural stone meets handcrafted design.', 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80', 'rings', 11),
-    ('Witching Hour Earrings', 'Long chain earrings with pentacle and crescent moon charms. Statement pieces for the bold.', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', 'earrings', 12)
+    ('Void Serpent Choker', 'PVC-Choker, Kunstleder, schwere Kette, große Ringe.', 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80', 'chokers', 1),
+    ('Neon Resin Ring', 'PVC/Resin-Ring mit fluoreszierendem Neon.', 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80', 'rings', 2),
+    ('Chain Ring Earrings', 'Metallringe an Kette. Industrial-Hardware.', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', 'earrings', 3),
+    ('Rivet Chain Bracelet', 'Kette, Nieten, große Ringe. Kunstleder-Details.', 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80', 'bracelets', 4),
+    ('Cyber Hex Choker', 'Kunstleder/PVC-Choker, Neon-Hex, Metall-Hardware.', 'https://images.unsplash.com/photo-1610217438102-c550ab935b72?w=800&q=80', 'chokers', 5),
+    ('Neon Resin Bangle', 'Breiter PVC/Resin-Reif, fluoreszierendes Neon.', 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&q=80', 'bracelets', 6),
+    ('Industrial Steel Ring', 'Schwerer Metallring, von Hand graviert.', 'https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=800&q=80', 'rings', 7),
+    ('Neon Studs', 'Metallstecker, fluoreszierendes Neon.', 'https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=800&q=80', 'earrings', 8),
+    ('Ring Chain Belt', 'Kettengürtel, große Ringe, Nieten.', 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80', 'accessories', 9),
+    ('Chain Collar', 'Kragen aus schweren Ketten und großen Ringen.', 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&q=80', 'chokers', 10),
+    ('Black Resin Ring', 'Schwarzer PVC/Resin-Ring, Metallkern.', 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80', 'rings', 11),
+    ('Drop Chain Earrings', 'Lange Kettenohrringe, Ringe, Nieten.', 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', 'earrings', 12)
 ) as v(title, description, public_url, slug, sort_order)
 join public.categories c on c.slug = v.slug;
 
@@ -255,7 +255,7 @@ insert into public.events (title, venue, city, starts_at, ends_at, description, 
     'Leipzig',
     '2026-05-21 10:00:00+02',
     '2026-05-25 22:00:00+02',
-    'Nebula Noir Stand — Cosmic Art Deco Goth Artefakte vor Ort.',
+    'Stand vor Ort. Aktuelle Stücke zum Anfassen.',
     'https://www.wave-gotik-treffen.de',
     true
   ),
@@ -265,7 +265,17 @@ insert into public.events (title, venue, city, starts_at, ends_at, description, 
     'Hildesheim',
     '2026-08-08 10:00:00+02',
     '2026-08-09 23:00:00+02',
-    'Festival-Stand mit aktueller Kollektion und Maßanfertigungs-Beratung.',
+    'Festival-Stand. Kollektion und Custom-Beratung.',
     'https://www.meraluna.de',
+    true
+  ),
+  (
+    'LOYG Festival',
+    'Bochumer Eventcenter, Rombacher Hütte 6–8',
+    'Bochum',
+    '2026-09-12 14:00:00+02',
+    '2026-09-12 22:00:00+02',
+    'Stand im Künstlerbereich. Let Out Your Geek: Nerdkultur, Cosplay, Gaming, Musik. Samstag 14–22 Uhr, letzter Einlass 20 Uhr. Aftershow 22:30–03:30 (ab 18).',
+    'https://bochumer-eventcenter.de/',
     true
   );

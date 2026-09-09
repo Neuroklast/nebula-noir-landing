@@ -72,6 +72,22 @@ Vite returned a URL string for SVG imports. Prefer `/images/...` from `public/` 
 
 `tailwind.config.js` defines `screens.coarse/fine/pwa` as `{ raw: "(pointer: coarse)" }`. Tailwind 4 may emit invalid `@media (width >= (pointer: coarse))` on `.container`. Do not “fix” those screen keys — they are part of the frozen theme config. The live layout does not rely on those container breakpoints.
 
+## SVG length attributes reject CSS `calc()`
+
+`<text x="calc(100vw - 80px)">` is invalid SVG. Browsers log `Expected length`. Measure `innerWidth`/`innerHeight` (or use percentages) and pass numbers.
+
+## Radix DialogDescription
+
+`DialogContent` without `DialogDescription` (or explicit `aria-describedby={undefined}`) warns on every open. Product dialogs need a visually hidden description. Sheets need `SheetTitle` + `SheetDescription`.
+
+## Moon glyph orientation
+
+Unicode `☾` opens sideways in most fonts. `spark-theme-moon-symbol` rotates it 90deg (open top, like a U). Do not put that class on the same node as a transform animation (`deco-scale-in`); wrap an inner span.
+
+## Nav tracking vs. German labels
+
+Poiret One + `tracking-[0.2em]` + five uppercase links overflows before `xl`. Shorten the last label and keep the hamburger until `xl`.
+
 ## RLS vs. contact form
 
 Public INSERT on `contact_inquiries` without SELECT keeps spam readable only by admins. Do not enable anon SELECT.

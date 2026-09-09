@@ -1,6 +1,6 @@
 # Nebula Noir
 
-Cosmic Art Deco Goth jewelry brand site. Next.js App Router, Supabase, Cloudflare R2.
+Cybergoth / Industrial jewelry brand site. Next.js App Router, Supabase, Cloudflare R2.
 
 This is a gallery, brand, events, Instagram, and contact surface. Commerce stays on Etsy.
 
