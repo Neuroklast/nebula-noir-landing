@@ -137,6 +137,58 @@ export async function updateGalleryMeta(id: string, input: {
   return { ok: true as const }
 }
 
+export async function confirmHeroVideo(input: { key: string; publicUrl: string }) {
+  const gate = await requireAdmin()
+  if ('error' in gate) return { ok: false as const, error: gate.error }
+  if (gate.demo) return { ok: false as const, error: 'Demo Mode: Speichern deaktiviert' }
+  const supabase = await createServerSupabase()
+  if (!supabase) return { ok: false as const, error: 'Supabase fehlt' }
+  const { data: existing } = await supabase.from('brand_info').select('title').eq('key', 'hero_video').maybeSingle()
+  const previousKey = existing?.title as string | undefined
+  if (previousKey && previousKey !== input.key && isR2Configured()) {
+    try {
+      await deleteFromR2(previousKey)
+    } catch {
+      // keep going
+    }
+  }
+  const { error } = await supabase.from('brand_info').upsert(
+    {
+      key: 'hero_video',
+      title: input.key,
+      body: input.publicUrl,
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: 'key' }
+  )
+  if (error) return { ok: false as const, error: error.message }
+  revalidatePath('/')
+  revalidatePath('/admin/hero')
+  return { ok: true as const }
+}
+
+export async function clearHeroVideo() {
+  const gate = await requireAdmin()
+  if ('error' in gate) return { ok: false as const, error: gate.error }
+  if (gate.demo) return { ok: false as const, error: 'Demo Mode: Speichern deaktiviert' }
+  const supabase = await createServerSupabase()
+  if (!supabase) return { ok: false as const, error: 'Supabase fehlt' }
+  const { data: existing } = await supabase.from('brand_info').select('title').eq('key', 'hero_video').maybeSingle()
+  const previousKey = existing?.title as string | undefined
+  if (previousKey && isR2Configured()) {
+    try {
+      await deleteFromR2(previousKey)
+    } catch {
+      // keep going
+    }
+  }
+  const { error } = await supabase.from('brand_info').delete().eq('key', 'hero_video')
+  if (error) return { ok: false as const, error: error.message }
+  revalidatePath('/')
+  revalidatePath('/admin/hero')
+  return { ok: true as const }
+}
+
 export async function triggerInstagramSync() {
   const gate = await requireAdmin()
   if ('error' in gate) return { ok: false as const, error: gate.error }

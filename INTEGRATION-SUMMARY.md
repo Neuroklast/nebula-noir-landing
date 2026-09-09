@@ -12,6 +12,7 @@ Living snapshot of product status, schema, and services.
 | Gallery | `gallery_images` + R2 / fixtures | Existing catalog chrome, no prices/cart |
 | Instagram | `instagram_posts` / fixtures | Instagram Login API, `@nebula_noir.official` |
 | i18n | `src/i18n/messages.ts` | DE default, EN cookie `nn-locale` |
+| Hero video | `brand_info.hero_video` + R2 `hero/` | Admin `/admin/hero`, scroll-scrub |
 | Contact | `contact_inquiries` | Existing form |
 | Legal | `src/lib/legal-content.ts` | Static routes |
 | Shop | Etsy | Footer + detail CTA |

@@ -104,5 +104,16 @@ export function galleryAsProducts(items: GalleryItem[]): import('@/lib/types').P
 }
 
 export function brandMap(items: BrandInfo[]): Record<string, BrandInfo> {
-  return Object.fromEntries(items.map((item) => [item.key, item]))
+  return Object.fromEntries(items.filter((item) => item.key !== 'hero_video').map((item) => [item.key, item]))
+}
+
+export async function getHeroVideoUrl(): Promise<string | undefined> {
+  const envUrl = process.env.NEXT_PUBLIC_HERO_VIDEO_URL
+  if (envUrl) return envUrl
+  if (isDemoMode()) return undefined
+  const supabase = await createServerSupabase()
+  if (!supabase) return undefined
+  const { data } = await supabase.from('brand_info').select('body').eq('key', 'hero_video').maybeSingle()
+  const url = data?.body as string | undefined
+  return url && url.length > 0 ? url : undefined
 }

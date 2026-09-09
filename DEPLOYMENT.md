@@ -46,7 +46,7 @@ on conflict (id) do update set role = 'admin';
 [
   {
     "AllowedOrigins": ["https://your-domain.vercel.app", "http://localhost:3000"],
-    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedMethods": ["GET", "HEAD", "PUT"],
     "AllowedHeaders": ["*"],
     "ExposeHeaders": ["ETag"],
     "MaxAgeSeconds": 3600
@@ -54,7 +54,7 @@ on conflict (id) do update set role = 'admin';
 ]
 ```
 
-Uploads go through the Next.js server, so browser CORS for PUT is not required. GET CORS is required if the bucket is private and you later switch to signed reads. Public `R2_PUBLIC_URL` is simpler for gallery `<img>`.
+Gallery still images upload through the Next.js server. Hero video uses a short-lived R2 PUT presign, so CORS must allow PUT from the site origin. Public `R2_PUBLIC_URL` is used for `<img>` and `<video>`.
 
 ## 4. Instagram (`@nebula_noir.official`) — Instagram Login only
 
@@ -113,10 +113,12 @@ update public.profiles set role = 'admin' where id = '<auth.users uuid>';
 
 ## 5. Hero video
 
+Upload in **Admin → Hero-Video** (`/admin/hero`). The file goes to R2 via presigned PUT; the public URL is stored in `brand_info` key `hero_video`.
+
 1. Encode H.264 + AAC, `faststart`, keyframes every 0.5–1s (for scrub).
-2. Host on R2 or `public/hero.mp4`.
-3. Set `NEXT_PUBLIC_HERO_VIDEO_URL` to the public URL.
-4. Poster is optional; reduced-motion users see frame 0.
+2. MP4 / WebM / MOV, max 80MB.
+3. Optional override: `NEXT_PUBLIC_HERO_VIDEO_URL`.
+4. Without a video the original Art Deco pattern remains. `prefers-reduced-motion` freezes on frame 0.
 
 ## 6. Post-deploy smoke
 

@@ -28,6 +28,10 @@ VIDEO has `thumbnail_url`; CAROUSEL_ALBUM needs `children{media_url,media_type}`
 
 Poiret One + `letter-spacing: 0.2em` + `word-wrap: break-word` splits `MASSANFERTIGUNGEN` after the last letter. Use `word-break: normal`, reduce tracking under 768px, and put `\n` in i18n titles with `whitespace-pre-line`.
 
+## Hero video size vs Vercel body limit
+
+Do not POST large MP4s through Next.js on Vercel (≈4.5MB). Presign a 120s R2 PUT and store the public URL in `brand_info.hero_video` (`title` = R2 key for later delete).
+
 ## Instagram scrape vs local demo
 
 instagram.com blocks unauthenticated fetch. Demo media must be files in `public/demo/` (converted from HEIC in `Demo images/`). Live sync still uses Graph API.
