@@ -1,0 +1,87 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import { Toaster } from '@/components/ui/sonner'
+import { Navigation } from '@/components/Navigation'
+import { HeroSection } from '@/components/HeroSection'
+import { SectionTransition } from '@/components/SectionTransition'
+import { AboutSection } from '@/components/AboutSection'
+import { CatalogSection } from '@/components/CatalogSection'
+import { ContactSection } from '@/components/ContactSection'
+import { FooterSection } from '@/components/FooterSection'
+import { ArtDecoFrameAnimation } from '@/components/ArtDecoFrameAnimation'
+import { ArtDecoBackground } from '@/components/ArtDecoBackground'
+import { EventsSection } from '@/components/EventsSection'
+import { InstagramSection } from '@/components/InstagramSection'
+import LoadingScreen from '@/themes/nebula-noir-theme/LoadingScreen'
+import type { BrandInfo, EventItem, InstagramPost, Product } from '@/lib/types'
+
+interface HomePageProps {
+  products: Product[]
+  brandInfo: Record<string, BrandInfo>
+  events: EventItem[]
+  instagram: InstagramPost[]
+}
+
+export function HomePage({ products, brandInfo, events, instagram }: HomePageProps) {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (sessionStorage.getItem('nn-intro') === '1') {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem('nn-intro', '1')
+    setIsLoading(false)
+  }
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} duration={3500} />
+  }
+
+  return (
+    <div className="min-h-screen text-foreground overflow-x-hidden max-w-full relative">
+      <div className="crt-scanline" />
+      <ArtDecoBackground />
+      <ArtDecoFrameAnimation />
+      
+      <div className="relative z-[20]">
+        <Navigation showEvents={events.length > 0} showInstagram={instagram.length > 0} />
+        
+        <HeroSection />
+        <SectionTransition />
+        <AboutSection info={brandInfo} />
+        {events.length > 0 ? (
+          <>
+            <SectionTransition />
+            <EventsSection events={events} />
+          </>
+        ) : null}
+        <SectionTransition />
+        <CatalogSection products={products} />
+        {instagram.length > 0 ? (
+          <>
+            <SectionTransition />
+            <InstagramSection posts={instagram} />
+          </>
+        ) : null}
+        <SectionTransition />
+        <ContactSection />
+        <FooterSection />
+
+        <Toaster 
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: 'oklch(0.08 0 0)',
+              color: 'oklch(0.99 0 0)',
+              border: '1px solid oklch(0.45 0.15 300)',
+            },
+          }}
+        />
+      </div>
+    </div>
+  )
+}

@@ -1,12 +1,19 @@
+'use client'
+
 import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 import { ArtDecoAnimatedDivider } from './ArtDecoAnimatedDivider'
+import type { BrandInfo } from '@/lib/types'
 
-export function AboutSection() {
+function pick(info: Record<string, BrandInfo> | undefined, key: string, fallback: string) {
+  return info?.[key]?.body ?? fallback
+}
+
+export function AboutSection({ info }: { info?: Record<string, BrandInfo> }) {
   const { ref, isVisible } = useScrollTrigger(0.1)
 
   return (
-    <section id="about" className="py-24 md:py-32 relative overflow-hidden max-w-full" ref={ref}>
+    <section id="about" className="py-24 md:py-32 relative overflow-hidden max-w-full" ref={ref} style={{ scrollMarginTop: '7rem' }}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>
@@ -44,8 +51,7 @@ export function AboutSection() {
             <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>✦</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Mission</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
-              Wir fertigen okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Kink überschreiten. 
-              Jedes Stück ist ein handgefertigtes Artefakt, das Dunkelheit tragbar und ästhetisch macht.
+              {pick(info, 'mission', 'Wir fertigen okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Kink überschreiten. Jedes Stück ist ein handgefertigtes Artefakt, das Dunkelheit tragbar und ästhetisch macht.')}
             </p>
           </motion.div>
 
@@ -58,8 +64,7 @@ export function AboutSection() {
             <div className="text-5xl md:text-7xl mb-4 text-primary bioshock-glow-animated">☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Identität</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
-              Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), 
-              der unendlichen Tiefe kosmischer Nebel und der dunklen Ästhetik der Gothic-Subkultur.
+              {pick(info, 'identity', 'Cosmic Art Deco Goth. Die Fusion aus der geometrischen Präzision des Art Déco (1920er), der unendlichen Tiefe kosmischer Nebel und der dunklen Ästhetik der Gothic-Subkultur.')}
             </p>
           </motion.div>
 
@@ -72,8 +77,7 @@ export function AboutSection() {
             <div className="text-5xl md:text-7xl mb-4 bioshock-glow-animated" style={{ textShadow: '0 0 30px rgba(255, 255, 255, 0.5)' }}>☾</div>
             <h3 className="text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] md:tracking-[0.2em]">Handwerk</h3>
             <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-light">
-              Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. 
-              Keine Massenproduktion—nur einzigartige Stücke für nonkonformistische Seelen.
+              {pick(info, 'craft', 'Jedes Produkt wird mit akribischer Liebe zum Detail von Hand gefertigt, unter Verwendung von Resin, PVC und Edelmetallen. Keine Massenproduktion—nur einzigartige Stücke für nonkonformistische Seelen.')}
             </p>
           </motion.div>
         </div>
@@ -90,25 +94,25 @@ export function AboutSection() {
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Handwerk:</strong> Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.
+                  <strong className="text-foreground uppercase tracking-wider">Handwerk:</strong> {pick(info, 'value_handwerk', 'Jedes Produkt ist ein Unikat, akribisch von Hand gefertigt aus hochwertigen Materialien.')}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Dunkle Ästhetik:</strong> Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.
+                  <strong className="text-foreground uppercase tracking-wider">Dunkle Ästhetik:</strong> {pick(info, 'value_aesthetik', 'Schönheit existiert im Schatten, im Bizarren, im kompromisslos Unkonventionellen.')}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Individualität:</strong> Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.
+                  <strong className="text-foreground uppercase tracking-wider">Individualität:</strong> {pick(info, 'value_individualitaet', 'Schmuck als Ausdruck nonkonformistischer Identität und persönlicher Mystik.')}
                 </span>
               </li>
               <li className="flex items-start gap-3 md:gap-4">
                 <span className="text-primary text-xl md:text-2xl mt-1 flex-shrink-0">☾</span>
                 <span className="text-foreground/80 font-light">
-                  <strong className="text-foreground uppercase tracking-wider">Inklusivität:</strong> Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.
+                  <strong className="text-foreground uppercase tracking-wider">Inklusivität:</strong> {pick(info, 'value_inklusivitaet', 'Accessoires für alle Körperformen, Geschlechtsidentitäten und ästhetischen Präferenzen.')}
                 </span>
               </li>
             </ul>
@@ -117,7 +121,7 @@ export function AboutSection() {
 
         <div className="text-center mt-12 md:mt-20 px-4">
           <p className="text-lg md:text-xl lg:text-2xl text-foreground/60 italic font-light tracking-wide leading-relaxed max-w-3xl mx-auto">
-            "Für moderne Hexen, Gothic-Seelen und alle, die Eleganz in der Leere finden."
+            {`"${pick(info, 'quote', 'Für moderne Hexen, Gothic-Seelen und alle, die Eleganz in der Leere finden.')}"`}
           </p>
         </div>
       </motion.div>

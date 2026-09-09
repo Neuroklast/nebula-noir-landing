@@ -1,6 +1,8 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import logoSvg from '@/assets/images/IMG_0085_(1).svg'
+const logoSvg = '/images/IMG_0085_(1).svg'
 
 interface LoadingScreenProps {
   onLoadingComplete?: () => void

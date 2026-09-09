@@ -1,4 +1,5 @@
 import { Product } from '@/lib/types'
+import { CATEGORIES } from '@/lib/products'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Eye } from '@phosphor-icons/react'
@@ -21,13 +22,12 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
       
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
-      <div className="aspect-square overflow-hidden bg-muted relative">
+      <div className="aspect-square overflow-hidden bg-muted relative" style={{ filter: 'contrast(1.1) brightness(0.95)' }}>
         <img 
           src={product.image} 
           alt={product.name}
           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
           loading="lazy"
-          style={{ filter: 'contrast(1.1) brightness(0.95)' }}
         />
         {product.madeToOrder && (
           <Badge className="absolute top-4 right-4 bg-primary/90 text-primary-foreground uppercase tracking-[0.15em] text-xs nebula-glow">
@@ -59,7 +59,7 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
 
         <div className="flex items-center justify-between pt-4 md:pt-6 border-t border-foreground/20">
           <div className="text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-wider spark-theme-bioshock-glow">
-            €{product.price.toFixed(2)}
+            {CATEGORIES.find((c) => c.value === product.category)?.label ?? product.category}
           </div>
           <Button
             onClick={(e) => {

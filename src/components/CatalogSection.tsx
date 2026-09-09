@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Product } from '@/lib/types'
 import { PRODUCTS, CATEGORIES } from '@/lib/products'
@@ -8,18 +10,18 @@ import { useScrollTrigger } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 
 interface CatalogSectionProps {
-  onAddToCart: (product: Product) => void
+  products?: Product[]
 }
 
-export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
+export function CatalogSection({ products = PRODUCTS }: CatalogSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [detailDialogOpen, setDetailDialogOpen] = useState(false)
   const { ref, isVisible } = useScrollTrigger(0.1)
 
   const filteredProducts = selectedCategory === 'all' 
-    ? PRODUCTS 
-    : PRODUCTS.filter(p => p.category === selectedCategory)
+    ? products 
+    : products.filter(p => p.category === selectedCategory)
 
   const handleViewDetails = (product: Product) => {
     setSelectedProduct(product)
@@ -27,7 +29,7 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   }
 
   return (
-    <section id="catalog" className="py-24 md:py-32 relative overflow-hidden max-w-full" ref={ref}>
+    <section id="catalog" className="py-24 md:py-32 relative overflow-hidden max-w-full" ref={ref} style={{ scrollMarginTop: '7rem' }}>
       <div className="absolute inset-0 opacity-3">
         <svg className="w-full h-full">
           <defs>
@@ -65,8 +67,9 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         >
           {CATEGORIES.map(category => (
             <Button
-              key={category.value}
-              onClick={() => setSelectedCategory(category.value)}
+                key={category.value}
+                type="button"
+                onClick={() => setSelectedCategory(category.value)}
               variant={selectedCategory === category.value ? 'default' : 'outline'}
               className={`uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all duration-500 px-4 md:px-8 py-2 md:py-3 text-xs md:text-sm font-semibold ${
                 selectedCategory === category.value 
@@ -103,7 +106,6 @@ export function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         product={selectedProduct}
         open={detailDialogOpen}
         onOpenChange={setDetailDialogOpen}
-        onAddToCart={onAddToCart}
       />
     </section>
   )

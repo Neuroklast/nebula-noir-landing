@@ -1,8 +1,9 @@
-import logoImage from '@/assets/images/IMG_0085_(1).svg'
+import { HeroVideoBackground } from './HeroVideoBackground'
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden max-w-full">
+      <HeroVideoBackground />
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +25,7 @@ export function HeroSection() {
             <div className="flex justify-center mb-8 md:mb-12">
               <div className="relative parallax-float">
                 <img 
-                  src={logoImage} 
+                  src="/images/IMG_0085_(1).svg" 
                   alt="Nebula Noir" 
                   className="h-32 w-32 sm:h-40 sm:w-40 md:h-56 md:w-56 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
                   style={{ 

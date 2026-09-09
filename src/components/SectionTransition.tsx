@@ -1,3 +1,5 @@
+'use client'
+
 import { useParallax } from '@/hooks/use-parallax'
 import { motion } from 'framer-motion'
 

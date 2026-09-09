@@ -1,0 +1,13 @@
+import { InfoManager } from '@/components/admin/InfoManager'
+import { getBrandInfo } from '@/lib/data'
+import { isDemoMode } from '@/lib/env'
+
+export default async function AdminInfoPage() {
+  const items = await getBrandInfo()
+  return (
+    <div className="space-y-8">
+      <h2 className="text-3xl uppercase tracking-[0.2em] bioshock-glow-animated">Info</h2>
+      <InfoManager items={items} demo={isDemoMode()} />
+    </div>
+  )
+}
