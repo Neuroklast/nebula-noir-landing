@@ -228,7 +228,7 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
             </g>
 
             <g className="loading-moon-accents">
-              <g transform="rotate(90 60 75)">
+              <g transform="rotate(-90 60 75)">
                 <motion.text
                   x="60"
                   y="75"
@@ -240,7 +240,7 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                   ☾
                 </motion.text>
               </g>
-              <g transform={`rotate(90 ${viewport.w - 80} 75)`}>
+              <g transform={`rotate(-90 ${viewport.w - 80} 75)`}>
                 <motion.text
                   x={viewport.w - 80}
                   y="75"
@@ -252,7 +252,7 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                   ☾
                 </motion.text>
               </g>
-              <g transform={`rotate(90 ${viewport.w - 80} ${viewport.h - 55})`}>
+              <g transform={`rotate(-90 ${viewport.w - 80} ${viewport.h - 55})`}>
                 <motion.text
                   x={viewport.w - 80}
                   y={viewport.h - 55}
@@ -264,7 +264,7 @@ export default function LoadingScreen({ onLoadingComplete, duration = 3000 }: Lo
                   ☾
                 </motion.text>
               </g>
-              <g transform={`rotate(90 60 ${viewport.h - 55})`}>
+              <g transform={`rotate(-90 60 ${viewport.h - 55})`}>
                 <motion.text
                   x="60"
                   y={viewport.h - 55}
