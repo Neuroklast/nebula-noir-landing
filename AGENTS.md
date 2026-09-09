@@ -34,6 +34,7 @@ Allowed exceptions (product decisions):
 - Demo Mode: if `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is missing, all reads use `src/lib/fixtures/`. Mutations no-op with a user-visible toast.
 - R2 uploads only on the server. Never expose R2 secrets to the client.
 - Instagram: **Instagram API with Instagram Login** only (`graph.instagram.com`, scope `instagram_business_basic`). No Facebook Login, no Messenger. Syncs media into `instagram_posts`. Handle: `@nebula_noir.official`.
+- i18n: German default, English via `LocaleProvider` + `src/i18n/messages.ts`. Cookie `nn-locale`. Do not hardcode user-facing UI strings.
 - Admin: Supabase Auth email/password + `profiles.role = 'admin'` + RLS.
 
 ## Spark is gone

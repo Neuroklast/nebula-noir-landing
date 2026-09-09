@@ -94,7 +94,9 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     max-width: 100%;
-    word-wrap: break-word;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
   }
 
   h1 {
@@ -103,6 +105,22 @@
       0 0 10px rgba(255, 255, 255, 0.3),
       0 0 20px rgba(255, 255, 255, 0.2),
       0 0 30px rgba(102, 51, 153, 0.3);
+  }
+
+  @media (max-width: 767px) {
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.08em;
+    }
+    h1 {
+      letter-spacing: 0.1em;
+    }
+  }
+
+  @media (pointer: coarse) {
+    *,
+    button, a, input, textarea, select {
+      cursor: auto !important;
+    }
   }
 }
 

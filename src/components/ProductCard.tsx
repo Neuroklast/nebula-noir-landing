@@ -1,9 +1,11 @@
+'use client'
+
 import { Product } from '@/lib/types'
-import { CATEGORIES } from '@/lib/products'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Eye } from '@phosphor-icons/react'
 import { ArtDecoCorner } from './ArtDecoCorner'
+import { useT } from '@/i18n/context'
 
 interface ProductCardProps {
   product: Product
@@ -11,6 +13,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onViewDetails }: ProductCardProps) {
+  const t = useT()
   return (
     <div 
       className="group relative bg-card transition-all duration-500 nebula-glow-hover overflow-hidden metallic-border cursor-pointer art-deco-card-hover spark-theme-card-wrapper"
@@ -59,7 +62,7 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
 
         <div className="flex items-center justify-between pt-4 md:pt-6 border-t border-foreground/20">
           <div className="text-xl md:text-2xl lg:text-3xl font-light text-foreground tracking-wider spark-theme-bioshock-glow">
-            {CATEGORIES.find((c) => c.value === product.category)?.label ?? product.category}
+            {t(`categories.${product.category}`)}
           </div>
           <Button
             onClick={(e) => {
@@ -68,7 +71,7 @@ export function ProductCard({ product, onViewDetails }: ProductCardProps) {
             }}
             className="bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.2em] font-semibold flex items-center gap-2 transition-all duration-500 px-4 md:px-6 py-2 md:py-3 text-xs md:text-sm spark-theme-art-deco-button"
           >
-            Details
+            {t('catalog.details')}
           </Button>
         </div>
       </div>

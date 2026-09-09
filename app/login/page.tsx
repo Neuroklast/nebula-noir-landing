@@ -10,8 +10,10 @@ import { createBrowserSupabase } from '@/lib/supabase/client'
 import { isDemoMode } from '@/lib/env'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
+import { useT } from '@/i18n/context'
 
 export default function LoginPage() {
+  const t = useT()
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -26,12 +28,12 @@ export default function LoginPage() {
       return
     }
     if (!email || !password) {
-      toast.error('Bitte E-Mail und Passwort eingeben')
+      toast.error(t('login.needCredentials'))
       return
     }
     const supabase = createBrowserSupabase()
     if (!supabase) {
-      toast.error('Supabase nicht konfiguriert')
+      toast.error(t('login.noSupabase'))
       return
     }
     setBusy(true)
@@ -54,16 +56,16 @@ export default function LoginPage() {
       >
         <ArtDecoCorner position="top-left" size={50} delay={0.5} />
         <ArtDecoCorner position="bottom-right" size={50} delay={0.6} />
-        <h1 className="text-3xl uppercase tracking-[0.2em] bioshock-glow-animated text-center">Login</h1>
+        <h1 className="text-3xl uppercase tracking-[0.2em] bioshock-glow-animated text-center">{t('login.title')}</h1>
         {demo ? (
           <p className="text-sm text-foreground/70 font-light text-center">
-            Demo Mode — kein echtes Auth. Weiter zum Admin-Preview.
+            {t('login.demo')}
           </p>
         ) : null}
         <div className="space-y-3">
-          <Label htmlFor="email" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-            E-Mail
-          </Label>
+            <Label htmlFor="email" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
+              {t('login.email')}
+            </Label>
           <Input
             id="email"
             type="email"
@@ -74,9 +76,9 @@ export default function LoginPage() {
           />
         </div>
         <div className="space-y-3">
-          <Label htmlFor="password" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
-            Passwort
-          </Label>
+            <Label htmlFor="password" className="text-sm uppercase tracking-[0.2em] text-foreground/90">
+              {t('login.password')}
+            </Label>
           <Input
             id="password"
             type="password"
@@ -90,7 +92,7 @@ export default function LoginPage() {
           disabled={busy}
           className="w-full bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background uppercase tracking-[0.15em] md:tracking-[0.25em] font-semibold py-4 md:py-6 text-sm md:text-base transition-all duration-500"
         >
-          Eintreten
+          {t('login.enter')}
         </Button>
       </form>
     </div>

@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented in reverse chronological order.
 
+## [0.3.0] — 2026-09-09
+
+### Added
+
+- DE/EN locale switcher (`nn-locale` cookie). UI chrome is no longer hardcoded.
+- Demo gallery/Instagram media from local `Demo images` (converted JPEG) plus hero clip `public/hero.mp4`.
+- Favicon from the Nebula Noir logo (`app/icon.svg`, `public/favicon.svg`).
+
+### Fixed
+
+- Headings no longer split mid-word (`MASSANFERTIGUNGE / N`); long titles wrap on `\n`.
+- Mobile: smaller heading tracking, native cursor on touch, hamburger until `lg`, form `overflow-hidden`.
+
 ## [0.2.3] — 2026-09-09
 
 ### Fixed

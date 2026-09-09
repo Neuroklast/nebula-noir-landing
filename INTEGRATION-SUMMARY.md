@@ -11,6 +11,7 @@ Living snapshot of product status, schema, and services.
 | Events | `events` | New section, existing card language |
 | Gallery | `gallery_images` + R2 / fixtures | Existing catalog chrome, no prices/cart |
 | Instagram | `instagram_posts` / fixtures | Instagram Login API, `@nebula_noir.official` |
+| i18n | `src/i18n/messages.ts` | DE default, EN cookie `nn-locale` |
 | Contact | `contact_inquiries` | Existing form |
 | Legal | `src/lib/legal-content.ts` | Static routes |
 | Shop | Etsy | Footer + detail CTA |

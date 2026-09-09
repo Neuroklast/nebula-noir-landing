@@ -1,6 +1,10 @@
+'use client'
+
 import { HeroVideoBackground } from './HeroVideoBackground'
+import { useT } from '@/i18n/context'
 
 export function HeroSection() {
+  const t = useT()
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden max-w-full">
       <HeroVideoBackground />
@@ -48,13 +52,12 @@ export function HeroSection() {
             </div>
 
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light tracking-[0.15em] md:tracking-[0.2em] text-foreground/90 art-deco-reveal uppercase px-4" style={{ animationDelay: '0.1s' }}>
-              Cosmic Art Deco Goth
+              {t('hero.tagline')}
             </p>
 
             <div className="max-w-3xl mx-auto art-deco-reveal-center px-4" style={{ animationDelay: '0.2s' }}>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground/75 leading-relaxed font-light tracking-wide">
-                Handgefertigte okkulte und alternative Accessoires, die die Grenze zwischen Eleganz und Dunkelheit überschreiten. 
-                Jedes Stück ist ein einzigartiges Artefakt, liebevoll erschaffen aus Resin, PVC und Edelmetallen.
+                {t('hero.body')}
               </p>
             </div>
 
@@ -63,7 +66,7 @@ export function HeroSection() {
                 href="#catalog" 
                 className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-foreground text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden metallic-border hover:text-background text-sm md:text-base art-deco-button-hover"
               >
-                <span className="relative z-10">Kollektion entdecken</span>
+                <span className="relative z-10">{t('hero.ctaCollection')}</span>
                 <div className="absolute inset-0 bg-foreground transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               </a>
               <a 
@@ -71,7 +74,7 @@ export function HeroSection() {
                 className="group relative px-6 md:px-10 py-4 md:py-5 bg-transparent border-2 border-primary/50 text-foreground font-semibold uppercase tracking-[0.15em] md:tracking-[0.25em] transition-all duration-500 overflow-hidden hover:border-primary text-sm md:text-base art-deco-button-hover glow-pulse-subtle"
                 style={{ boxShadow: '0 0 20px rgba(102, 51, 153, 0.2)' }}
               >
-                <span className="relative z-10 group-hover:text-primary transition-colors">Unsere Philosophie</span>
+                <span className="relative z-10 group-hover:text-primary transition-colors">{t('hero.ctaPhilosophy')}</span>
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </a>
             </div>

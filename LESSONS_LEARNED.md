@@ -24,6 +24,14 @@ Use **Instagram API with Instagram Login** on `graph.instagram.com`. Facebook Lo
 
 VIDEO has `thumbnail_url`; CAROUSEL_ALBUM needs `children{media_url,media_type}`. Never upload `video/*` to R2 as a gallery still.
 
+## Heading tracking vs. German compounds
+
+Poiret One + `letter-spacing: 0.2em` + `word-wrap: break-word` splits `MASSANFERTIGUNGEN` after the last letter. Use `word-break: normal`, reduce tracking under 768px, and put `\n` in i18n titles with `whitespace-pre-line`.
+
+## Instagram scrape vs local demo
+
+instagram.com blocks unauthenticated fetch. Demo media must be files in `public/demo/` (converted from HEIC in `Demo images/`). Live sync still uses Graph API.
+
 ## Inline `filter` vs Tailwind grayscale
 
 `style={{ filter: 'contrast(...)' }}` on the same `img` as `filter grayscale` wins and kills hover. Put contrast/brightness on the wrapping `aspect-square` div; leave grayscale classes on the image.

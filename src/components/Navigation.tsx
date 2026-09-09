@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { InstagramLogo, List } from '@phosphor-icons/react'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { useT } from '@/i18n/context'
 
 interface NavigationProps {
   homeHref?: string
@@ -23,12 +25,13 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const t = useT()
   const navLinks = [
-    { href: '/#catalog', label: 'Collection' },
-    { href: '/#about', label: 'Philosophy' },
-    ...(showEvents ? [{ href: '/#events', label: 'Events' }] : []),
-    ...(showInstagram ? [{ href: '/#instagram', label: 'Instagram' }] : []),
-    { href: '/#contact', label: 'Custom Orders' }
+    { href: '/#catalog', label: t('nav.collection') },
+    { href: '/#about', label: t('nav.philosophy') },
+    ...(showEvents ? [{ href: '/#events', label: t('nav.events') }] : []),
+    ...(showInstagram ? [{ href: '/#instagram', label: t('nav.instagram') }] : []),
+    { href: '/#contact', label: t('nav.customOrders') }
   ]
 
   return (
@@ -51,7 +54,7 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
             </span>
           </a>
 
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
             {navLinks.map(link => (
               <a
                 key={link.href}
@@ -64,7 +67,10 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="hidden sm:block">
+              <LanguageSwitcher />
+            </div>
             <Button 
               asChild
               variant="outline" 
@@ -82,8 +88,8 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
             </Button>
 
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="outline" size="icon" className="metallic-border" aria-label="Menü">
+              <SheetTrigger asChild className="lg:hidden">
+                <Button variant="outline" size="icon" className="metallic-border" aria-label={t('nav.menu')}>
                   <List size={24} weight="bold" />
                 </Button>
               </SheetTrigger>
@@ -102,11 +108,14 @@ export function Navigation({ homeHref = '/', showEvents = true, showInstagram = 
                       key={link.href}
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
-                      className="text-2xl uppercase tracking-[0.25em] hover:text-foreground transition-all duration-300 text-foreground/90 bioshock-glow-animated"
+                      className="text-xl uppercase tracking-[0.15em] hover:text-foreground transition-all duration-300 text-foreground/90 bioshock-glow-animated"
                     >
                       {link.label}
                     </a>
                   ))}
+                  <div className="pt-4 lg:hidden">
+                    <LanguageSwitcher />
+                  </div>
                 </nav>
               </SheetContent>
             </Sheet>

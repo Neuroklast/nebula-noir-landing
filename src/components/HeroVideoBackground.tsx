@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 export function HeroVideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const url = process.env.NEXT_PUBLIC_HERO_VIDEO_URL
+  const url = process.env.NEXT_PUBLIC_HERO_VIDEO_URL || '/hero.mp4'
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {

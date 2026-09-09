@@ -1,12 +1,12 @@
 'use client'
 
 import { Product } from '@/lib/types'
-import { CATEGORIES } from '@/lib/products'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { EnvelopeSimple, X } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useT } from '@/i18n/context'
 
 interface ProductDetailDialogProps {
   product: Product | null
@@ -15,6 +15,7 @@ interface ProductDetailDialogProps {
 }
 
 export function ProductDetailDialog({ product, open, onOpenChange }: ProductDetailDialogProps) {
+  const t = useT()
   if (!product) return null
 
   return (
@@ -98,10 +99,10 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                         transition={{ duration: 0.4, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                       >
                         <p className="text-sm text-foreground/70 uppercase tracking-wider">
-                          ⧗ Geschätzte Produktionszeit: {product.estimatedDays} Tage
+                          ⧗ {t('catalog.productionTime', { days: product.estimatedDays })}
                         </p>
                         <p className="text-xs text-foreground/50 mt-2 italic">
-                          Jedes Stück wird mit Intention und Sorgfalt von Hand gefertigt
+                          {t('catalog.handmade')}
                         </p>
                       </motion.div>
                     )}
@@ -113,13 +114,13 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                       transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <p className="uppercase tracking-wider">
-                        <strong className="text-foreground/90">Material:</strong> Hochwertige Resin-, PVC- und Edelmetall-Komponenten
+                        <strong className="text-foreground/90">{t('catalog.materialLabel')}:</strong> {t('catalog.material')}
                       </p>
                       <p className="uppercase tracking-wider">
-                        <strong className="text-foreground/90">Herkunft:</strong> Handgefertigt in Deutschland
+                        <strong className="text-foreground/90">{t('catalog.originLabel')}:</strong> {t('catalog.origin')}
                       </p>
                       <p className="uppercase tracking-wider">
-                        <strong className="text-foreground/90">Kategorie:</strong> {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                        <strong className="text-foreground/90">{t('catalog.categoryLabel')}:</strong> {t(`categories.${product.category}`)}
                       </p>
                     </motion.div>
                   </div>
@@ -131,7 +132,7 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                     transition={{ duration: 0.5, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="text-4xl md:text-5xl font-light text-foreground tracking-wider bioshock-glow">
-                      {CATEGORIES.find((c) => c.value === product.category)?.label ?? product.category}
+                      {t(`categories.${product.category}`)}
                     </div>
                     <Button
                       asChild
@@ -139,7 +140,7 @@ export function ProductDetailDialog({ product, open, onOpenChange }: ProductDeta
                     >
                       <a href="/#contact" onClick={() => onOpenChange(false)}>
                         <EnvelopeSimple size={24} weight="bold" />
-                        Anfrage senden
+                        {t('catalog.inquire')}
                       </a>
                     </Button>
                   </motion.div>
