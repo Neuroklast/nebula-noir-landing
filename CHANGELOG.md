@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented in reverse chronological order.
 
+## [0.3.4] — 2026-09-10
+
+### Changed
+
+- License is proprietary (all rights reserved). The Spark-era MIT text attributed to GitHub, Inc. is closed.
+- Root docs aligned to the live product: `README.md`, `PRD.md`, `THEME_INTEGRATION.md`, theme kit README, `DEPLOYMENT.md`, `SECURITY.md`, `QA_CHECKLIST.md`, `INTEGRATION-SUMMARY.md`, `AGENTS.md`.
+- `.env.example` documents every variable (required vs optional, Demo Mode, unused-at-runtime Meta app id).
+
+### Added
+
+- `USER_MANUAL.md` — complete visitor and admin handbook (DE, with English operator notes).
+
 ## [0.3.3] — 2026-09-09
 
 ### Added

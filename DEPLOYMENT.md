@@ -1,11 +1,13 @@
 # Deployment
 
+**Last reviewed:** 2026-09-10 · Operator how-to after go-live: `USER_MANUAL.md`. Variable list: `.env.example`. License: proprietary (`LICENSE`).
+
 ## 1. Vercel (Next.js)
 
 1. Push this repo to GitHub.
 2. New Vercel project → Framework Preset: Next.js.
-3. Set environment variables from `.env.example`.
-4. Deploy. Output: default Next.js (no `dist`).
+3. Set environment variables from `.env.example`. Empty Supabase public keys force Demo Mode — do not ship production that way.
+4. Deploy. Output: default Next.js (no `dist`). Private repo recommended (proprietary source).
 
 Local:
 
@@ -118,6 +120,7 @@ GET https://graph.instagram.com/v22.0/me?fields=user_id,username,account_type&ac
 
 - `INSTAGRAM_ACCESS_TOKEN` — required (long-lived)
 - `INSTAGRAM_USER_ID` — optional (`/me` fills it)
+- `INSTAGRAM_APP_ID` — optional Meta dashboard id; not read at runtime
 - `INSTAGRAM_APP_SECRET` — only for the exchange above, not needed at runtime
 - `INSTAGRAM_GRAPH_VERSION` — default `v22.0`
 
@@ -128,7 +131,8 @@ Do **not** put the token in `NEXT_PUBLIC_*`.
 - Daily: Vercel Cron `GET /api/cron/instagram` (`vercel.json`), header `Authorization: Bearer $CRON_SECRET` or Vercel Cron.
 - Manual: `/admin/instagram` or `POST /api/instagram/sync` (admin session).
 - Still images are copied to R2 when R2 is configured (CDN URLs expire). Videos/carousels use thumbnail or first image.
-- Without `INSTAGRAM_ACCESS_TOKEN`, the section uses fixtures.
+- Demo Mode (no Supabase public keys): fixture posts. Live Supabase with empty `instagram_posts`: section hidden (no Unsplash fake-feed).
+- Without `INSTAGRAM_ACCESS_TOKEN`, cron/admin sync does not call Graph.
 
 Cron/admin sync refreshes the long-lived token and stores it in `instagram_auth` (service role only). Env `INSTAGRAM_ACCESS_TOKEN` is the bootstrap if that table is empty. Re-run `reset.sql` (or add the `instagram_auth` table) if an older schema is already applied.
 
@@ -149,4 +153,4 @@ Upload in **Admin → Hero-Video** (`/admin/hero`). The file goes to R2 via pres
 
 ## 6. Post-deploy smoke
 
-Follow `QA_CHECKLIST.md`: Demo Mode locally, then production with secrets.
+Follow `QA_CHECKLIST.md`: Demo Mode locally, then production with secrets. Walk the operator paths in `USER_MANUAL.md` (login, gallery upload, event, inquiry, IG sync, hero).

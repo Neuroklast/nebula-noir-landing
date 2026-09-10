@@ -37,6 +37,7 @@ Allowed exceptions (product decisions):
 - Instagram: **Instagram API with Instagram Login** only (`graph.instagram.com`, scope `instagram_business_basic`). No Facebook Login, no Messenger. Syncs media into `instagram_posts`. Handle: `@nebula_noir.official`.
 - i18n: German default, English via `LocaleProvider` + `src/i18n/messages.ts`. Cookie `nn-locale`. Do not hardcode user-facing UI strings.
 - Admin: Supabase Auth email/password + `profiles.role = 'admin'` + RLS.
+- License: proprietary (`LICENSE`). Do not reintroduce MIT or GitHub, Inc. copyright.
 
 ## Spark is gone
 
@@ -48,12 +49,17 @@ Do not reintroduce `@github/spark`, `useKV`, Spark Vite plugins, `spark.meta.jso
 2. Implement only the requested work. Preserve design freeze.
 3. Before declaring a task done, update every relevant root markdown file:
    - `AGENTS.md` (this file, if rules changed)
+   - `README.md` / `.env.example` (if setup or variables changed)
+   - `USER_MANUAL.md` (if visitor or admin flows changed)
+   - `PRD.md` (if product scope changed)
    - `QA_CHECKLIST.md`
    - `CHANGELOG.md`
    - `LESSONS_LEARNED.md`
    - `SECURITY.md`
    - `DEPLOYMENT.md`
    - `INTEGRATION-SUMMARY.md`
+   - `THEME_INTEGRATION.md` (if the visual kit vs live tree changed)
+   - `LICENSE` (if terms changed)
 4. Run lint and typecheck.
 5. Do not wait for the user to ask for documentation updates.
 
@@ -68,4 +74,6 @@ Do not reintroduce `@github/spark`, `useKV`, Spark Vite plugins, `spark.meta.jso
 | `src/lib/supabase/` | Browser, server, service clients |
 | `src/lib/r2.ts` | R2 uploads |
 | `supabase/reset.sql` | Schema, RLS, seed |
-| `.env.example` | All required variables |
+| `.env.example` | All supported variables (required vs optional marked) |
+| `USER_MANUAL.md` | Visitor + admin how-to |
+| `LICENSE` | Proprietary, all rights reserved |

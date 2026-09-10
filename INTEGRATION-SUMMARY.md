@@ -2,6 +2,8 @@
 
 Living snapshot of product status, schema, and services.
 
+**Last reviewed:** 2026-09-10 · How-to: `USER_MANUAL.md` · Env: `.env.example` · License: proprietary.
+
 ## Product status
 
 | Surface | Source | Live UI |
@@ -52,3 +54,17 @@ Triggered when `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is 
 3. Admin upload → auth check → R2 `PutObject` → `gallery_images` insert.
 4. IG cron → Graph API → R2 copy → upsert `instagram_posts`.
 5. Contact → server action → insert `contact_inquiries`.
+
+## Docs map
+
+| File | Role |
+|---|---|
+| `USER_MANUAL.md` | Visitors + admin |
+| `README.md` | Setup index |
+| `AGENTS.md` | Freeze + architecture for agents |
+| `PRD.md` | Current requirements |
+| `DEPLOYMENT.md` | Hosting and third-party setup |
+| `SECURITY.md` | RLS and secrets |
+| `QA_CHECKLIST.md` | Manual tests |
+| `THEME_INTEGRATION.md` | Kit vs live UI |
+| `LICENSE` | Proprietary |

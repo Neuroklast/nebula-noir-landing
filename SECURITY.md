@@ -1,5 +1,9 @@
 # Security
 
+**Last reviewed:** 2026-09-10
+
+The repository is proprietary (`LICENSE`). Do not publish exploits, dump env files, or file public GitHub issues for vulnerabilities. Email the site operator (see Impressum / `contact@nebula-noir.com`).
+
 ## Reporting
 
 Do not file public GitHub issues for vulnerabilities. Email the site operator (see Impressum).
@@ -25,6 +29,8 @@ Never prefix with `NEXT_PUBLIC_`. Never import into client components.
 - `CRON_SECRET`
 
 `R2_PUBLIC_URL` is not a credential but is server-used when writing object URLs.
+
+`INSTAGRAM_APP_ID` is optional documentation for the Meta dashboard; the app does not read it at runtime. `INSTAGRAM_APP_SECRET` is for the short-lived → long-lived token exchange only (`DEPLOYMENT.md`). Complete list and comments: `.env.example`.
 
 ## Supabase RLS (see `supabase/reset.sql`)
 

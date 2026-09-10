@@ -1,5 +1,13 @@
 # Lessons Learned
 
+## Spark MIT is not this project's license
+
+The template shipped an MIT file copyright GitHub, Inc. The live brand site is proprietary. Closing that license is a product decision; do not paste MIT back in. Third-party packages in `package.json` keep their own licenses.
+
+## Stale PRD and theme READMEs lie
+
+Spark-era `PRD.md` still described cart, occult copy, and Cormorant Garamond. `THEME_INTEGRATION.md` pointed at `App.tsx`. Treat those files as living docs: they must match `AGENTS.md` and the App Router tree, or agents will rebuild the shop.
+
 ## Design freeze vs. product change
 
 Removing cart/price is a product decision, not a restyle. Keep className strings on remaining nodes. Replace only the text/node that represented price or cart. Do not collapse surrounding flex rows.

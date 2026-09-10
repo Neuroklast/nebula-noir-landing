@@ -1,6 +1,8 @@
 # QA Checklist — Nebula Noir
 
-Use this as a testable pass/fail list. Demo Mode means Supabase public keys are unset.
+Use this as a testable pass/fail list. Demo Mode means Supabase public keys are unset. Operator steps: `USER_MANUAL.md`.
+
+**Last reviewed:** 2026-09-10
 
 ## UI parity (design freeze)
 
@@ -36,7 +38,7 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 ## Environment fallback (Demo Mode)
 
 - [ ] With empty `.env.local`, site still renders.
-- [ ] Gallery uses fixture images (Unsplash placeholders from `src/lib/products.ts`).
+- [ ] Gallery uses fixture images (`/demo/instagram/*.jpg` via `src/lib/products.ts` / fixtures).
 - [ ] Events, brand copy, and Instagram fixtures render.
 - [ ] Contact submit shows success or demo toast; no crash.
 - [ ] Admin mutations show a demo/disabled toast; no R2 upload attempted.
@@ -91,3 +93,5 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 - [ ] `/admin` unauthenticated → `/login`.
 - [ ] Non-admin authenticated user → 403.
 - [ ] Demo Mode `/admin` is reachable as read-only preview with banner.
+- [ ] `LICENSE` is proprietary (not MIT / not GitHub, Inc.).
+- [ ] `.env.example` lists site, Supabase, R2, Instagram, hero, and cron variables.
