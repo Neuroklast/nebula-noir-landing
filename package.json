@@ -10,7 +10,8 @@
         "typecheck": "tsc --noEmit",
         "db:migrate": "node scripts/db-migrate.mjs",
         "test:db": "node scripts/verify-schema.mjs",
-        "test:sanitize": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/verify-guards.mts"
+        "test:sanitize": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/verify-guards.mts",
+        "test:instagram": "node --experimental-strip-types --import ./scripts/alias-register.mjs scripts/verify-instagram.mts"
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.864.0",

@@ -112,6 +112,17 @@ create table if not exists public.instagram_posts (
   synced_at timestamptz not null default now()
 );
 
+-- Only the service role can read/write sync health and its concurrency lease.
+create table if not exists public.instagram_sync_state (
+  id boolean primary key default true check (id),
+  last_attempt_at timestamptz,
+  last_success_at timestamptz,
+  last_error text,
+  imported_count integer not null default 0,
+  locked_until timestamptz,
+  lock_owner uuid
+);
+
 create table if not exists public.instagram_auth (
   id boolean primary key default true check (id),
   access_token text not null,
@@ -182,6 +193,13 @@ alter table public.instagram_posts add column if not exists thumbnail_url text;
 alter table public.instagram_posts add column if not exists timestamp timestamptz;
 alter table public.instagram_posts add column if not exists synced_at timestamptz not null default now();
 
+alter table public.instagram_sync_state add column if not exists last_attempt_at timestamptz;
+alter table public.instagram_sync_state add column if not exists last_success_at timestamptz;
+alter table public.instagram_sync_state add column if not exists last_error text;
+alter table public.instagram_sync_state add column if not exists imported_count integer not null default 0;
+alter table public.instagram_sync_state add column if not exists locked_until timestamptz;
+alter table public.instagram_sync_state add column if not exists lock_owner uuid;
+
 alter table public.instagram_auth add column if not exists user_id text;
 alter table public.instagram_auth add column if not exists username text;
 alter table public.instagram_auth add column if not exists expires_at timestamptz;
@@ -233,6 +251,8 @@ alter table public.contact_inquiries enable row level security;
 alter table public.brand_info enable row level security;
 alter table public.events enable row level security;
 alter table public.instagram_posts enable row level security;
+alter table public.instagram_sync_state enable row level security;
+grant select, insert, update, delete on public.instagram_sync_state to service_role;
 alter table public.instagram_auth enable row level security;
 alter table public.site_config enable row level security;
 alter table public.api_secrets enable row level security;
@@ -409,6 +429,8 @@ create policy "instagram_public_read"
   on public.instagram_posts for select
   to anon, authenticated
   using (true);
+
+-- instagram_sync_state: no anon/auth policies; service role only
 
 -- instagram_auth: no anon/auth policies; service role only
 

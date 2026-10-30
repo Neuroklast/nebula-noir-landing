@@ -186,6 +186,36 @@ Do **not** put the token in `NEXT_PUBLIC_*`.
 
 ### Sync
 
+**Connect from the admin UI:** Enter the **Instagram User Access Token** under
+`/admin/secrets`, not a Meta App ID or App Secret. The token is validated against
+`/me` before storage. It is encrypted in `api_secrets`, the account is
+identified from the token and the first sync starts immediately. An optional
+`INSTAGRAM_USER_ID` must match that account. `/admin/instagram` displays the
+connection, latest attempt, last successful sync, expiry (when Meta provides
+one), image count and last error.
+
+**Required for fully automatic durable media:** configured Supabase service role,
+`SECRETS_ENCRYPTION_KEY`, Cloudflare R2 (all six R2 variables),
+`CRON_SECRET`, and a deployed schema with `instagram_sync_state`.
+The sync refuses to store expiring CDN URLs when R2 is missing. Tokens are never
+written back in plaintext to `instagram_auth`.
+
+**Frequency:** `vercel.json` intentionally keeps the safe daily
+`0 8 * * *` UTC default, compatible with Vercel Hobby. For Vercel Pro
+or Enterprise, change it to `*/30 * * * *` (every 30 minutes) and deploy.
+Do NOT enable that on Hobby because deployment would be rejected.
+`/api/cron/instagram` is guarded by `Authorization: Bearer $CRON_SECRET`.
+Scheduling is polling, not a Meta new-post webhook.
+
+**Failure behavior:** Transient API errors are retried, unsafe or oversized
+downloads are rejected, successful R2 objects are reused, and an incomplete
+sync never deletes existing posts. A database lease prevents overlapping jobs.
+Check `/admin/instagram` and the Vercel function logs for failures. The
+daily job also attempts to refresh long-lived tokens; expired/revoked tokens
+must be replaced manually. No automated token regeneration is possible after
+revocation or expiry.
+
+
 - Daily: Vercel Cron `GET /api/cron/instagram` (`vercel.json`). The route accepts only `Authorization: Bearer $CRON_SECRET`; Vercel sends that header automatically when `CRON_SECRET` is set. Missing/mismatched secret → 401.
 - Manual: `/admin/instagram` or `POST /api/instagram/sync` (admin session).
 - Still images are copied to R2 when R2 is configured (CDN URLs expire). Videos/carousels use thumbnail or first image.

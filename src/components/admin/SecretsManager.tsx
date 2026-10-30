@@ -40,7 +40,9 @@ export function SecretsManager({
       toast.error(result.error)
       return
     }
-    toast.success('Schlüssel gespeichert')
+    if (result.warning) toast.warning(result.warning, { duration: 10000 })
+    else if (typeof result.imported === 'number') toast.success('Schlüssel gespeichert, Instagram-Beiträge synchronisiert: ' + result.imported)
+    else toast.success('Schlüssel gespeichert')
     setValues((prev) => ({ ...prev, [key]: '' }))
     router.refresh()
   }
