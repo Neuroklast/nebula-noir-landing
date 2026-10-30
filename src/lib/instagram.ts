@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto'
 import { isR2Configured } from '@/lib/env'
 import { createServiceSupabase } from '@/lib/supabase/service'
 import { extensionForMime, isAllowedImageType, R2_MAX_BYTES, uploadToR2 } from '@/lib/r2'
-import { feedKeepIds, shouldPruneInstagram } from '@/lib/instagram-keep'
+import { feedKeepIds, shouldPruneInstagram, imageForInstagramMedia, trustedInstagramImageUrl } from '@/lib/instagram-keep'
 import { loadSecrets, setApiSecret } from '@/lib/secrets/store'
 
 const GRAPH_HOST = 'https://graph.instagram.com'
@@ -11,7 +11,7 @@ const GRAPH_VERSION = /^v\d+\.\d+$/.test(process.env.INSTAGRAM_GRAPH_VERSION ?? 
   ? process.env.INSTAGRAM_GRAPH_VERSION!
   : 'v22.0'
 const FIELDS = 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,children{id,media_type,media_url,thumbnail_url}'
-const LOCK_MS = 120_000
+const LOCK_MS = 10 * 60_000
 
 type GraphChild = { id?: string; media_type?: string; media_url?: string; thumbnail_url?: string }
 type GraphMedia = {
@@ -66,30 +66,6 @@ export async function validateInstagramToken(token: string): Promise<{ userId: s
     throw new Error('Instagram benötigt ein Business- oder Creator-Konto')
   }
   return { userId, username: profile.username ?? '' }
-}
-
-function imageOf(item: GraphMedia): string | undefined {
-  if (item.media_type === 'VIDEO') return item.thumbnail_url
-  if (item.media_type === 'CAROUSEL_ALBUM') {
-    const children = item.children?.data ?? []
-    const image = children.find((child) => child.media_type === 'IMAGE')
-    const video = children.find((child) => child.media_type === 'VIDEO')
-    return image?.media_url || image?.thumbnail_url || video?.thumbnail_url || item.thumbnail_url
-  }
-  return item.media_url || item.thumbnail_url
-}
-
-export function trustedInstagramImageUrl(url: string): boolean {
-  try {
-    const parsed = new URL(url)
-    const hostname = parsed.hostname.toLowerCase()
-    return parsed.protocol === 'https:' &&
-      ['cdninstagram.com', 'fbcdn.net', 'fbsbx.com', 'instagram.com'].some(
-        (domain) => hostname === domain || hostname.endsWith(`.${domain}`)
-      )
-  } catch {
-    return false
-  }
 }
 
 async function downloadInstagramImage(url: string): Promise<{ bytes: Buffer; mime: string }> {
@@ -253,7 +229,7 @@ export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
         problems.push('Beitrag ohne ID oder Link')
         continue
       }
-      const image = imageOf(item)
+      const image = imageForInstagramMedia(item)
       if (!image) {
         problems.push(`Kein Vorschaubild für Beitrag ${item.id}`)
         continue
