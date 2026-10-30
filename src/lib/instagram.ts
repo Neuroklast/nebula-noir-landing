@@ -126,7 +126,12 @@ async function loadToken(supabase: ServiceDb): Promise<string | undefined> {
   if (sources.instagram_access_token === 'db') return values.instagram_access_token
   const { data, error } = await supabase.from('instagram_auth').select('access_token').eq('id', true).maybeSingle()
   if (error) throw new Error('Instagram-Authentifizierungsdatenbank nicht erreichbar')
-  return (data?.access_token as string | undefined) || values.instagram_access_token
+  const legacyToken = (data?.access_token as string | undefined) || undefined
+  if (legacyToken && !values.instagram_access_token) {
+    const migrated = await setApiSecret('instagram_access_token', legacyToken)
+    if (!migrated.ok) throw new Error('Alten Instagram-Token zuerst verschlüsselt migrieren: ' + migrated.error)
+  }
+  return legacyToken || values.instagram_access_token
 }
 
 async function refreshLongLivedToken(token: string): Promise<{ token: string; expiresIn?: number } | null> {
@@ -145,6 +150,12 @@ async function refreshLongLivedToken(token: string): Promise<{ token: string; ex
 }
 
 async function persistAuth(supabase: ServiceDb, token: string, userId: string, username: string) {
+  // A token changed by an admin during this job must never be overwritten with a
+  // refreshed token for the previous account.
+  const current = await loadSecrets()
+  if (current.values.instagram_access_token && current.values.instagram_access_token !== token) {
+    throw new Error('Instagram-Verbindung wurde während des Imports geändert. Bitte erneut synchronisieren')
+  }
   const refreshed = await refreshLongLivedToken(token)
   if (refreshed?.token) {
     const result = await setApiSecret('instagram_access_token', refreshed.token)
