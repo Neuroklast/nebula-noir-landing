@@ -2,7 +2,7 @@
 
 Cybergoth / Industrial jewelry brand site. Gallery, events, Instagram, contact. Commerce stays on [Etsy](https://www.etsy.com/shop/nebulanoirnn).
 
-Stack: Next.js 15 App Router, Supabase (Postgres + Auth + RLS), Cloudflare R2, Vercel Cron.
+Stack: Next.js 15 App Router, Supabase (Postgres + Auth + RLS), Cloudflare R2, visitor-triggered Instagram refresh (no cron).
 
 **License:** proprietary. All rights reserved. See `LICENSE`. This is not an open-source project.
 
@@ -43,7 +43,7 @@ Locale: German default, English via **DE / EN** (`nn-locale` cookie). How to use
 
 | Path | Role |
 |---|---|
-| `app/` | Routes, API, cron |
+| `app/` | Routes and API |
 | `src/components/` | Live UI — design freeze |
 | `src/lib/data.ts` | Demo-aware reads |
 | `src/lib/env.ts` | Demo / R2 flags |
