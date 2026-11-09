@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto'
 import { isR2Configured } from '@/lib/env'
 import { createServiceSupabase } from '@/lib/supabase/service'
 import { extensionForMime, isAllowedImageType, R2_MAX_BYTES, uploadToR2 } from '@/lib/r2'
-import { feedKeepIds, shouldPruneInstagram, imageForInstagramMedia, trustedInstagramImageUrl } from '@/lib/instagram-keep'
+import { feedKeepIds, shouldPruneInstagram, imageForInstagramMedia, trustedInstagramImageUrl, shouldRefreshInstagram } from '@/lib/instagram-keep'
 import { loadSecrets, setApiSecret } from '@/lib/secrets/store'
 
 const GRAPH_HOST = 'https://graph.instagram.com'
@@ -207,7 +207,7 @@ async function releaseLease(supabase: ServiceDb, owner: string, result: Instagra
   if (error) console.error('[instagram] unable to record sync status', error.message)
 }
 
-/** Shared by the admin button, token setup, and the authenticated Vercel cron. */
+/** Shared by the admin button, token setup, and visitor-triggered refresh. */
 export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
   const supabase = createServiceSupabase()
   if (!supabase) return { ok: false, count: 0, error: 'Supabase Service Role ist nicht konfiguriert' }
@@ -280,4 +280,26 @@ export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
   } finally {
     if (acquired) await releaseLease(supabase, owner, result)
   }
+}
+
+/**
+ * Opportunistic refresh after the homepage response was sent.
+ * All visitors share the database lease used by manual synchronization.
+ * A failed sync waits 15 minutes before the next visitor retries.
+ */
+export async function refreshInstagramIfStale(): Promise<void> {
+  if (!isR2Configured()) return
+  const supabase = createServiceSupabase()
+  if (!supabase) return
+
+  const { data, error } = await supabase.from('instagram_sync_state')
+    .select('last_attempt_at,last_success_at,locked_until')
+    .eq('id', true).maybeSingle()
+  if (error) {
+    console.error('[instagram] cannot read refresh status', error.message)
+    return
+  }
+  if (!shouldRefreshInstagram(data)) return
+  const result = await syncInstagramPosts()
+  if (!result.ok) console.error('[instagram] visitor refresh failed:', result.error)
 }
