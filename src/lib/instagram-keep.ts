@@ -41,3 +41,23 @@ export function trustedInstagramImageUrl(url: string): boolean {
     return false
   }
 }
+
+/** Visitors may refresh the cached gallery without an external scheduler.
+ * A failed attempt backs off, and an active lease prevents concurrent work.
+ */
+export function shouldRefreshInstagram(
+  state: { last_attempt_at?: string | null; last_success_at?: string | null; locked_until?: string | null } | null,
+  now = Date.now()
+): boolean {
+  const time = (value?: string | null) => value ? Date.parse(value) : Number.NaN
+  const lockUntil = time(state?.locked_until)
+  if (Number.isFinite(lockUntil) && lockUntil > now) return false
+
+  const lastSuccess = time(state?.last_success_at)
+  if (Number.isFinite(lastSuccess) && now - lastSuccess < 30 * 60_000) return false
+
+  const lastAttempt = time(state?.last_attempt_at)
+  if (Number.isFinite(lastAttempt) && now - lastAttempt < 15 * 60_000) return false
+
+  return true
+}
