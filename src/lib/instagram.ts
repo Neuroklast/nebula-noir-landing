@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto'
 import { isR2Configured } from '@/lib/env'
 import { createServiceSupabase } from '@/lib/supabase/service'
 import { extensionForMime, isAllowedImageType, R2_MAX_BYTES, uploadToR2 } from '@/lib/r2'
-import { feedKeepIds, shouldPruneInstagram, imageForInstagramMedia, trustedInstagramImageUrl } from '@/lib/instagram-keep'
+import { feedKeepIds, shouldPruneInstagram, imageForInstagramMedia, trustedInstagramImageUrl, shouldRefreshInstagram } from '@/lib/instagram-keep'
 import { loadSecrets, setApiSecret } from '@/lib/secrets/store'
 
 const GRAPH_HOST = 'https://graph.instagram.com'
@@ -12,6 +12,9 @@ const GRAPH_VERSION = /^v\d+\.\d+$/.test(process.env.INSTAGRAM_GRAPH_VERSION ?? 
   : 'v22.0'
 const FIELDS = 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,children{id,media_type,media_url,thumbnail_url}'
 const LOCK_MS = 10 * 60_000
+/** Best-effort per-instance throttle; Supabase remains authoritative across instances. */
+const VISITOR_CHECK_INTERVAL_MS = 60_000
+let nextVisitorCheckAt = 0
 
 type GraphChild = { id?: string; media_type?: string; media_url?: string; thumbnail_url?: string }
 type GraphMedia = {
@@ -207,8 +210,8 @@ async function releaseLease(supabase: ServiceDb, owner: string, result: Instagra
   if (error) console.error('[instagram] unable to record sync status', error.message)
 }
 
-/** Shared by the admin button, token setup, and the authenticated Vercel cron. */
-export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
+/** Shared by the admin button, token setup, and visitor-triggered refresh. */
+export async function syncInstagramPosts(options: { mediaDeadline?: number } = {}): Promise<InstagramSyncResult> {
   const supabase = createServiceSupabase()
   if (!supabase) return { ok: false, count: 0, error: 'Supabase Service Role ist nicht konfiguriert' }
   if (!isR2Configured()) return { ok: false, count: 0, error: 'Cloudflare R2 ist für dauerhafte Instagram-Bilder nicht konfiguriert' }
@@ -236,6 +239,10 @@ export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
     let count = 0
     const problems: string[] = []
     for (const item of items) {
+      if (options.mediaDeadline && Date.now() >= options.mediaDeadline) {
+        problems.push('Import-Zeitbudget erreicht. Weitere Bilder werden beim nächsten Besuch übernommen')
+        break
+      }
       if (!item.id || !item.permalink) {
         problems.push('Beitrag ohne ID oder Link')
         continue
@@ -280,4 +287,34 @@ export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
   } finally {
     if (acquired) await releaseLease(supabase, owner, result)
   }
+}
+
+/**
+ * Opportunistic refresh after the homepage response was sent.
+ * All visitors share the database lease used by manual synchronization.
+ * A failed sync waits 15 minutes before the next visitor retries.
+ */
+export async function refreshInstagramIfStale(): Promise<void> {
+  if (!isR2Configured()) return
+
+  // Keep normal traffic from querying Supabase on every page view.
+  // This intentionally does not replace the cross-instance database lease.
+  const now = Date.now()
+  if (now < nextVisitorCheckAt) return
+  nextVisitorCheckAt = now + VISITOR_CHECK_INTERVAL_MS
+  const supabase = createServiceSupabase()
+  if (!supabase) return
+
+  const { data, error } = await supabase.from('instagram_sync_state')
+    .select('last_attempt_at,last_success_at,locked_until')
+    .eq('id', true).maybeSingle()
+  if (error) {
+    console.error('[instagram] cannot read refresh status', error.message)
+    return
+  }
+  if (!shouldRefreshInstagram(data)) return
+  // Leave time for token refresh, database status updates, and cleanup within
+  // the 60-second Hobby function limit. A partial batch retries on a later visit.
+  const result = await syncInstagramPosts({ mediaDeadline: Date.now() + 35_000 })
+  if (!result.ok) console.error('[instagram] visitor refresh failed:', result.error)
 }

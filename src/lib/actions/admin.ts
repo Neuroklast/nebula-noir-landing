@@ -240,6 +240,7 @@ export async function triggerInstagramSync() {
   if (gate.demo) return { ok: false as const, error: gate.t('admin.demoSyncDisabled') }
   const result = await syncInstagramPosts()
   if (!result.ok) return { ok: false as const, error: result.error || gate.t('admin.syncFailed') }
+  if (result.skipped) return { ok: true as const, count: 0, skipped: true as const }
   revalidatePath('/')
-  return { ok: true as const, count: result.count }
+  return { ok: true as const, count: result.count, skipped: false as const }
 }

@@ -14,26 +14,26 @@ const labels = {
     connection: 'Verbindung', connected: 'Token hinterlegt', missing: 'Token fehlt',
     account: 'Instagram-Konto', unknown: 'Noch nicht erkannt', userId: 'User-ID',
     stored: 'Bilder gespeichert', ready: 'Bereit', notConfigured: 'Nicht konfiguriert',
-    cron: 'Täglicher Cron', cronReady: 'Schlüssel konfiguriert', cronMissing: 'CRON_SECRET fehlt',
+    automatic: 'Automatische Aktualisierung', automaticReady: 'Bei Websitebesuch, frühestens alle 30 Minuten', automaticMissing: 'Instagram-Token oder R2 fehlt',
     lastAttempt: 'Letzter Versuch', lastSuccess: 'Letzter Erfolg',
     lastImported: 'Zuletzt importiert', expiry: 'Token gültig bis',
     noDate: 'Noch nicht', errorTitle: 'Letzter Importfehler',
     storageNotice: 'Für dauerhaft funktionierende Bilder müssen alle Cloudflare-R2-Variablen konfiguriert sein. Temporäre Instagram-CDN-Adressen werden nicht gespeichert.',
     syncing: 'Synchronisierung läuft', syncNow: 'Jetzt synchronisieren',
-    synced: 'Instagram synchronisiert', failed: 'Instagram-Synchronisierung nicht erreichbar',
+    synced: 'Instagram synchronisiert', alreadyRunning: 'Eine Synchronisierung läuft bereits', failed: 'Instagram-Synchronisierung nicht erreichbar',
   },
   en: {
     intro: 'Connect an Instagram Business or Creator account. You need a long-lived Instagram User Access Token with instagram_business_basic, not a Meta App key. Saving it under Admin → API Keys starts the first import automatically.',
     connection: 'Connection', connected: 'Token saved', missing: 'Token missing',
     account: 'Instagram account', unknown: 'Not identified yet', userId: 'User ID',
     stored: 'Images stored', ready: 'Ready', notConfigured: 'Not configured',
-    cron: 'Daily cron', cronReady: 'Secret configured', cronMissing: 'CRON_SECRET missing',
+    automatic: 'Automatic refresh', automaticReady: 'On visits, no more often than every 30 minutes', automaticMissing: 'Instagram token or R2 missing',
     lastAttempt: 'Last attempt', lastSuccess: 'Last success',
     lastImported: 'Last imported', expiry: 'Token valid until',
     noDate: 'Not yet', errorTitle: 'Last import error',
     storageNotice: 'Configure all Cloudflare R2 variables for permanent images. Temporary Instagram CDN URLs are never stored.',
     syncing: 'Sync in progress', syncNow: 'Sync now',
-    synced: 'Instagram synced', failed: 'Instagram sync unavailable',
+    synced: 'Instagram synced', alreadyRunning: 'Sync already in progress', failed: 'Instagram sync unavailable',
   },
 } as const
 
@@ -49,7 +49,8 @@ export function InstagramManager({ status }: { status: InstagramSyncStatus }) {
     setBusy(true)
     try {
       const result = await triggerInstagramSync()
-      if (result.ok) toast.success(`${copy.synced}: ${result.count}`)
+      if (result.ok && result.skipped) toast.info(copy.alreadyRunning)
+      else if (result.ok) toast.success(`${copy.synced}: ${result.count}`)
       else toast.error(result.error)
       router.refresh()
     } catch {
@@ -73,7 +74,7 @@ export function InstagramManager({ status }: { status: InstagramSyncStatus }) {
           [copy.userId, status.userId ?? copy.unknown],
           [copy.stored, String(status.totalPosts)],
           ['Cloudflare R2', status.storageReady ? copy.ready : copy.notConfigured],
-          [copy.cron, status.schedulerReady ? copy.cronReady : copy.cronMissing],
+          [copy.automatic, status.configured && status.storageReady ? copy.automaticReady : copy.automaticMissing],
           [copy.lastAttempt, dateLabel(status.lastAttemptAt)],
           [copy.lastSuccess, dateLabel(status.lastSuccessAt)],
           [copy.lastImported, String(status.lastImported)],

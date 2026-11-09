@@ -70,7 +70,7 @@ Do not reintroduce `@github/spark`, `useKV`, Spark Vite plugins, `spark.meta.jso
 
 | Path | Role |
 |---|---|
-| `app/` | Routes, API, cron |
+| `app/` | Routes and API; homepage triggers Instagram refresh after render |
 | `src/components/` | Live UI (freeze) |
 | `src/lib/data.ts` | Demo-aware data access |
 | `src/lib/env.ts` | Env + demo flags |

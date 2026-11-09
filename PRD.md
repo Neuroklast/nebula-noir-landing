@@ -54,7 +54,7 @@ Black scene, cosplay, nerd culture, festivals, club nights. Copy is hard and tec
 
 ## Complexity
 
-Medium application: App Router + CMS + object storage + cron, with a large frozen client island for motion.
+Medium application: App Router + CMS + object storage + visit-triggered refresh, with a large frozen client island for motion.
 
 ## Constraints
 

@@ -269,7 +269,7 @@ Button **Jetzt synchronisieren** / *Sync now*:
 - Upsert in `instagram_posts`
 - Refresh des Long-Lived Tokens nach `instagram_auth`
 
-Zusätzlich: Vercel Cron täglich 08:00 UTC `GET /api/cron/instagram` mit `CRON_SECRET`.
+Automatisch: Beim Besuch der Startseite prüft die Website nach Auslieferung der Seite, ob der letzte erfolgreiche Import mindestens 30 Minuten zurückliegt. Nach einem Fehler gilt eine 15-Minuten-Retry-Sperre. Ohne Besucher findet kein Import statt.
 
 Ohne Token: kein Graph-Call. Demo: no-op.
 
@@ -354,7 +354,6 @@ Prüft Supabase, Cloudflare R2, Resend, Instagram Graph und die Konfiguration (V
 | `POST /api/gallery/upload` | Admin | Bestätigt den Key und schreibt die DB-Zeile |
 | `POST /api/hero/presign` | Admin | Signierte R2-PUT-URL für das Hero-Video |
 | `POST /api/instagram/sync` | Admin | Manueller Sync |
-| `GET /api/cron/instagram` | Bearer `CRON_SECRET` (Vercel sendet ihn automatisch) | Täglicher Sync |
 
 ---
 
@@ -368,7 +367,7 @@ Prüft Supabase, Cloudflare R2, Resend, Instagram Graph und die Konfiguration (V
 | Health: Resend Fehler / API-Key ungültig | Neuen Key (`re_…`) unter Admin → API-Keys speichern. Domain in Resend verifizieren. Anfragen werden trotzdem gespeichert. |
 | Health: Cloudflare R2 Signaturfehler | Nicht im Admin. Vercel: `R2_SECRET_ACCESS_KEY` + `R2_ENDPOINT` = `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` |
 | Instagram-Sektion leer | Token, Professional-Account, Sync gelaufen, Tabelle nicht leer bei Live-Supabase |
-| Cron 401 | `CRON_SECRET` gesetzt? Header `Authorization: Bearer …`? |
+| Instagram bleibt veraltet | Website aufrufen, dann `/admin/instagram` prüfen. Bei Fehlern Token, R2 und Supabase kontrollieren. |
 | 403 nach Login | `profiles.role` ist nicht `admin` |
 | Events fehlen auf der Startseite | `published`, `ends_at` / `starts_at` in der Vergangenheit |
 | Intro jedes Mal | Absicht: jedes `/`-Visit |

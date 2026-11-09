@@ -6,7 +6,6 @@ import { loadSecrets } from '@/lib/secrets/store'
 export type InstagramSyncStatus = {
   configured: boolean
   storageReady: boolean
-  schedulerReady: boolean
   username: string | null
   userId: string | null
   expiresAt: string | null
@@ -21,7 +20,6 @@ export type InstagramSyncStatus = {
 export async function getInstagramSyncStatus(): Promise<InstagramSyncStatus> {
   const defaults: InstagramSyncStatus = {
     configured: false, storageReady: isR2Configured(),
-    schedulerReady: Boolean(process.env.CRON_SECRET),
     username: null, userId: null, expiresAt: null,
     lastAttemptAt: null, lastSuccessAt: null, lastError: null,
     lastImported: 0, totalPosts: 0, running: false,
