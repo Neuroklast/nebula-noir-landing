@@ -194,35 +194,37 @@ identified from the token and the first sync starts immediately. An optional
 connection, latest attempt, last successful sync, expiry (when Meta provides
 one), image count and last error.
 
-**Required for fully automatic durable media:** configured Supabase service role,
+**Required for durable media:** configured Supabase service role,
 `SECRETS_ENCRYPTION_KEY`, Cloudflare R2 (all six R2 variables),
-`CRON_SECRET`, and a deployed schema with `instagram_sync_state`.
+and a deployed schema with `instagram_sync_state`.
 The sync refuses to store expiring CDN URLs when R2 is missing. Tokens are never
 written back in plaintext to `instagram_auth`.
 
-**Frequency:** `vercel.json` intentionally keeps the safe daily
-`0 8 * * *` UTC default, compatible with Vercel Hobby. For Vercel Pro
-or Enterprise, change it to `*/30 * * * *` (every 30 minutes) and deploy.
-Do NOT enable that on Hobby because deployment would be rejected.
-`/api/cron/instagram` is guarded by `Authorization: Bearer $CRON_SECRET`.
-Scheduling is polling, not a Meta new-post webhook.
+**No scheduled jobs:** `vercel.json` has no `crons` entry.
+Each dynamic homepage request registers a Next.js `after()` callback.
+It serves cached posts from Supabase first, then reads the sync status.
+If the last successful sync is at least 30 minutes old, it refreshes the feed.
+A failed attempt backs off for 15 minutes. The existing database lease prevents
+concurrent refreshes even across multiple Vercel instances.
+Nothing polls Instagram without visits; a site that receives no visitors for
+a long time can still have an expiring token. The manual button under
+`/admin/instagram` remains available.
 
 **Failure behavior:** Transient API errors are retried, unsafe or oversized
 downloads are rejected, successful R2 objects are reused, and an incomplete
-sync never deletes existing posts. A database lease prevents overlapping jobs.
-Check `/admin/instagram` and the Vercel function logs for failures. The
-daily job also attempts to refresh long-lived tokens; expired/revoked tokens
-must be replaced manually. No automated token regeneration is possible after
-revocation or expiry.
+sync never deletes existing posts. Check `/admin/instagram` and Vercel function
+logs for errors. A successful refresh also attempts to renew the long-lived
+Instagram token, but an expired or revoked token needs a fresh manual login.
 
-
-- Daily: Vercel Cron `GET /api/cron/instagram` (`vercel.json`). The route accepts only `Authorization: Bearer $CRON_SECRET`; Vercel sends that header automatically when `CRON_SECRET` is set. Missing/mismatched secret → 401.
+- Automatic: any visit to `/` may trigger refresh after the response.
 - Manual: `/admin/instagram` or `POST /api/instagram/sync` (admin session).
-- Still images are copied to R2 when R2 is configured (CDN URLs expire). Videos/carousels use thumbnail or first image.
-- Demo Mode (no Supabase public keys): fixture posts. Live Supabase with empty `instagram_posts`: section hidden (no Unsplash fake-feed).
-- Without `INSTAGRAM_ACCESS_TOKEN`, cron/admin sync does not call Graph.
+- Still images are copied to R2; videos/carousels use thumbnail or first image.
+- Demo Mode (no Supabase public keys): fixture posts only.
+- Without an access token: no Graph media fetch; the admin status shows the problem.
 
-Cron/admin sync refreshes the long-lived token and stores it in `instagram_auth` (service role only). Env `INSTAGRAM_ACCESS_TOKEN` is the bootstrap if that table is empty. The deploy-time apply creates `instagram_auth` on older schemas.
+Long-lived tokens are refreshed and stored encrypted in `api_secrets`;
+the `INSTAGRAM_ACCESS_TOKEN` environment variable is only a bootstrap/fallback.
+The deploy-time apply creates `instagram_auth` on older schemas.
 
 Existing databases: the deploy-time apply (or `npm run db:migrate`) adds the `contact_admin_delete` policy so admins can delete contact inquiries — the delete action in `/admin/inquiries` needs that RLS policy.
 
