@@ -12,6 +12,9 @@ const GRAPH_VERSION = /^v\d+\.\d+$/.test(process.env.INSTAGRAM_GRAPH_VERSION ?? 
   : 'v22.0'
 const FIELDS = 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,children{id,media_type,media_url,thumbnail_url}'
 const LOCK_MS = 10 * 60_000
+/** Best-effort per-instance throttle; Supabase remains authoritative across instances. */
+const VISITOR_CHECK_INTERVAL_MS = 60_000
+let nextVisitorCheckAt = 0
 
 type GraphChild = { id?: string; media_type?: string; media_url?: string; thumbnail_url?: string }
 type GraphMedia = {
@@ -289,6 +292,12 @@ export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
  */
 export async function refreshInstagramIfStale(): Promise<void> {
   if (!isR2Configured()) return
+
+  // Keep normal traffic from querying Supabase on every page view.
+  // This intentionally does not replace the cross-instance database lease.
+  const now = Date.now()
+  if (now < nextVisitorCheckAt) return
+  nextVisitorCheckAt = now + VISITOR_CHECK_INTERVAL_MS
   const supabase = createServiceSupabase()
   if (!supabase) return
 
