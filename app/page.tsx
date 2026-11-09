@@ -4,7 +4,8 @@ import { refreshInstagramIfStale } from '@/lib/instagram'
 import { brandMap, galleryAsProducts, getBrandInfo, getCategories, getEvents, getGallery, getHeroVideoUrl, getInstagramPosts } from '@/lib/data'
 
 export const dynamic = 'force-dynamic'
-export const maxDuration = 120
+// Also supported by Hobby projects without Fluid Compute.
+export const maxDuration = 60
 
 export default async function Page() {
   // Serve existing cached images immediately, refresh only after the response.
