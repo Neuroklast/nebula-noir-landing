@@ -46,7 +46,7 @@ Triggered when `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is 
 
 | Service | Role |
 |---|---|
-| Vercel | Next.js host + cron + build-time schema apply |
+| Vercel | Next.js host + post-response Instagram refresh + build-time schema apply |
 | Supabase | Postgres, Auth, RLS |
 | Cloudflare R2 | Gallery + cached IG media |
 | Resend | Contact-form notification email (`RESEND`, server-only) |
@@ -59,7 +59,7 @@ Triggered when `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is 
 1. `app/page.tsx` calls `src/lib/data.ts`.
 2. Demo → fixtures. Prod → Supabase anon client.
 3. Admin gallery upload → presign → browser PUT to R2 → confirm inserts `gallery_images`.
-4. IG cron → Graph API → R2 copy → upsert `instagram_posts`.
+4. IG visitor-triggered refresh → Graph API → R2 copy → upsert `instagram_posts`.
 5. Contact → server action → rate limit → service-role insert `contact_inquiries` → best-effort Resend notification (if `RESEND` set).
 
 ## Docs map
