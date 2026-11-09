@@ -20,7 +20,7 @@ const labels = {
     noDate: 'Noch nicht', errorTitle: 'Letzter Importfehler',
     storageNotice: 'Für dauerhaft funktionierende Bilder müssen alle Cloudflare-R2-Variablen konfiguriert sein. Temporäre Instagram-CDN-Adressen werden nicht gespeichert.',
     syncing: 'Synchronisierung läuft', syncNow: 'Jetzt synchronisieren',
-    synced: 'Instagram synchronisiert', failed: 'Instagram-Synchronisierung nicht erreichbar',
+    synced: 'Instagram synchronisiert', alreadyRunning: 'Eine Synchronisierung läuft bereits', failed: 'Instagram-Synchronisierung nicht erreichbar',
   },
   en: {
     intro: 'Connect an Instagram Business or Creator account. You need a long-lived Instagram User Access Token with instagram_business_basic, not a Meta App key. Saving it under Admin → API Keys starts the first import automatically.',
@@ -33,7 +33,7 @@ const labels = {
     noDate: 'Not yet', errorTitle: 'Last import error',
     storageNotice: 'Configure all Cloudflare R2 variables for permanent images. Temporary Instagram CDN URLs are never stored.',
     syncing: 'Sync in progress', syncNow: 'Sync now',
-    synced: 'Instagram synced', failed: 'Instagram sync unavailable',
+    synced: 'Instagram synced', alreadyRunning: 'Sync already in progress', failed: 'Instagram sync unavailable',
   },
 } as const
 
@@ -49,7 +49,8 @@ export function InstagramManager({ status }: { status: InstagramSyncStatus }) {
     setBusy(true)
     try {
       const result = await triggerInstagramSync()
-      if (result.ok) toast.success(`${copy.synced}: ${result.count}`)
+      if (result.ok && result.skipped) toast.info(copy.alreadyRunning)
+      else if (result.ok) toast.success(`${copy.synced}: ${result.count}`)
       else toast.error(result.error)
       router.refresh()
     } catch {
