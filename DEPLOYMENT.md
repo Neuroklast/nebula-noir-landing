@@ -202,7 +202,9 @@ written back in plaintext to `instagram_auth`.
 
 **No scheduled jobs:** `vercel.json` has no `crons` entry.
 Each dynamic homepage request registers a Next.js `after()` callback.
-It serves cached posts from Supabase first, then reads the sync status.
+It serves cached posts from Supabase first. A best-effort 60-second
+process-local throttle avoids a database status query on every hit;
+Supabase remains the cross-instance source of truth.
 If the last successful sync is at least 30 minutes old, it refreshes the feed.
 A failed attempt backs off for 15 minutes. The existing database lease prevents
 concurrent refreshes even across multiple Vercel instances.
