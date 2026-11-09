@@ -206,7 +206,10 @@ It serves cached posts from Supabase first. A best-effort 60-second
 process-local throttle avoids a database status query on every hit;
 Supabase remains the cross-instance source of truth.
 If the last successful sync is at least 30 minutes old, it refreshes the feed.
-A failed attempt backs off for 15 minutes. The existing database lease prevents
+A failed attempt backs off for 15 minutes. Visitor-triggered imports use a
+35-second media budget and a 60-second function limit for legacy Hobby support.
+Slow first imports can finish over several visits without pruning old posts.
+The existing database lease prevents
 concurrent refreshes even across multiple Vercel instances.
 Nothing polls Instagram without visits; a site that receives no visitors for
 a long time can still have an expiring token. The manual button under
