@@ -22,12 +22,11 @@ Safe to ship to the browser:
 
 Never prefix with `NEXT_PUBLIC_`. Never import into client components.
 
-- `SUPABASE_SERVICE_ROLE_KEY` — bypasses RLS; cron + admin server actions only
+- `SUPABASE_SERVICE_ROLE_KEY` — bypasses RLS; server-side Instagram refresh and admin actions only
 - `SUPABASE_DB_URL` — optional direct Postgres connection string (session pooler, contains the DB password); build/deploy only, never client. If unset, the runner reuses the Vercel Supabase integration's Postgres vars (`POSTGRES_URL_NON_POOLING`, `POSTGRES_URL`, `DATABASE_URL`, `POSTGRES_PRISMA_URL`). Used by `scripts/db-migrate.mjs`.
 - `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`, `R2_ENDPOINT`
 - `INSTAGRAM_ACCESS_TOKEN` (Instagram Login user token), `INSTAGRAM_APP_SECRET`
 - `RESEND` (Resend API key; contact-form notification email only)
-- `CRON_SECRET`
 
 `R2_PUBLIC_URL` is not a credential but is server-used when writing object URLs.
 
