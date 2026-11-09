@@ -2,6 +2,7 @@ import {
   feedKeepIds,
   imageForInstagramMedia,
   shouldPruneInstagram,
+  shouldRefreshInstagram,
   trustedInstagramImageUrl,
 } from '@/lib/instagram-keep'
 
@@ -47,5 +48,14 @@ check('empty URL blocked', !trustedInstagramImageUrl(''))
 check('feed retains reels even when no preview exists', feedKeepIds([{ id: 'a' }, { id: 'b' }]).join(',') === 'a,b')
 check('empty feed does not prune', !shouldPruneInstagram(0, []))
 check('successful non-empty feed can prune', shouldPruneInstagram(2, ['a', 'b']))
+const clock = Date.parse('2026-11-09T12:00:00Z')
+const timeAgo = (minutes: number) => new Date(clock - minutes * 60_000).toISOString()
+check('initial visit refreshes', shouldRefreshInstagram(null, clock))
+check('recent success avoids refresh', !shouldRefreshInstagram({ last_success_at: timeAgo(25) }, clock))
+check('success older than thirty minutes refreshes', shouldRefreshInstagram({ last_success_at: timeAgo(35), last_attempt_at: timeAgo(35) }, clock))
+check('failed attempt backs off fifteen minutes', !shouldRefreshInstagram({ last_success_at: timeAgo(60), last_attempt_at: timeAgo(5) }, clock))
+check('failed attempt retries after fifteen minutes', shouldRefreshInstagram({ last_success_at: timeAgo(60), last_attempt_at: timeAgo(16) }, clock))
+check('active database lease blocks visitor refresh', !shouldRefreshInstagram({ locked_until: new Date(clock + 300_000).toISOString() }, clock))
+check('expired database lease permits refresh', shouldRefreshInstagram({ locked_until: timeAgo(1) }, clock))
 if (failures) process.exit(1)
 console.log('Instagram media safety tests passed')
