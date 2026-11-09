@@ -65,6 +65,8 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 - [ ] `vercel.json` has no scheduled cron entry and the retired cron API path returns 404.
 - [ ] Visiting `/` returns cached Instagram images immediately, then triggers a refresh only when due.
 - [ ] Recent successful sync (<30 minutes), recent failed attempt (<15 minutes), and active DB leases prevent refresh.
+- [ ] The per-instance 60-second throttle avoids status queries for every homepage view.
+- [ ] Admin reports refresh not configured when Instagram token or R2 is missing.
 - [ ] The manual admin sync still works independently of the visitor cooldown.
 - [ ] Sync talks to `graph.instagram.com` (Instagram Login), never `graph.facebook.com`.
 - [ ] IMAGE, VIDEO (thumbnail), and CAROUSEL_ALBUM (first still) upsert into `instagram_posts`.
