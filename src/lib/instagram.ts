@@ -211,7 +211,7 @@ async function releaseLease(supabase: ServiceDb, owner: string, result: Instagra
 }
 
 /** Shared by the admin button, token setup, and visitor-triggered refresh. */
-export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
+export async function syncInstagramPosts(options: { mediaDeadline?: number } = {}): Promise<InstagramSyncResult> {
   const supabase = createServiceSupabase()
   if (!supabase) return { ok: false, count: 0, error: 'Supabase Service Role ist nicht konfiguriert' }
   if (!isR2Configured()) return { ok: false, count: 0, error: 'Cloudflare R2 ist für dauerhafte Instagram-Bilder nicht konfiguriert' }
@@ -239,6 +239,10 @@ export async function syncInstagramPosts(): Promise<InstagramSyncResult> {
     let count = 0
     const problems: string[] = []
     for (const item of items) {
+      if (options.mediaDeadline && Date.now() >= options.mediaDeadline) {
+        problems.push('Import-Zeitbudget erreicht. Weitere Bilder werden beim nächsten Besuch übernommen')
+        break
+      }
       if (!item.id || !item.permalink) {
         problems.push('Beitrag ohne ID oder Link')
         continue
@@ -309,6 +313,8 @@ export async function refreshInstagramIfStale(): Promise<void> {
     return
   }
   if (!shouldRefreshInstagram(data)) return
-  const result = await syncInstagramPosts()
+  // Leave time for token refresh, database status updates, and cleanup within
+  // the 60-second Hobby function limit. A partial batch retries on a later visit.
+  const result = await syncInstagramPosts({ mediaDeadline: Date.now() + 35_000 })
   if (!result.ok) console.error('[instagram] visitor refresh failed:', result.error)
 }
