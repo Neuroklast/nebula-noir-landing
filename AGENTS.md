@@ -87,3 +87,7 @@ Do not reintroduce `@github/spark`, `useKV`, Spark Vite plugins, `spark.meta.jso
 | `.env.example` | All supported variables (required vs optional marked) |
 | `USER_MANUAL.md` | Visitor + admin how-to |
 | `LICENSE` | Proprietary, all rights reserved |
+
+## Root-cause and reliability policy (mandatory)
+
+Never implement lazy/dirty quick fixes, stubs, no-op handlers, false success, silent network/DB error fallbacks, or patch only the caller where the canonical service is faulty. Find the root cause and every affected route, use a typed shared owner, handle failure separately from empty data, and test both sides. No database writes, bucket scans or media migrations on a serverless cold start, GET or module import. Keep Supabase authorization, RLS, rate-limit fail-closed behavior and explicit migration review. Do not report tests, deployments or browser verification that did not run.

@@ -17,7 +17,7 @@ export function AdminShell({ children, demo }: { children: React.ReactNode; demo
 
   const logout = async () => {
     const supabase = createBrowserSupabase()
-    await supabase?.auth.signOut()
+    await supabase?.auth.signOut({ scope: 'local' })
     router.push('/login')
     router.refresh()
   }

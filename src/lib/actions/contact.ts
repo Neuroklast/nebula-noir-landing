@@ -8,6 +8,7 @@ import { getServerT } from '@/i18n/server'
 import { contactWriteAllowed, type LimitResult } from '@/lib/contact-limit'
 import { createServiceSupabase } from '@/lib/supabase/service'
 import { sendContactNotification } from '@/lib/email'
+import { honeypotTriggered } from '@/lib/contact-spam'
 
 const CONTACT_LIMIT = 5
 const CONTACT_WINDOW_SECONDS = 600
@@ -55,7 +56,10 @@ export async function submitContact(formData: {
   name: string
   email: string
   message: string
+  website?: string
 }): Promise<ContactResult> {
+  // Reject automated form fills before rate-limit consumption and persistence.
+  if (honeypotTriggered(formData.website)) return { ok: true }
   const t = await getServerT()
   const name = formData.name.trim()
   const email = formData.email.trim()

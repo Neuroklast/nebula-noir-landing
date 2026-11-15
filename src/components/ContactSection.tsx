@@ -21,6 +21,7 @@ export function ContactSection() {
     email: '',
     message: ''
   })
+  const [website, setWebsite] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const { ref, isVisible } = useScrollTrigger(0.1)
   const t = useT()
@@ -40,7 +41,7 @@ export function ContactSection() {
     }
 
     setSubmitting(true)
-    const result = await submitContact(formData)
+    const result = await submitContact({ ...formData, website })
     setSubmitting(false)
     if (!result.ok) {
       toast.error(result.error)
@@ -53,6 +54,7 @@ export function ContactSection() {
       toast.success(t('contact.sent'))
     }
     setFormData({ name: '', email: '', message: '' })
+    setWebsite('')
   }
 
   return (
@@ -83,6 +85,11 @@ export function ContactSection() {
           animate={isVisible ? { opacity: 1, clipPath: 'inset(0% 0%)' } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: EASE_DECO }}
         >
+          <input
+            type="text" name="website" autoComplete="off" tabIndex={-1}
+            aria-hidden="true" value={website} onChange={(event) => setWebsite(event.target.value)}
+            style={{ position: 'absolute', left: '-10000px', top: 'auto' }}
+          />
           <ArtDecoCorner position="top-left" size={50} delay={0.5} />
           <ArtDecoCorner position="bottom-right" size={50} delay={0.6} />
           <div className="space-y-3">
