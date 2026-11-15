@@ -91,3 +91,7 @@ Do not reintroduce `@github/spark`, `useKV`, Spark Vite plugins, `spark.meta.jso
 ## Root-cause and reliability policy (mandatory)
 
 Never implement lazy/dirty quick fixes, stubs, no-op handlers, false success, silent network/DB error fallbacks, or patch only the caller where the canonical service is faulty. Find the root cause and every affected route, use a typed shared owner, handle failure separately from empty data, and test both sides. No database writes, bucket scans or media migrations on a serverless cold start, GET or module import. Keep Supabase authorization, RLS, rate-limit fail-closed behavior and explicit migration review. Do not report tests, deployments or browser verification that did not run.
+
+## Living architecture documentation enforcement
+
+Every source/config/workflow pull request must append an evidence entry to docs/QUALITY_JOURNAL.md and update the owning documents mapped in docs/living-docs.json. See docs/ARCHITECTURE_QUALITY.md for the current acceptance baseline. Node-only CI verifies the changed paths and record fields; review must verify facts and real tests. Protect main with the Living docs gate status.
