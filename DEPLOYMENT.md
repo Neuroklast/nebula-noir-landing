@@ -260,3 +260,7 @@ Upload in **Admin → Hero-Video** (`/admin/hero`). The file goes to R2 via pres
 ## 6. Post-deploy smoke
 
 Follow `QA_CHECKLIST.md`: Demo Mode locally, then production with secrets. Walk the operator paths in `USER_MANUAL.md` (login, gallery upload, event, inquiry, IG sync, hero).
+
+## Required living docs gate
+
+The independent Living docs gate in GitHub checks source-diff ownership and a new dated quality-journal entry. It runs no Next.js build, database migration or production operation. Run npm run test:living-docs and npm run check:living-docs locally; configure main branch protection to require the named check. Verify runtime outcomes separately.
