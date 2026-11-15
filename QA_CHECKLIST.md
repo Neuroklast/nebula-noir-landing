@@ -162,3 +162,10 @@ Use this as a testable pass/fail list. Demo Mode means Supabase public keys are 
 - [ ] Contact form still sends the notification using the stored key when the env key is removed.
 - [ ] `/admin/health` shows five checks with latency; a wrong key shows an error without echoing the key; the page returns within ~6 s. A sending-only Resend key (HTTP 403 on `/domains`) is Eingeschränkt, not Fehler.
 - [ ] `.next/static` contains no `value_encrypted`, `SECRETS_ENCRYPTION_KEY`, `enc:v1`, or `api_secrets` strings.
+
+## 2026-11-15 regression checks
+
+- [ ] Submit legitimate contact form: inquiry is stored and only one notification is sent.
+- [ ] Submit with hidden `website` field filled: no inquiry, rate-limit consumption or email; normal response does not expose spam detection.
+- [ ] Verify rate-limit failures still reject legitimate requests (fail closed).
+- [ ] Log out of Admin: current session closes without revoking a separately authenticated browser/OAuth connection.

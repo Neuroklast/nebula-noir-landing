@@ -1,3 +1,7 @@
+## 2026-11-15 — Reuse server-owned defenses
+
+The existing contact limiter was already fail-closed, so replacing it with a generic band-site stack would introduce risk. We added only a hidden website trap, checked on the server before write/limit/email, and kept the UI styling intact. Default global Supabase logout can revoke separate sessions; local logout is appropriate for routine admin sign-out. Any further captcha rollout requires explicit configuration, CSP, privacy review and end-to-end proof.
+
 # Lessons Learned
 
 ## Decorative fixed chrome must stay below interactive layers

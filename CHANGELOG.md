@@ -1,3 +1,9 @@
+## 2026-11-15 — Contact and session hardening
+
+- Reject bot-filled hidden contact website field before database/rate-limit/email work. The form retains its design and successful customer submissions.
+- Admin logout is local to the current session; other device and integration refresh tokens remain valid.
+- Require root-cause implementations and explicit failure states in AGENTS.md.
+
 # Changelog
 
 All notable changes to this project are documented in reverse chronological order.
